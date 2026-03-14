@@ -1,522 +1,513 @@
+"""
+bot.py — بوت الاختبارات MCQ مبني على السكشنز
+كل سكشن = موضوع مستقل، الأسئلة تنزل بشكل متواصل واحدة تلو الأخرى
+"""
 import logging
 import asyncio
-from datetime import datetime, date
-from telegram import (
-    Update, InlineKeyboardButton, InlineKeyboardMarkup, BotCommand
-)
+import os
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     Application, CommandHandler, CallbackQueryHandler,
-    MessageHandler, filters, ContextTypes, ConversationHandler
+    MessageHandler, filters, ContextTypes, ConversationHandler,
 )
 from database import Database
 
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO
-)
+logging.basicConfig(format="%(asctime)s — %(levelname)s — %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ─── Conversation States ───────────────────────────────────────────────────────
 WAITING_NAME = 1
-
-# ─── Database instance ─────────────────────────────────────────────────────────
 db = Database("quiz_bot.db")
 
+# ══════════════════════════════════════════════════════════════════
+#  KEYBOARDS & MENUS
+# ══════════════════════════════════════════════════════════════════
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  HELPERS
-# ══════════════════════════════════════════════════════════════════════════════
-
-def back_btn(callback: str = "main_menu") -> list:
-    return [[InlineKeyboardButton("🔙 القائمة الرئيسية", callback_data=callback)]]
-
-
-def build_main_menu(student_name: str) -> InlineKeyboardMarkup:
-    keyboard = [
-        [InlineKeyboardButton("📚 اختر فصلاً للمذاكرة", callback_data="choose_chapter")],
-        [InlineKeyboardButton("🎯 الاختبار اليومي", callback_data="daily_quiz")],
-        [InlineKeyboardButton("📊 نتائجي", callback_data="my_scores")],
-        [InlineKeyboardButton("🏆 لوحة الشرف", callback_data="leaderboard")],
-    ]
-    return InlineKeyboardMarkup(keyboard)
+def main_menu_keyboard():
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("📚 اختر سكشن للدراسة",    callback_data="menu_sections")],
+        [InlineKeyboardButton("🎯 الاختبار اليومي",        callback_data="menu_daily")],
+        [InlineKeyboardButton("📊 نتائجي",                 callback_data="menu_scores")],
+        [InlineKeyboardButton("🏆 لوحة الشرف",             callback_data="menu_leaders")],
+    ])
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  /start  ──  Registration Flow
-# ══════════════════════════════════════════════════════════════════════════════
+def back_main():
+    return InlineKeyboardMarkup([[InlineKeyboardButton("🔙 القائمة الرئيسية", callback_data="main_menu")]])
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    student = db.get_student_by_telegram(user_id)
 
+# ══════════════════════════════════════════════════════════════════
+#  REGISTRATION
+# ══════════════════════════════════════════════════════════════════
+
+async def cmd_start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    uid = update.effective_user.id
+    student = db.get_student(uid)
     if student:
         await update.message.reply_text(
-            f"👋 أهلاً مجدداً *{student['full_name']}*!\n\nاختر ما تريد من القائمة أدناه:",
-            parse_mode="Markdown",
-            reply_markup=build_main_menu(student["full_name"]),
+            f"👋 أهلاً *{student['full_name']}*!\nاختر ما تريد:",
+            parse_mode="Markdown", reply_markup=main_menu_keyboard()
         )
         return ConversationHandler.END
 
     await update.message.reply_text(
         "🎓 *مرحباً بك في بوت الاختبارات!*\n\n"
-        "للتسجيل، أرسل *اسمك الثلاثي* كما هو مسجل في قاعدة البيانات.\n\n"
-        "مثال: `أحمد محمد علي`",
-        parse_mode="Markdown",
+        "أرسل *اسمك الثلاثي* كما هو مسجّل لدى المشرف:",
+        parse_mode="Markdown"
     )
     return WAITING_NAME
 
 
-async def register_name(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    full_name = update.message.text.strip()
-    user_id = update.effective_user.id
+async def register_name(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    name = update.message.text.strip()
+    uid  = update.effective_user.id
+    result = db.register_student(name, uid)
 
-    student = db.find_student_by_name(full_name)
-
-    if not student:
+    if result == "not_found":
         await update.message.reply_text(
-            "❌ *الاسم غير موجود في قاعدة البيانات.*\n\n"
-            "تأكد من كتابة الاسم الثلاثي بالضبط كما هو مسجل.\n"
-            "حاول مرة أخرى أو تواصل مع المشرف.",
-            parse_mode="Markdown",
+            "❌ الاسم غير موجود في القائمة.\n"
+            "تأكد من كتابته بالضبط أو تواصل مع المشرف."
         )
         return WAITING_NAME
 
-    if student["telegram_id"] and student["telegram_id"] != user_id:
-        await update.message.reply_text(
-            "⚠️ هذا الاسم مسجل مسبقاً بحساب آخر. تواصل مع المشرف.",
-        )
+    if result == "taken":
+        await update.message.reply_text("⚠️ هذا الاسم مسجّل بحساب آخر. تواصل مع المشرف.")
         return WAITING_NAME
-
-    db.link_telegram_to_student(student["id"], user_id)
 
     await update.message.reply_text(
-        f"✅ *تم التسجيل بنجاح!*\n\n"
-        f"أهلاً *{student['full_name']}* 👏\n\n"
-        f"يمكنك الآن البدء بالمذاكرة والاختبارات:",
-        parse_mode="Markdown",
-        reply_markup=build_main_menu(student["full_name"]),
+        f"✅ *تم التسجيل بنجاح!*\nأهلاً *{name}* 🎉",
+        parse_mode="Markdown", reply_markup=main_menu_keyboard()
     )
     return ConversationHandler.END
 
 
-async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def cmd_cancel(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("تم الإلغاء.")
     return ConversationHandler.END
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 #  MAIN MENU callback
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 
-async def main_menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    user_id = update.effective_user.id
-    student = db.get_student_by_telegram(user_id)
-    if not student:
-        await query.edit_message_text("يرجى التسجيل أولاً بإرسال /start")
+async def cb_main_menu(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    uid = update.effective_user.id
+    s = db.get_student(uid)
+    if not s:
+        await q.edit_message_text("يرجى التسجيل أولاً /start")
+        return
+    await q.edit_message_text(
+        f"👋 *{s['full_name']}* — القائمة الرئيسية:",
+        parse_mode="Markdown", reply_markup=main_menu_keyboard()
+    )
+
+
+def require_student(fn):
+    """Decorator: checks student is registered before running callback."""
+    async def wrapper(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+        uid = update.effective_user.id
+        s = db.get_student(uid)
+        if not s:
+            await update.callback_query.answer()
+            await update.callback_query.edit_message_text("يرجى التسجيل أولاً /start")
+            return
+        ctx.user_data["student"] = s
+        return await fn(update, ctx)
+    return wrapper
+
+
+# ══════════════════════════════════════════════════════════════════
+#  SECTIONS LIST
+# ══════════════════════════════════════════════════════════════════
+
+@require_student
+async def cb_sections(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    sections = db.get_sections()
+    if not sections:
+        await q.edit_message_text("⚠️ لا توجد سكشنات بعد.", reply_markup=back_main())
         return
 
-    await query.edit_message_text(
-        f"👋 *{student['full_name']}* — القائمة الرئيسية:",
+    rows = []
+    for sec in sections:
+        cnt = db.count_q(sec["id"])
+        rows.append([InlineKeyboardButton(
+            f"{'🦠' if 'فير' in sec['name'] else '⚗️' if 'ايض' in sec['name'] or 'أيض' in sec['name'] else '📖'} {sec['name']}  ({cnt} سؤال)",
+            callback_data=f"sec_{sec['id']}"
+        )])
+    rows.append([InlineKeyboardButton("🔙 رجوع", callback_data="main_menu")])
+
+    await q.edit_message_text(
+        "📚 *اختر السكشن الذي تريد دراسته:*",
         parse_mode="Markdown",
-        reply_markup=build_main_menu(student["full_name"]),
+        reply_markup=InlineKeyboardMarkup(rows)
     )
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  CHOOSE CHAPTER
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
+#  SECTION DETAIL
+# ══════════════════════════════════════════════════════════════════
 
-async def choose_chapter(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
+@require_student
+async def cb_section_detail(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    sec_id  = int(q.data.split("_")[1])
+    section = db.get_section(sec_id)
+    cnt     = db.count_q(sec_id)
 
-    chapters = db.get_all_chapters()
-    if not chapters:
-        await query.edit_message_text("⚠️ لا توجد فصول متاحة حالياً.")
-        return
+    kbd = InlineKeyboardMarkup([
+        [InlineKeyboardButton("▶️ ابدأ (10 أسئلة عشوائية)", callback_data=f"start_{sec_id}_10")],
+        [InlineKeyboardButton("📋 اختبار كامل (كل الأسئلة)",  callback_data=f"start_{sec_id}_all")],
+        [InlineKeyboardButton("🔙 رجوع",                      callback_data="menu_sections")],
+    ])
 
-    keyboard = []
-    for ch in chapters:
-        q_count = db.count_questions_in_chapter(ch["id"])
-        keyboard.append([
-            InlineKeyboardButton(
-                f"📖 {ch['name']}  ({q_count} سؤال)",
-                callback_data=f"chapter_{ch['id']}",
-            )
-        ])
-    keyboard += back_btn()
-
-    await query.edit_message_text(
-        "📚 *اختر الفصل الذي تريد المذاكرة منه:*",
-        parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(keyboard),
+    desc = section["description"] or ""
+    await q.edit_message_text(
+        f"{'🦠' if 'فير' in section['name'] else '📖'} *{section['name']}*\n"
+        f"{desc}\n\n"
+        f"📝 عدد الأسئلة: *{cnt}*",
+        parse_mode="Markdown", reply_markup=kbd
     )
 
 
-async def chapter_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    chapter_id = int(query.data.split("_")[1])
-    chapter = db.get_chapter(chapter_id)
+# ══════════════════════════════════════════════════════════════════
+#  START QUIZ SESSION
+# ══════════════════════════════════════════════════════════════════
 
-    keyboard = [
-        [InlineKeyboardButton("▶️ ابدأ الاختبار (10 أسئلة عشوائية)", callback_data=f"startquiz_{chapter_id}_10")],
-        [InlineKeyboardButton("📋 اختبار كامل (كل الأسئلة)", callback_data=f"startquiz_{chapter_id}_all")],
-    ] + back_btn("choose_chapter")
+@require_student
+async def cb_start_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q       = update.callback_query
+    await q.answer()
+    parts   = q.data.split("_")       # start_<sec_id>_<count>
+    sec_id  = int(parts[1])
+    limit   = None if parts[2] == "all" else int(parts[2])
+    student = ctx.user_data["student"]
 
-    await query.edit_message_text(
-        f"📖 *{chapter['name']}*\n\n{chapter.get('description', '')}",
-        parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(keyboard),
-    )
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-#  QUIZ ENGINE
-# ══════════════════════════════════════════════════════════════════════════════
-
-async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    user_id = update.effective_user.id
-    student = db.get_student_by_telegram(user_id)
-
-    parts = query.data.split("_")   # startquiz_<chapter_id>_<count>
-    chapter_id = int(parts[1])
-    count = parts[2]
-
-    questions = db.get_questions(chapter_id, None if count == "all" else int(count))
+    questions = db.get_questions(sec_id, limit)
     if not questions:
-        await query.edit_message_text("⚠️ لا توجد أسئلة في هذا الفصل.")
+        await q.edit_message_text("⚠️ لا توجد أسئلة في هذا السكشن.", reply_markup=back_main())
         return
 
-    # Create session
-    session_id = db.create_quiz_session(student["id"], chapter_id, len(questions))
-    context.user_data["session"] = {
-        "session_id": session_id,
-        "questions": questions,
-        "current": 0,
-        "score": 0,
-        "chapter_id": chapter_id,
+    import random
+    random.shuffle(questions)
+
+    session_id = db.new_session(student["id"], sec_id, len(questions))
+    ctx.user_data["session"] = {
+        "sid":      session_id,
+        "sec_id":   sec_id,
+        "qs":       questions,
+        "idx":      0,
+        "score":    0,
+        "total":    len(questions),
+        "is_daily": False,
     }
 
-    await query.edit_message_text("⏳ جاري تحميل الأسئلة...")
-    await send_question(update, context, first=True)
+    section = db.get_section(sec_id)
+    await q.edit_message_text(
+        f"🚀 *{section['name']}* — {len(questions)} سؤال\nاستعد! ⏱️",
+        parse_mode="Markdown"
+    )
+    await asyncio.sleep(0.6)
+    await _send_question(update, ctx)
 
 
-async def send_question(update: Update, context: ContextTypes.DEFAULT_TYPE, first=False):
-    sess = context.user_data.get("session")
+# ══════════════════════════════════════════════════════════════════
+#  CORE QUESTION DISPLAY
+# ══════════════════════════════════════════════════════════════════
+
+async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    sess = ctx.user_data.get("session")
     if not sess:
         return
 
-    q_list = sess["questions"]
-    idx = sess["current"]
-
-    if idx >= len(q_list):
-        await finish_quiz(update, context)
+    idx   = sess["idx"]
+    total = sess["total"]
+    if idx >= total:
+        await _finish_quiz(update, ctx)
         return
 
-    q = q_list[idx]
-    total = len(q_list)
-    progress = f"*سؤال {idx+1} من {total}*\n"
-    bar = "🟩" * idx + "⬜" * (total - idx)
+    q_obj = sess["qs"][idx]
+
+    # Progress bar
+    done  = idx
+    left  = total - idx
+    bar   = "🟩" * min(done, 10) + "⬜" * min(left, 10)
+    if total > 10:
+        bar += f" ({idx}/{total})"
 
     text = (
-        f"{progress}{bar}\n\n"
-        f"❓ *{q['question_text']}*"
+        f"*سؤال {idx + 1} من {total}*\n{bar}\n\n"
+        f"❓ {q_obj['question_text']}"
     )
 
-    keyboard = [
-        [InlineKeyboardButton(f"🅰️  {q['option_a']}", callback_data=f"ans_A_{q['id']}")],
-        [InlineKeyboardButton(f"🅱️  {q['option_b']}", callback_data=f"ans_B_{q['id']}")],
-        [InlineKeyboardButton(f"🅲  {q['option_c']}", callback_data=f"ans_C_{q['id']}")],
-        [InlineKeyboardButton(f"🅳  {q['option_d']}", callback_data=f"ans_D_{q['id']}")],
-    ]
+    kbd = InlineKeyboardMarkup([
+        [InlineKeyboardButton(f"🅰  {q_obj['option_a']}", callback_data=f"ans_A_{q_obj['id']}")],
+        [InlineKeyboardButton(f"🅱  {q_obj['option_b']}", callback_data=f"ans_B_{q_obj['id']}")],
+        [InlineKeyboardButton(f"🅲  {q_obj['option_c']}", callback_data=f"ans_C_{q_obj['id']}")],
+        [InlineKeyboardButton(f"🅳  {q_obj['option_d']}", callback_data=f"ans_D_{q_obj['id']}")],
+    ])
 
-    if first:
-        # first message after editing "loading..."
+    try:
         await update.callback_query.edit_message_text(
-            text, parse_mode="Markdown",
-            reply_markup=InlineKeyboardMarkup(keyboard),
+            text, parse_mode="Markdown", reply_markup=kbd
         )
-    else:
-        await update.callback_query.edit_message_text(
-            text, parse_mode="Markdown",
-            reply_markup=InlineKeyboardMarkup(keyboard),
+    except Exception:
+        # fallback: send new message
+        await update.effective_chat.send_message(
+            text, parse_mode="Markdown", reply_markup=kbd
         )
 
 
-async def handle_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
+# ══════════════════════════════════════════════════════════════════
+#  ANSWER HANDLER  ← the heart of the flow
+# ══════════════════════════════════════════════════════════════════
 
-    sess = context.user_data.get("session")
+async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+
+    sess = ctx.user_data.get("session")
     if not sess:
-        await query.edit_message_text("انتهت الجلسة. ابدأ من /start")
+        await q.edit_message_text("انتهت الجلسة، ابدأ من /start")
         return
 
-    parts = query.data.split("_")   # ans_<letter>_<question_id>
-    user_answer = parts[1]
-    question_id = int(parts[2])
+    parts       = q.data.split("_")   # ans_<letter>_<qid>
+    user_ans    = parts[1]
+    q_id        = int(parts[2])
 
-    q_list = sess["questions"]
-    idx = sess["current"]
-    q = q_list[idx]
+    # Find current question
+    idx   = sess["idx"]
+    q_obj = sess["qs"][idx]
 
-    correct = q["correct_answer"].upper()
-    is_correct = user_answer == correct
+    correct    = q_obj["correct_answer"].upper()
+    is_correct = (user_ans == correct)
 
     if is_correct:
         sess["score"] += 1
-        icon = "✅"
-        result_text = "إجابة صحيحة!"
+
+    db.save_answer(sess["sid"], q_id, user_ans, is_correct)
+
+    # Build option map for feedback
+    opt = {"A": q_obj["option_a"], "B": q_obj["option_b"],
+           "C": q_obj["option_c"], "D": q_obj["option_d"]}
+
+    if is_correct:
+        result_line = f"✅ *إجابة صحيحة!*"
     else:
-        icon = "❌"
-        option_map = {"A": q["option_a"], "B": q["option_b"],
-                      "C": q["option_c"], "D": q["option_d"]}
-        result_text = f"خطأ! الإجابة الصحيحة: *{correct}) {option_map[correct]}*"
+        result_line = (
+            f"❌ *خطأ!*\n"
+            f"الإجابة الصحيحة: *{correct})* {opt[correct]}"
+        )
 
-    db.save_answer(sess["session_id"], question_id, user_answer, is_correct)
+    exp = q_obj.get("explanation", "")
+    exp_line = f"\n\n💡 _{exp}_" if exp else ""
 
-    explanation = q.get("explanation", "")
-    exp_text = f"\n\n💡 *الشرح:* {explanation}" if explanation else ""
+    # Move pointer
+    sess["idx"] += 1
+    ctx.user_data["session"] = sess
 
-    feedback = f"{icon} {result_text}{exp_text}"
+    next_num = sess["idx"] + 1
+    total    = sess["total"]
+    next_label = f"التالي  ({next_num}/{total}) ➡️" if sess["idx"] < total else "عرض النتيجة 🏁"
 
-    # Move to next
-    sess["current"] += 1
-    context.user_data["session"] = sess
-
-    keyboard = [[InlineKeyboardButton("التالي ➡️", callback_data="next_question")]]
-
-    await query.edit_message_text(
-        f"❓ *{q['question_text']}*\n\n{feedback}",
-        parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(keyboard),
+    feedback_text = (
+        f"❓ {q_obj['question_text']}\n\n"
+        f"{result_line}{exp_line}"
     )
 
+    kbd = InlineKeyboardMarkup([
+        [InlineKeyboardButton(next_label, callback_data="next_q")]
+    ])
 
-async def next_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    await send_question(update, context)
+    await q.edit_message_text(feedback_text, parse_mode="Markdown", reply_markup=kbd)
 
 
-async def finish_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    sess = context.user_data.get("session")
-    score = sess["score"]
-    total = len(sess["questions"])
-    pct = round((score / total) * 100)
+async def cb_next_q(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    await _send_question(update, ctx)
 
-    if pct >= 90:
-        grade = "ممتاز 🏆"
-    elif pct >= 75:
-        grade = "جيد جداً 🥈"
-    elif pct >= 60:
-        grade = "جيد 🥉"
-    else:
-        grade = "بحاجة للمراجعة 📖"
 
-    db.complete_quiz_session(sess["session_id"], score)
+# ══════════════════════════════════════════════════════════════════
+#  FINISH QUIZ
+# ══════════════════════════════════════════════════════════════════
 
-    stars = "⭐" * (pct // 20)
-    text = (
-        f"🎉 *انتهى الاختبار!*\n\n"
-        f"النتيجة: *{score} / {total}* ({pct}%)\n"
-        f"التقدير: {grade}\n"
-        f"{stars}"
-    )
+async def _finish_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    sess  = ctx.user_data.pop("session", {})
+    score = sess.get("score", 0)
+    total = sess.get("total", 1)
+    pct   = round((score / total) * 100)
 
-    keyboard = [
-        [InlineKeyboardButton("🔄 إعادة الفصل", callback_data=f"chapter_{sess['chapter_id']}")],
-        [InlineKeyboardButton("🏠 القائمة الرئيسية", callback_data="main_menu")],
-    ]
+    db.complete_session(sess["sid"], score)
 
-    context.user_data.pop("session", None)
+    if pct >= 90:   grade = "ممتاز 🏆"
+    elif pct >= 75: grade = "جيد جداً 🥈"
+    elif pct >= 60: grade = "جيد 🥉"
+    else:           grade = "راجع المادة 📖"
+
+    stars = "⭐" * (pct // 20) or "—"
+
+    kbd = InlineKeyboardMarkup([
+        [InlineKeyboardButton("🔄 إعادة نفس السكشن", callback_data=f"sec_{sess['sec_id']}")],
+        [InlineKeyboardButton("📚 اختر سكشن آخر",    callback_data="menu_sections")],
+        [InlineKeyboardButton("🏠 القائمة الرئيسية",  callback_data="main_menu")],
+    ])
 
     await update.callback_query.edit_message_text(
-        text, parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(keyboard),
+        f"🎉 *انتهى الاختبار!*\n\n"
+        f"النتيجة: *{score} / {total}*  ({pct}%)\n"
+        f"التقدير: {grade}\n"
+        f"{stars}",
+        parse_mode="Markdown", reply_markup=kbd
     )
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 #  DAILY QUIZ
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 
-async def daily_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    user_id = update.effective_user.id
-    student = db.get_student_by_telegram(user_id)
+@require_student
+async def cb_daily(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q       = update.callback_query
+    await q.answer()
+    student = ctx.user_data["student"]
+    from datetime import date
+    today   = date.today().isoformat()
 
-    today = date.today().isoformat()
-    already_done = db.check_daily_done(student["id"], today)
-
-    if already_done:
-        score, total = db.get_daily_score(student["id"], today)
-        await query.edit_message_text(
-            f"✅ لقد أجريت الاختبار اليومي اليوم!\n\n"
-            f"نتيجتك: *{score} / {total}*\n\n"
-            f"عد غداً للاختبار الجديد 📅",
-            parse_mode="Markdown",
-            reply_markup=InlineKeyboardMarkup(back_btn()),
+    done, sc, tot = db.check_daily(student["id"], today)
+    if done:
+        pct = round(sc / tot * 100) if tot else 0
+        await q.edit_message_text(
+            f"✅ أجريت الاختبار اليومي اليوم!\n\n"
+            f"نتيجتك: *{sc}/{tot}* ({pct}%)\n\nعد غداً 📅",
+            parse_mode="Markdown", reply_markup=back_main()
         )
         return
 
-    questions = db.get_daily_questions(today)
+    questions = db.daily_questions(today)
     if not questions:
-        await query.edit_message_text(
-            "⚠️ لا توجد أسئلة للاختبار اليومي حالياً.",
-            reply_markup=InlineKeyboardMarkup(back_btn()),
-        )
+        await q.edit_message_text("⚠️ لا توجد أسئلة للاختبار اليومي.", reply_markup=back_main())
         return
 
-    session_id = db.create_quiz_session(student["id"], None, len(questions), is_daily=True, daily_date=today)
-    context.user_data["session"] = {
-        "session_id": session_id,
-        "questions": questions,
-        "current": 0,
-        "score": 0,
-        "chapter_id": None,
+    session_id = db.new_session(student["id"], None, len(questions), is_daily=True, daily_date=today)
+    ctx.user_data["session"] = {
+        "sid": session_id, "sec_id": None,
+        "qs": questions, "idx": 0,
+        "score": 0, "total": len(questions),
         "is_daily": True,
-        "daily_date": today,
     }
+    await q.edit_message_text("🎯 *الاختبار اليومي* — 10 أسئلة من كل السكشنات\nاستعد! ⏱️",
+                               parse_mode="Markdown")
+    await asyncio.sleep(0.6)
+    await _send_question(update, ctx)
 
-    await query.edit_message_text("🎯 *الاختبار اليومي* — 10 أسئلة من جميع الفصول\n\nاستعد! ⏱️",
-                                  parse_mode="Markdown")
-    await asyncio.sleep(1)
-    await send_question(update, context, first=True)
 
-
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 #  MY SCORES
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 
-async def my_scores(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    user_id = update.effective_user.id
-    student = db.get_student_by_telegram(user_id)
-
-    sessions = db.get_student_sessions(student["id"], limit=10)
-    if not sessions:
-        await query.edit_message_text(
-            "لا توجد نتائج بعد. ابدأ اختباراً!",
-            reply_markup=InlineKeyboardMarkup(back_btn()),
-        )
+@require_student
+async def cb_scores(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q       = update.callback_query
+    await q.answer()
+    student = ctx.user_data["student"]
+    rows    = db.student_sessions(student["id"])
+    if not rows:
+        await q.edit_message_text("لا توجد نتائج بعد — ابدأ اختباراً!", reply_markup=back_main())
         return
 
     lines = ["📊 *آخر 10 اختبارات:*\n"]
-    for s in sessions:
-        pct = round((s["score"] / s["total_questions"]) * 100) if s["total_questions"] else 0
-        chapter = s["chapter_name"] or "اختبار يومي"
-        date_str = s["started_at"][:10]
-        lines.append(f"• {date_str} — {chapter}: {s['score']}/{s['total_questions']} ({pct}%)")
+    for r in rows:
+        pct  = round(r["score"] / r["total_questions"] * 100) if r["total_questions"] else 0
+        name = r["section_name"] or "اختبار يومي"
+        dt   = r["started_at"][:10]
+        lines.append(f"• {dt} — {name}: {r['score']}/{r['total_questions']} ({pct}%)")
 
-    await query.edit_message_text(
-        "\n".join(lines),
-        parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(back_btn()),
-    )
+    await q.edit_message_text("\n".join(lines), parse_mode="Markdown", reply_markup=back_main())
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 #  LEADERBOARD
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 
-async def leaderboard(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-
-    leaders = db.get_leaderboard(limit=10)
-    if not leaders:
-        await query.edit_message_text("لا توجد بيانات بعد.",
-                                      reply_markup=InlineKeyboardMarkup(back_btn()))
+@require_student
+async def cb_leaders(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    rows = db.leaderboard()
+    if not rows:
+        await q.edit_message_text("لا توجد بيانات بعد.", reply_markup=back_main())
         return
-
-    medals = ["🥇", "🥈", "🥉"] + ["🔹"] * 7
-    lines = ["🏆 *لوحة الشرف — أعلى الدرجات:*\n"]
-    for i, row in enumerate(leaders):
-        lines.append(f"{medals[i]} {row['full_name']} — {row['avg_pct']}%  ({row['total_quizzes']} اختبار)")
-
-    await query.edit_message_text(
-        "\n".join(lines),
-        parse_mode="Markdown",
-        reply_markup=InlineKeyboardMarkup(back_btn()),
-    )
+    medals = ["🥇","🥈","🥉"] + ["🔹"]*7
+    lines  = ["🏆 *لوحة الشرف:*\n"]
+    for i, r in enumerate(rows):
+        lines.append(f"{medals[i]} {r['full_name']} — {r['avg_pct']}%  ({r['total']} اختبار)")
+    await q.edit_message_text("\n".join(lines), parse_mode="Markdown", reply_markup=back_main())
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  ADMIN COMMANDS  (إضافة أسئلة عبر ملف JSON)
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
+#  ADMIN
+# ══════════════════════════════════════════════════════════════════
 
-async def admin_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Only works for admin Telegram ID set in config."""
-    user_id = update.effective_user.id
-    stats = db.get_stats()
+async def cmd_stats(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    st = db.stats()
     await update.message.reply_text(
-        f"📈 *إحصائيات البوت:*\n\n"
-        f"👥 الطلاب المسجلون: {stats['registered']}/{stats['total_students']}\n"
-        f"❓ إجمالي الأسئلة: {stats['total_questions']}\n"
-        f"📋 الاختبارات المنجزة: {stats['total_sessions']}\n"
-        f"📚 الفصول: {stats['total_chapters']}",
-        parse_mode="Markdown",
+        f"📈 *إحصائيات:*\n\n"
+        f"👥 طلاب مسجلون: {st['registered']}/{st['total_students']}\n"
+        f"📦 سكشنات: {st['sections']}\n"
+        f"❓ أسئلة: {st['questions']}\n"
+        f"📋 اختبارات منجزة: {st['sessions']}",
+        parse_mode="Markdown"
     )
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  UNKNOWN / GUARD
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
+#  UNREGISTERED GUARD
+# ══════════════════════════════════════════════════════════════════
 
-async def not_registered(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
-    student = db.get_student_by_telegram(user_id)
-    if not student:
-        await update.message.reply_text(
-            "يرجى التسجيل أولاً عبر الأمر /start"
-        )
+async def guard_text(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    if not db.get_student(update.effective_user.id):
+        await update.message.reply_text("يرجى التسجيل أولاً عبر /start")
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 #  MAIN
-# ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════
 
 def main():
-    import os
     TOKEN = os.environ.get("BOT_TOKEN", "PUT_YOUR_TOKEN_HERE")
+    app   = Application.builder().token(TOKEN).build()
 
-    app = Application.builder().token(TOKEN).build()
-
-    # Registration conversation
-    conv = ConversationHandler(
-        entry_points=[CommandHandler("start", start)],
-        states={
-            WAITING_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, register_name)],
-        },
-        fallbacks=[CommandHandler("cancel", cancel)],
-    )
-
-    app.add_handler(conv)
+    # Registration
+    app.add_handler(ConversationHandler(
+        entry_points=[CommandHandler("start", cmd_start)],
+        states={WAITING_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, register_name)]},
+        fallbacks=[CommandHandler("cancel", cmd_cancel)],
+    ))
 
     # Admin
-    app.add_handler(CommandHandler("stats", admin_stats))
+    app.add_handler(CommandHandler("stats", cmd_stats))
 
-    # Callback queries
-    app.add_handler(CallbackQueryHandler(main_menu_callback,  pattern="^main_menu$"))
-    app.add_handler(CallbackQueryHandler(choose_chapter,       pattern="^choose_chapter$"))
-    app.add_handler(CallbackQueryHandler(chapter_menu,         pattern=r"^chapter_\d+$"))
-    app.add_handler(CallbackQueryHandler(start_quiz,           pattern=r"^startquiz_\d+_(all|\d+)$"))
-    app.add_handler(CallbackQueryHandler(handle_answer,        pattern=r"^ans_[ABCD]_\d+$"))
-    app.add_handler(CallbackQueryHandler(next_question,        pattern="^next_question$"))
-    app.add_handler(CallbackQueryHandler(daily_quiz,           pattern="^daily_quiz$"))
-    app.add_handler(CallbackQueryHandler(my_scores,            pattern="^my_scores$"))
-    app.add_handler(CallbackQueryHandler(leaderboard,          pattern="^leaderboard$"))
+    # Menus
+    app.add_handler(CallbackQueryHandler(cb_main_menu,     pattern="^main_menu$"))
+    app.add_handler(CallbackQueryHandler(cb_sections,      pattern="^menu_sections$"))
+    app.add_handler(CallbackQueryHandler(cb_daily,         pattern="^menu_daily$"))
+    app.add_handler(CallbackQueryHandler(cb_scores,        pattern="^menu_scores$"))
+    app.add_handler(CallbackQueryHandler(cb_leaders,       pattern="^menu_leaders$"))
 
-    # Catch-all text
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, not_registered))
+    # Section detail
+    app.add_handler(CallbackQueryHandler(cb_section_detail, pattern=r"^sec_\d+$"))
+
+    # Quiz flow
+    app.add_handler(CallbackQueryHandler(cb_start_quiz, pattern=r"^start_\d+_(all|\d+)$"))
+    app.add_handler(CallbackQueryHandler(cb_answer,     pattern=r"^ans_[ABCD]_\d+$"))
+    app.add_handler(CallbackQueryHandler(cb_next_q,     pattern="^next_q$"))
+
+    # Guard
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, guard_text))
 
     logger.info("Bot started ✅")
     app.run_polling(drop_pending_updates=True)
