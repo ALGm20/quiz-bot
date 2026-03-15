@@ -9,8 +9,10 @@ db = Database("/data/quiz_bot.db")
 
 # امسح الأسئلة القديمة لتجنب التكرار عند إعادة التشغيل
 with db._connect() as c:
+    c.execute("PRAGMA foreign_keys = OFF")
     c.execute("DELETE FROM questions")
     c.execute("DELETE FROM sections")
+    c.execute("PRAGMA foreign_keys = ON")
 print("🗑️ تم مسح الأسئلة القديمة")
 
 QUESTIONS = [
