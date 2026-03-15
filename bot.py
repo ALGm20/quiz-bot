@@ -53,7 +53,7 @@ async def notify_teacher(ctx, text: str):
     tid = os.environ.get("TEACHER_CHAT_ID","")
     if tid:
         try:
-            await ctx.bot.send_message(chat_id=tid, text=text, parse_mode="Markdown")
+            await ctx.bot.send_message(chat_id=tid, text=text)
         except Exception as e:
             logger.warning(f"Teacher notify failed: {e}")
 
@@ -456,18 +456,21 @@ async def _finish_assessment(update: Update, ctx: ContextTypes.DEFAULT_TYPE, ses
     stars  = "⭐" * max(1, round(pct / 20))
 
     # إرسال للأستاذ
-    uname = update.effective_user.username
+    uname     = update.effective_user.username
     uname_txt = f"@{uname}" if uname else "لا يوجد يوزرنيم"
-    await notify_teacher(ctx,
-        f"📋 *نتيجة تقييم جديدة*\n\n"
-        f"👤 الاسم: *{student['full_name']}*\n"
+    divider   = "──────────────────────"
+    teacher_msg = (
+        f"📋 نتيجة تقييم جديدة\n"
+        f"{divider}\n"
+        f"👤 الاسم: {student['full_name']}\n"
         f"🔗 الحساب: {uname_txt}\n"
-        f"🆔 ID: `{update.effective_user.id}`\n"
-        f"{'─'*20}\n"
-        f"{emoji} السكشن: *{section['name']}*\n"
-        f"📊 النتيجة: *{score}/{total}* ({pct}%)\n"
+        f"🆔 ID: {update.effective_user.id}\n"
+        f"{divider}\n"
+        f"{emoji} السكشن: {section['name']}\n"
+        f"📊 النتيجة: {score}/{total} ({pct}%)\n"
         f"التقدير: {grade}"
     )
+    await notify_teacher(ctx, teacher_msg)
 
     await update.callback_query.edit_message_text(
         f"{icon} *انتهى تقييم: {section['name']}*\n\n"
