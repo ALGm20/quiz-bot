@@ -1,9 +1,10 @@
 """
-bot.py — بوت MCQ مصلح مع شكل أزرار محسّن
+bot.py — الجلسة محفوظة في SQLite (لا تضيع عند restart)
 """
 import logging
 import asyncio
 import os
+import random
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     Application, CommandHandler, CallbackQueryHandler,
@@ -15,10 +16,6 @@ logging.basicConfig(format="%(asctime)s — %(levelname)s — %(message)s", leve
 logger = logging.getLogger(__name__)
 
 db = Database("quiz_bot.db")
-
-# رموز الخيارات
-OPTS = {"A": "🔵", "B": "🟢", "C": "🟡", "D": "🔴"}
-LETTERS = {"A": "A", "B": "B", "C": "C", "D": "D"}
 
 # ══════════════════════════════════════════════════════════════════
 #  HELPERS
@@ -34,8 +31,7 @@ def back_main():
         [InlineKeyboardButton("🏠 القائمة الرئيسية", callback_data="main_menu")]
     ])
 
-def build_question_keyboard(q_obj):
-    """بناء أزرار الإجابة بشكل جميل"""
+def question_keyboard(q_obj):
     qid = q_obj["id"]
     return InlineKeyboardMarkup([
         [InlineKeyboardButton(f"🔵  A)  {q_obj['option_a']}", callback_data=f"ans_A_{qid}")],
@@ -49,8 +45,8 @@ def build_question_keyboard(q_obj):
 # ══════════════════════════════════════════════════════════════════
 
 async def cmd_start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    # امسح أي جلسة قديمة
-    ctx.user_data.clear()
+    uid = update.effective_user.id
+    db.delete_session(uid)   # امسح أي جلسة قديمة
     await update.message.reply_text(
         "👋 *أهلاً بك في بوت الاختبارات!*\n\n"
         "اختر سكشناً وابدأ الأسئلة مباشرة 👇",
@@ -65,7 +61,8 @@ async def cmd_start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def cb_main_menu(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q = update.callback_query
     await q.answer()
-    ctx.user_data.clear()
+    uid = update.effective_user.id
+    db.delete_session(uid)
     await q.edit_message_text(
         "🏠 *القائمة الرئيسية*\n\nاختر سكشناً للمذاكرة:",
         parse_mode="Markdown",
@@ -87,7 +84,7 @@ async def cb_sections(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
     rows = []
     for sec in sections:
-        cnt = db.count_q(sec["id"])
+        cnt   = db.count_q(sec["id"])
         emoji = sec["emoji"] or "📖"
         rows.append([InlineKeyboardButton(
             f"{emoji}  {sec['name']}   ┃   {cnt} سؤال",
@@ -114,15 +111,15 @@ async def cb_section_detail(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     desc    = section["description"] or ""
 
     kbd = InlineKeyboardMarkup([
-        [InlineKeyboardButton("⚡️ 10 أسئلة عشوائية",  callback_data=f"start_{sec_id}_10")],
-        [InlineKeyboardButton("📋 كل الأسئلة",         callback_data=f"start_{sec_id}_all")],
-        [InlineKeyboardButton("🔙 رجوع",               callback_data="menu_sections")],
+        [InlineKeyboardButton("⚡️ 10 أسئلة عشوائية", callback_data=f"start_{sec_id}_10")],
+        [InlineKeyboardButton("📋 كل الأسئلة",        callback_data=f"start_{sec_id}_all")],
+        [InlineKeyboardButton("🔙 رجوع",              callback_data="menu_sections")],
     ])
 
     await q.edit_message_text(
         f"{emoji} *{section['name']}*\n"
         f"{'_' + desc + '_' if desc else ''}\n\n"
-        f"📝 عدد الأسئلة المتاحة: *{cnt}*\n\n"
+        f"📝 عدد الأسئلة: *{cnt}*\n\n"
         f"اختر نوع الاختبار:",
         parse_mode="Markdown",
         reply_markup=kbd
@@ -135,27 +132,21 @@ async def cb_section_detail(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def cb_start_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q      = update.callback_query
     await q.answer()
-    parts  = q.data.split("_")   # start_<sec_id>_<count>
+    uid    = update.effective_user.id
+    parts  = q.data.split("_")
     sec_id = int(parts[1])
     limit  = None if parts[2] == "all" else int(parts[2])
 
     questions = db.get_questions(sec_id, limit)
     if not questions:
-        await q.edit_message_text("⚠️ لا توجد أسئلة في هذا السكشن.", reply_markup=back_main())
+        await q.edit_message_text("⚠️ لا توجد أسئلة.", reply_markup=back_main())
         return
 
-    import random
     questions = list(questions)
     random.shuffle(questions)
 
-    # احفظ الجلسة
-    ctx.user_data["session"] = {
-        "sec_id": sec_id,
-        "qs":    questions,
-        "idx":   0,
-        "score": 0,
-        "total": len(questions),
-    }
+    # ← احفظ الجلسة في قاعدة البيانات
+    db.save_session(uid, sec_id, questions, idx=0, score=0, total=len(questions))
 
     section = db.get_section(sec_id)
     emoji   = section["emoji"] or "📖"
@@ -166,19 +157,24 @@ async def cb_start_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
         f"ابدأ الآن! 🚀",
         parse_mode="Markdown"
     )
-    await asyncio.sleep(0.8)
+    await asyncio.sleep(0.6)
     await _send_question(update, ctx)
 
 # ══════════════════════════════════════════════════════════════════
-#  SEND QUESTION
+#  SEND QUESTION — يقرأ من DB
 # ══════════════════════════════════════════════════════════════════
 
 async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    sess = ctx.user_data.get("session")
+    uid  = update.effective_user.id
+    sess = db.get_session(uid)
+
     if not sess:
         try:
             await update.callback_query.edit_message_text(
-                "⚠️ انتهت الجلسة. اضغط /start للبدء من جديد."
+                "⚠️ انتهت الجلسة.\n\nاضغط /start للبدء من جديد.",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("🏠 ابدأ من جديد", callback_data="main_menu")]
+                ])
             )
         except Exception:
             pass
@@ -188,81 +184,85 @@ async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     total = sess["total"]
 
     if idx >= total:
-        await _finish_quiz(update, ctx)
+        await _finish_quiz(update, ctx, sess)
         return
 
     q_obj = sess["qs"][idx]
 
     # شريط التقدم
-    filled = round((idx / total) * 10)
-    bar = "█" * filled + "░" * (10 - filled)
-    pct_done = round((idx / total) * 100)
+    filled = round((idx / total) * 10) if total > 0 else 0
+    bar    = "█" * filled + "░" * (10 - filled)
+    pct    = round((idx / total) * 100) if total > 0 else 0
 
     text = (
         f"*سؤال {idx + 1} من {total}*\n"
-        f"`{bar}` {pct_done}%\n\n"
+        f"`{bar}` {pct}%\n\n"
         f"❓ *{q_obj['question_text']}*"
     )
 
-    kbd = build_question_keyboard(q_obj)
+    kbd = question_keyboard(q_obj)
 
     try:
         await update.callback_query.edit_message_text(
             text, parse_mode="Markdown", reply_markup=kbd
         )
     except Exception as e:
-        logger.warning(f"edit failed: {e}")
+        logger.warning(f"edit_message failed: {e}")
         try:
             await update.effective_chat.send_message(
                 text, parse_mode="Markdown", reply_markup=kbd
             )
         except Exception as e2:
-            logger.error(f"send also failed: {e2}")
+            logger.error(f"send_message also failed: {e2}")
 
 # ══════════════════════════════════════════════════════════════════
-#  ANSWER HANDLER
+#  ANSWER HANDLER — يقرأ ويحدّث DB
 # ══════════════════════════════════════════════════════════════════
 
 async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    q = update.callback_query
+    q   = update.callback_query
     await q.answer()
+    uid = update.effective_user.id
 
-    sess = ctx.user_data.get("session")
+    # ← اقرأ الجلسة من DB
+    sess = db.get_session(uid)
     if not sess:
         await q.edit_message_text(
-            "⚠️ انتهت الجلسة.\n\nاضغط /start للبدء من جديد.",
+            "⚠️ انتهت الجلسة أو تمت إعادة تشغيل البوت.\n\n"
+            "اضغط /start للبدء من جديد.",
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("🏠 ابدأ من جديد", callback_data="main_menu")]
             ])
         )
         return
 
-    # استخرج الإجابة ورقم السؤال من callback_data
-    # الشكل: ans_A_123
+    # استخرج الإجابة: callback_data = ans_A_123
     parts    = q.data.split("_")
-    user_ans = parts[1].upper()   # A / B / C / D
+    user_ans = parts[1].upper()
 
-    idx   = sess["idx"]
-    q_obj = sess["qs"][idx]
+    idx    = sess["idx"]
+    q_obj  = sess["qs"][idx]
     correct    = q_obj["correct_answer"].upper()
     is_correct = (user_ans == correct)
 
-    if is_correct:
-        sess["score"] += 1
+    new_score = sess["score"] + (1 if is_correct else 0)
+    new_idx   = idx + 1
 
-    # خريطة الخيارات
-    opt = {
-        "A": q_obj["option_a"],
-        "B": q_obj["option_b"],
-        "C": q_obj["option_c"],
-        "D": q_obj["option_d"],
+    # ← احفظ التقدم في DB فوراً
+    db.update_session(uid, new_idx, new_score)
+
+    # خريطة الألوان والخيارات
+    color = {"A": "🔵", "B": "🟢", "C": "🟡", "D": "🔴"}
+    opt   = {
+        "A": q_obj["option_a"], "B": q_obj["option_b"],
+        "C": q_obj["option_c"], "D": q_obj["option_d"],
     }
 
-    # رسالة النتيجة
-    color = {"A": "🔵", "B": "🟢", "C": "🟡", "D": "🔴"}
-
     if is_correct:
-        result = f"✅ *إجابة صحيحة!*\n{color[correct]}  {correct})  {opt[correct]}"
+        result = (
+            f"✅ *إجابة صحيحة!*\n"
+            f"{color[correct]}  {correct})  {opt[correct]}"
+        )
     else:
         result = (
             f"❌ *إجابة خاطئة!*\n"
@@ -270,22 +270,19 @@ async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
             f"✅ الصحيحة: {color[correct]}  {correct})  {opt[correct]}"
         )
 
-    exp = q_obj.get("explanation", "") or ""
+    exp      = q_obj.get("explanation") or ""
     exp_line = f"\n\n💡 _{exp}_" if exp else ""
 
-    # انتقل للسؤال التالي
-    sess["idx"] += 1
-    ctx.user_data["session"] = sess
-
-    remaining = sess["total"] - sess["idx"]
-    if sess["idx"] < sess["total"]:
-        btn_label = f"التالي ←  (سؤال {sess['idx'] + 1}/{sess['total']})"
+    # زر التالي
+    remaining = sess["total"] - new_idx
+    if remaining > 0:
+        btn_label = f"التالي ←   (سؤال {new_idx + 1} من {sess['total']})"
     else:
         btn_label = "عرض النتيجة النهائية 🏁"
 
     await q.edit_message_text(
         f"❓ *{q_obj['question_text']}*\n\n"
-        f"{'─' * 20}\n\n"
+        f"{'─' * 18}\n\n"
         f"{result}{exp_line}",
         parse_mode="Markdown",
         reply_markup=InlineKeyboardMarkup([
@@ -296,37 +293,46 @@ async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 async def cb_next_q(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q = update.callback_query
     await q.answer()
-    await _send_question(update, ctx)
 
-# ══════════════════════════════════════════════════════════════════
-#  FINISH QUIZ — النتيجة النهائية
-# ══════════════════════════════════════════════════════════════════
+    uid  = update.effective_user.id
+    sess = db.get_session(uid)
 
-async def _finish_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    sess  = ctx.user_data.pop("session", {})
-    score = sess.get("score", 0)
-    total = sess.get("total", 1)
-    pct   = round((score / total) * 100)
+    if not sess:
+        await q.edit_message_text(
+            "⚠️ انتهت الجلسة. اضغط /start للبدء.",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("🏠 ابدأ", callback_data="main_menu")]
+            ])
+        )
+        return
 
-    # التقدير
-    if pct == 100:
-        grade, msg = "ممتاز 🏆", "علامة كاملة! أحسنت جداً 🎯"
-    elif pct >= 90:
-        grade, msg = "ممتاز 🥇", "أداء رائع جداً! استمر 💪"
-    elif pct >= 75:
-        grade, msg = "جيد جداً 🥈", "أداء جيد، قريب من القمة!"
-    elif pct >= 60:
-        grade, msg = "جيد 🥉", "مقبول، راجع الأسئلة التي أخطأت فيها."
-    elif pct >= 50:
-        grade, msg = "مقبول 📘", "تحتاج مزيداً من المراجعة."
+    if sess["idx"] >= sess["total"]:
+        await _finish_quiz(update, ctx, sess)
     else:
-        grade, msg = "راجع المادة 📖", "لا تيأس، كرر الاختبار بعد المراجعة!"
+        await _send_question(update, ctx)
 
-    # شريط النتيجة
+# ══════════════════════════════════════════════════════════════════
+#  FINISH QUIZ
+# ══════════════════════════════════════════════════════════════════
+
+async def _finish_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE, sess: dict):
+    uid   = update.effective_user.id
+    db.delete_session(uid)
+
+    score = sess["score"]
+    total = sess["total"]
+    pct   = round((score / total) * 100) if total else 0
+
+    if pct == 100:   grade, msg = "ممتاز 🏆",      "علامة كاملة! أحسنت جداً 🎯"
+    elif pct >= 90:  grade, msg = "ممتاز 🥇",      "أداء رائع جداً! استمر 💪"
+    elif pct >= 75:  grade, msg = "جيد جداً 🥈",   "أداء جيد، قريب من القمة!"
+    elif pct >= 60:  grade, msg = "جيد 🥉",        "مقبول، راجع الأسئلة التي أخطأت فيها."
+    elif pct >= 50:  grade, msg = "مقبول 📘",      "تحتاج مزيداً من المراجعة."
+    else:            grade, msg = "راجع المادة 📖", "لا تيأس، كرر الاختبار بعد المراجعة!"
+
     filled = round(pct / 10)
-    bar = "█" * filled + "░" * (10 - filled)
+    bar    = "█" * filled + "░" * (10 - filled)
 
-    # نجوم
     if pct == 100:   stars = "⭐⭐⭐⭐⭐"
     elif pct >= 80:  stars = "⭐⭐⭐⭐"
     elif pct >= 60:  stars = "⭐⭐⭐"
@@ -334,24 +340,22 @@ async def _finish_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     else:            stars = "⭐"
 
     sec_id = sess.get("sec_id")
-
-    kbd = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🔄 أعد الاختبار",      callback_data=f"sec_{sec_id}")] if sec_id else [],
-        [InlineKeyboardButton("📚 اختر سكشن آخر",     callback_data="menu_sections")],
-        [InlineKeyboardButton("🏠 القائمة الرئيسية",  callback_data="main_menu")],
-    ])
+    kbd_rows = []
+    if sec_id:
+        kbd_rows.append([InlineKeyboardButton("🔄 أعد الاختبار", callback_data=f"sec_{sec_id}")])
+    kbd_rows.append([InlineKeyboardButton("📚 اختر سكشن آخر",    callback_data="menu_sections")])
+    kbd_rows.append([InlineKeyboardButton("🏠 القائمة الرئيسية", callback_data="main_menu")])
 
     await update.callback_query.edit_message_text(
         f"🎉 *انتهى الاختبار!*\n\n"
         f"`{bar}` {pct}%\n\n"
-        f"✅ الإجابات الصحيحة: *{score}*\n"
-        f"❌ الإجابات الخاطئة: *{total - score}*\n"
+        f"✅ صحيح: *{score}*     ❌ خطأ: *{total - score}*\n"
         f"📊 المجموع: *{score} / {total}*\n\n"
         f"{stars}\n"
         f"التقدير: *{grade}*\n"
         f"_{msg}_",
         parse_mode="Markdown",
-        reply_markup=kbd
+        reply_markup=InlineKeyboardMarkup(kbd_rows)
     )
 
 # ══════════════════════════════════════════════════════════════════
@@ -359,14 +363,13 @@ async def _finish_quiz(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 # ══════════════════════════════════════════════════════════════════
 
 async def cmd_stats(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    st = db.stats()
+    st       = db.stats()
     sections = db.get_sections()
-    lines = ["📊 *إحصائيات البوت:*\n"]
-    lines.append(f"📦 سكشنات: {st['sections']}")
-    lines.append(f"❓ أسئلة: {st['questions']}\n")
+    lines    = ["📊 *إحصائيات البوت:*\n",
+                f"📦 سكشنات: {st['sections']}",
+                f"❓ أسئلة: {st['questions']}\n"]
     for sec in sections:
-        cnt = db.count_q(sec["id"])
-        lines.append(f"{sec['emoji'] or '📖'} {sec['name']}: {cnt} سؤال")
+        lines.append(f"{sec['emoji'] or '📖'} {sec['name']}: {db.count_q(sec['id'])} سؤال")
     await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
 
 # ══════════════════════════════════════════════════════════════════

@@ -1,7 +1,8 @@
 """
-database.py — قاعدة بيانات مبسّطة (بدون تسجيل طلاب)
+database.py — مع جدول الجلسات لحل مشكلة ضياع user_data
 """
 import sqlite3
+import json
 import random
 from typing import Optional
 
@@ -40,9 +41,19 @@ class Database:
                     explanation    TEXT,
                     difficulty     INTEGER DEFAULT 1
                 );
+
+                CREATE TABLE IF NOT EXISTS active_sessions (
+                    user_id        INTEGER PRIMARY KEY,
+                    sec_id         INTEGER,
+                    questions_json TEXT NOT NULL,
+                    current_idx    INTEGER DEFAULT 0,
+                    score          INTEGER DEFAULT 0,
+                    total          INTEGER NOT NULL,
+                    updated_at     TEXT DEFAULT (datetime('now'))
+                );
             """)
 
-    # ── SECTIONS ─────────────────────────────────────────────────
+    # ── SECTIONS ──────────────────────────────────────────────────
 
     def get_sections(self):
         with self._connect() as c:
@@ -56,7 +67,7 @@ class Database:
         with self._connect() as c:
             return c.execute("SELECT COUNT(*) FROM questions WHERE section_id=?", (sec_id,)).fetchone()[0]
 
-    # ── QUESTIONS ────────────────────────────────────────────────
+    # ── QUESTIONS ─────────────────────────────────────────────────
 
     def get_questions(self, sec_id: int, limit: Optional[int] = None):
         with self._connect() as c:
@@ -66,18 +77,6 @@ class Database:
         return rows[:limit] if limit else rows
 
     def import_questions(self, data: list):
-        """
-        كل عنصر:
-        {
-          "section": "اسم السكشن",
-          "section_description": "...",
-          "section_emoji": "🦠",
-          "question": "نص السؤال",
-          "a": "...", "b": "...", "c": "...", "d": "...",
-          "answer": "A",
-          "explanation": "..."
-        }
-        """
         with self._connect() as c:
             cache = {}
             for item in data:
@@ -89,22 +88,62 @@ class Database:
                     else:
                         cur = c.execute(
                             "INSERT INTO sections (name, description, emoji) VALUES (?,?,?)",
-                            (sname,
-                             item.get("section_description", ""),
-                             item.get("section_emoji", "📖"))
+                            (sname, item.get("section_description",""), item.get("section_emoji","📖"))
                         )
                         cache[sname] = cur.lastrowid
                 c.execute(
                     """INSERT INTO questions
-                       (section_id, question_text, option_a, option_b, option_c, option_d,
-                        correct_answer, explanation)
+                       (section_id,question_text,option_a,option_b,option_c,option_d,correct_answer,explanation)
                        VALUES (?,?,?,?,?,?,?,?)""",
                     (cache[sname], item["question"],
                      item["a"], item["b"], item["c"], item["d"],
-                     item["answer"].upper(), item.get("explanation", ""))
+                     item["answer"].upper(), item.get("explanation",""))
                 )
 
-    # ── STATS ────────────────────────────────────────────────────
+    # ── ACTIVE SESSION (حفظ الجلسة في DB) ─────────────────────────
+
+    def save_session(self, user_id: int, sec_id, questions: list, idx: int, score: int, total: int):
+        """حفظ أو تحديث جلسة المستخدم"""
+        # حوّل الأسئلة إلى JSON (dict فقط)
+        qs_data = [dict(q) for q in questions]
+        with self._connect() as c:
+            c.execute("""
+                INSERT OR REPLACE INTO active_sessions
+                    (user_id, sec_id, questions_json, current_idx, score, total, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+            """, (user_id, sec_id, json.dumps(qs_data, ensure_ascii=False), idx, score, total))
+
+    def get_session(self, user_id: int):
+        """استرجاع جلسة المستخدم"""
+        with self._connect() as c:
+            row = c.execute(
+                "SELECT * FROM active_sessions WHERE user_id=?", (user_id,)
+            ).fetchone()
+        if not row:
+            return None
+        return {
+            "sec_id": row["sec_id"],
+            "qs":     json.loads(row["questions_json"]),
+            "idx":    row["current_idx"],
+            "score":  row["score"],
+            "total":  row["total"],
+        }
+
+    def update_session(self, user_id: int, idx: int, score: int):
+        """تحديث التقدم فقط"""
+        with self._connect() as c:
+            c.execute("""
+                UPDATE active_sessions
+                SET current_idx=?, score=?, updated_at=datetime('now')
+                WHERE user_id=?
+            """, (idx, score, user_id))
+
+    def delete_session(self, user_id: int):
+        """حذف الجلسة بعد الانتهاء"""
+        with self._connect() as c:
+            c.execute("DELETE FROM active_sessions WHERE user_id=?", (user_id,))
+
+    # ── STATS ─────────────────────────────────────────────────────
 
     def stats(self):
         with self._connect() as c:
