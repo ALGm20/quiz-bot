@@ -50,12 +50,17 @@ def sections_menu(student_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(rows)
 
 async def notify_teacher(ctx, text: str):
-    tid = os.environ.get("TEACHER_CHAT_ID","")
-    if tid:
-        try:
-            await ctx.bot.send_message(chat_id=tid, text=text)
-        except Exception as e:
-            logger.warning(f"Teacher notify failed: {e}")
+    # يدعم أكثر من معرف مفصولة بفاصلة: 111,222,333
+    ids_str = os.environ.get("TEACHER_CHAT_ID", "")
+    if not ids_str:
+        return
+    for tid in ids_str.split(","):
+        tid = tid.strip()
+        if tid:
+            try:
+                await ctx.bot.send_message(chat_id=tid, text=text)
+            except Exception as e:
+                logger.warning(f"Teacher notify failed for {tid}: {e}")
 
 # ══════════════════════════════════════════════════════════════════
 #  /start  — التسجيل
