@@ -3,7 +3,7 @@ logging.basicConfig(format="%(asctime)s — %(levelname)s — %(message)s", leve
 
 def run_dash():
     from dashboard import app
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT",8090)), debug=False, use_reloader=False)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT",8080)), debug=False, use_reloader=False)
 
 def run_bot():
     from bot import main

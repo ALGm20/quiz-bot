@@ -11,7 +11,8 @@ from database import Database
 
 logging.basicConfig(format="%(asctime)s — %(levelname)s — %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
-db = Database("quiz_bot.db")
+os.makedirs("/data", exist_ok=True)
+db = Database("/data/quiz_bot.db")
 WAITING_NAME = 1
 
 # ══════════════════════════════════════════════════════════════════

@@ -7,7 +7,7 @@ from database import Database
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("DASH_SECRET","quiz_secret_2024")
-db  = Database("quiz_bot.db")
+db  = Database("/data/quiz_bot.db")
 PASS = os.environ.get("DASH_PASSWORD","admin123")
 
 PAGE = """<!DOCTYPE html>
