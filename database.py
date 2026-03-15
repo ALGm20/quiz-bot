@@ -1,5 +1,5 @@
 """
-database.py — قاعدة بيانات النظام الكامل
+database.py — قاعدة بيانات بدون قائمة طلاب مسبقة
 """
 import sqlite3, json, random
 from typing import Optional
@@ -41,8 +41,8 @@ class Database:
                 CREATE TABLE IF NOT EXISTS students (
                     id            INTEGER PRIMARY KEY AUTOINCREMENT,
                     full_name     TEXT NOT NULL,
-                    telegram_id   INTEGER UNIQUE,
-                    registered_at TEXT,
+                    telegram_id   INTEGER NOT NULL UNIQUE,
+                    registered_at TEXT DEFAULT (datetime('now')),
                     assessed      INTEGER DEFAULT 0,
                     score         INTEGER DEFAULT 0,
                     total_q       INTEGER DEFAULT 0,
@@ -55,7 +55,6 @@ class Database:
                     mode           TEXT DEFAULT 'training',
                     sec_id         INTEGER,
                     questions_json TEXT NOT NULL,
-                    answers_json   TEXT DEFAULT '[]',
                     current_idx    INTEGER DEFAULT 0,
                     score          INTEGER DEFAULT 0,
                     total          INTEGER NOT NULL,
@@ -65,18 +64,13 @@ class Database:
 
     # ── STUDENTS ──────────────────────────────────────────────────
 
-    def import_students(self, names: list):
+    def register_new_student(self, full_name: str, telegram_id: int):
+        """تسجيل طالب جديد — يُضاف مباشرة بلا قائمة مسبقة"""
         with self._connect() as c:
-            c.executemany(
-                "INSERT OR IGNORE INTO students (full_name) VALUES (?)",
-                [(n.strip(),) for n in names if n.strip()]
+            c.execute(
+                "INSERT OR IGNORE INTO students (full_name, telegram_id) VALUES (?,?)",
+                (full_name.strip(), telegram_id)
             )
-
-    def find_student_by_name(self, name: str):
-        with self._connect() as c:
-            return c.execute(
-                "SELECT * FROM students WHERE TRIM(full_name)=TRIM(?)", (name,)
-            ).fetchone()
 
     def get_student_by_telegram(self, telegram_id: int):
         with self._connect() as c:
@@ -84,23 +78,14 @@ class Database:
                 "SELECT * FROM students WHERE telegram_id=?", (telegram_id,)
             ).fetchone()
 
-    def register_student_telegram(self, student_id: int, telegram_id: int):
-        from datetime import datetime
-        with self._connect() as c:
-            c.execute(
-                "UPDATE students SET telegram_id=?, registered_at=? WHERE id=?",
-                (telegram_id, datetime.now().isoformat(), student_id)
-            )
-
     def save_assessment_result(self, student_id: int, score: int, total: int):
-        from datetime import datetime
         pct = round((score / total) * 100) if total else 0
         with self._connect() as c:
             c.execute("""
                 UPDATE students
-                SET assessed=1, score=?, total_q=?, pct=?, assessed_at=?
+                SET assessed=1, score=?, total_q=?, pct=?, assessed_at=datetime('now')
                 WHERE id=?
-            """, (score, total, pct, datetime.now().isoformat(), student_id))
+            """, (score, total, pct, student_id))
 
     def get_all_students(self):
         with self._connect() as c:
@@ -112,11 +97,15 @@ class Database:
 
     def get_sections(self):
         with self._connect() as c:
-            return c.execute("SELECT * FROM sections ORDER BY sort_order, id").fetchall()
+            return c.execute(
+                "SELECT * FROM sections ORDER BY sort_order, id"
+            ).fetchall()
 
     def get_section(self, sec_id: int):
         with self._connect() as c:
-            return c.execute("SELECT * FROM sections WHERE id=?", (sec_id,)).fetchone()
+            return c.execute(
+                "SELECT * FROM sections WHERE id=?", (sec_id,)
+            ).fetchone()
 
     def count_q(self, sec_id: int) -> int:
         with self._connect() as c:
@@ -127,7 +116,6 @@ class Database:
     # ── QUESTIONS ─────────────────────────────────────────────────
 
     def get_all_questions_shuffled(self):
-        """كل الأسئلة من كل السكشنات مخلوطة — للاختبار الكامل"""
         with self._connect() as c:
             return list(c.execute(
                 "SELECT * FROM questions ORDER BY RANDOM()"
@@ -154,7 +142,8 @@ class Database:
                     else:
                         cur = c.execute(
                             "INSERT INTO sections (name, description, emoji) VALUES (?,?,?)",
-                            (sname, item.get("section_description",""), item.get("section_emoji","📖"))
+                            (sname, item.get("section_description",""),
+                             item.get("section_emoji","📖"))
                         )
                         cache[sname] = cur.lastrowid
                 c.execute(
@@ -175,7 +164,7 @@ class Database:
         with self._connect() as c:
             c.execute("""
                 INSERT OR REPLACE INTO active_sessions
-                (user_id, mode, sec_id, questions_json, current_idx, score, total, updated_at)
+                (user_id,mode,sec_id,questions_json,current_idx,score,total,updated_at)
                 VALUES (?,?,?,?,?,?,?,datetime('now'))
             """, (user_id, mode, sec_id,
                   json.dumps(qs, ensure_ascii=False), idx, score, total))
@@ -206,7 +195,9 @@ class Database:
 
     def delete_session(self, user_id: int):
         with self._connect() as c:
-            c.execute("DELETE FROM active_sessions WHERE user_id=?", (user_id,))
+            c.execute(
+                "DELETE FROM active_sessions WHERE user_id=?", (user_id,)
+            )
 
     # ── STATS ─────────────────────────────────────────────────────
 
@@ -216,5 +207,7 @@ class Database:
                 "sections":  c.execute("SELECT COUNT(*) FROM sections").fetchone()[0],
                 "questions": c.execute("SELECT COUNT(*) FROM questions").fetchone()[0],
                 "students":  c.execute("SELECT COUNT(*) FROM students").fetchone()[0],
-                "assessed":  c.execute("SELECT COUNT(*) FROM students WHERE assessed=1").fetchone()[0],
+                "assessed":  c.execute(
+                    "SELECT COUNT(*) FROM students WHERE assessed=1"
+                ).fetchone()[0],
             }

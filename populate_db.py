@@ -1,439 +1,19 @@
 """
-populate_db.py — تعبئة قاعدة البيانات (الطلاب + الأسئلة)
-شغّله مرة واحدة فقط عند البداية
+populate_db.py — تعبئة الأسئلة فقط (لا حاجة لقائمة طلاب)
+شغّله مرة واحدة عند البداية
 """
 from database import Database
 db = Database("quiz_bot.db")
 
-# ══════════════════════════════════════════════════════════════════
-#  أسماء الطلاب (404 طالب)
-# ══════════════════════════════════════════════════════════════════
-STUDENTS = [
-    "ابراهيم عثمان خيرالله عران",
-    "اجوان رائد قاسم خلف",
-    "احمد باسم محمد حسن محمد جعفر",
-    "احمد جبار احمد مصلح",
-    "احمد رباح علي حطاب",
-    "احمد عدنان محمد عباس",
-    "احمد علي محمد عطيه",
-    "احمد مزهر مصلح احمد",
-    "احمد منعم احمد عنزي",
-    "احمد ناظم احمد خلف",
-    "ازهار جبار محمد مطلق",
-    "اسراء اسماعيل كريم مخلف",
-    "اسراء حيدر علي ظاهر",
-    "اسماعيل جواد كاظم عبد",
-    "اطياف هشام حاتم حمادي",
-    "افنان مؤيد محمود رشيد",
-    "الاء عبدالرضا علي حسين",
-    "الق الفارض رضا جعفر",
-    "ام البنين ماجد حسين هاشم",
-    "امل نصر هاشم محمود",
-    "امنة ماجد رجب ذياب",
-    "امنية جلال محسن عناد",
-    "امنية فراس عباس عبدالله",
-    "امير احمد صالح هدو",
-    "انس فلاح حسن حمد",
-    "انعام صفاء الدين احمد ولي",
-    "انفال سعدون عبدالزهرة عبدالحسن",
-    "اية حسين علي شاكر",
-    "اية حسين لفتة عبدالحسن",
-    "اية صادق عباس حسين",
-    "اية عصام كريم مرعي",
-    "اية كريم خضير محمد",
-    "اية مؤيد ضياء داود",
-    "ايلاف ياسر خضير عباس",
-    "ايمان عبدالامير محمد عبدالامير",
-    "ايمن نشأت عيد عواد",
-    "ايناس عمار رشيد عاتي",
-    "ايناس هادي محيل فرج",
-    "بتول احمد نصيف جاسم",
-    "بتول حامد نايف حيدر",
-    "براء ماجد حميد جاسم",
-    "براء هشام صدام لفتة",
-    "بروين الشاغي عواد حمود شاغي",
-    "بسمة محمد عبيد محمد",
-    "بسملة محمد عبد علي داغر",
-    "بنين صباح لفتة حسن",
-    "بنين عمر محمد رضا محمد حسين",
-    "بنين نجم عبدالله حمود",
-    "تبارك ابراهيم خالد ابراهيم",
-    "تبارك احمد مفرج شراد",
-    "تبارك باسم محمد كاظم",
-    "تبارك حذيف ستار عباس",
-    "تبارك عامر احمد حسين",
-    "تبارك عامر محمد فاضل",
-    "تبارك علاء عبدالمحسن هلال",
-    "جنات مهند سلمان خميس",
-    "جنة علاء محسن عبدالكريم",
-    "جيهان احمد جاسم محمد",
-    "جيهان احمد عبدالرزاق حسين",
-    "حارث مثنى حسن علي",
-    "حسن المجتبى محمد حسن نزال",
-    "حسن صفاء ثابت دخيل",
-    "حسن علي منعم حمودي",
-    "حسن ياسر محمود خلف",
-    "حسين اريب سعدون خليل",
-    "حسين نجم عبد الله عطيوي",
-    "حنين جابر عداي عباس",
-    "حنين علي حسين علوان",
-    "حنين قحطان عدنان عمران",
-    "حوراء حقي اسماعيل لعيبي",
-    "حوراء طارق صبار شاوي",
-    "حوراء عامر رميض عفتول",
-    "حيدر ارشد مراد علي",
-    "حيدر خالد رشيد جاسم",
-    "خليل احمد خليل عبداللطيف",
-    "دارين ياسر محمد حسين",
-    "داليا اياد مخلف محمد",
-    "دانه جابر جاسم رستم",
-    "دانية احمد شاكر قاسم",
-    "دعاء رائد نجم عبدالله",
-    "ديانا صالح هلول طاهر",
-    "ديانا محمود عبد سلمان",
-    "ديما سامي داود محمد",
-    "ديمة احمد محمود عبدالرحمن",
-    "دينا سيف مهدي حالوب",
-    "دينا عدنان علي حسين",
-    "دينا مازن عبدالوهاب ياسين",
-    "رانيا ضياء علي جبار",
-    "رانية احمد منذر توفيق",
-    "رسل عبد محمد علي",
-    "رغد عبدالله احمد ابراهيم",
-    "رغد قاسم محمد نايف",
-    "رفل علاء عبد علي عجيل",
-    "رفيف رائد ساهي محل",
-    "رقية حسن شاكر محمود",
-    "رقية طارق حكمت مجيد",
-    "رقية عدي محمد حسن حسائي",
-    "رند خالد نصيف جاسم",
-    "رنىين برهان عيدان جاسم",
-    "روان رافد مهند طابور",
-    "روان رائد انور حسين",
-    "ريام رعد شيال طعيش",
-    "زهراء حسين محمد خضير",
-    "زهراء ساجد مهدي حسين",
-    "زهراء سعد عبدالحسين عبد عون",
-    "زهراء عبدالكريم جاسم عبدالله",
-    "زهراء عبدالكريم صالح مهدي",
-    "زهراء عثمان عبدالزهرة شعلان",
-    "زهراء علاء عبدالزهرة سلمان",
-    "زهراء علي العابي عودة",
-    "زهراء علي عبدالكاظم راضي",
-    "زهراء علي فاضل سلمان",
-    "زهراء عماد عناد معروف",
-    "زهراء قاسم كعيبر دراج",
-    "زهراء محمد رضا مهدي",
-    "زهراء نصير طارق مهدي",
-    "زهراء نعيم احمد شنان",
-    "زينب جلال عبدالجبار ابو جري",
-    "زينب حسين حمزة عصفور",
-    "زينب حيدر محمد عبيد",
-    "زينب رضا حسين شكور",
-    "زينب عباس فاضل حسون",
-    "زينب عبدالستار عدنان عبدالستار",
-    "زينب عقيل حسين جعفر",
-    "زينب علي محسن محمد",
-    "زينب علي محمد منصور",
-    "زينب فلاح كمال طاهر",
-    "زينب محمد مطشر ناصر",
-    "زينب ناظم حسين خلف",
-    "زينة اياد نجم عبدالله",
-    "زينة سعد كامل خضير",
-    "زينة عمر رشيد خلف",
-    "سارة شهاب احمد سالم",
-    "سارة مؤيد صادق غزال",
-    "سارة وسام حسين مشكور",
-    "سجاد اثير رسول حسين",
-    "سجاد سعدي غريب حماد",
-    "سجى جمال حسين علوان",
-    "سجى حسين عبود احمد",
-    "سجى حيدر سعدون خلف",
-    "سجى داود احمد كاظم",
-    "سجى راسم ناهي جاسم",
-    "سجى مهند محمد حاشوش",
-    "سرى حسين علي سليمان",
-    "سرى كريم سوادي جاسم",
-    "سما سمير خلف علي",
-    "سماء رعد عذيب عبدالحسن",
-    "سمية حسين سعدون فاضل",
-    "سمية يعكوب يوسف عذاب",
-    "سيف رائد جاسم محمد",
-    "سيف عباس كاطع عبد",
-    "سيف مهند سعد محسن",
-    "سيفر هاشم حسن علي",
-    "شروق فلاح مهدي حسان",
-    "شغاف خالد غفوري محمد",
-    "شمس صباح عبدالمجيد فيصل",
-    "شمس علي محمود جوهر",
-    "شهد ثامر طه جعاطة",
-    "شهد حيدر عبدالله حسين",
-    "شهد سعدون دلف علي",
-    "شهد عادل محمد حمد",
-    "شهد عباس مراد مصحب",
-    "شهد عباس هزيم ساجت",
-    "شهد فلاح حسن حبيب",
-    "شهلاء سمير حسين مغير",
-    "شيرين اسماعيل خضير عباس",
-    "صبا حمودي خضر حمودي",
-    "ضحى سمير عبدالستار مصطفى",
-    "ضحى عباس راشد عبدالله",
-    "ضحى فلاح صبحي محمد",
-    "طه احمد قاسم ابراهيم",
-    "طيبة حميد مصحب ردام",
-    "طيبة حيدر جبار شاطي",
-    "طيبة هادي رحيم خرباط",
-    "عائشة عمار جبار نوري",
-    "عائشة عمار عبدالهادي نايف",
-    "عائشة عمر سمير مدحت",
-    "عباس عبدالرزاق جمعة مهدي",
-    "عبدالرحمن احمد ناجي ابراهيم",
-    "عبدالرحمن بسام رياض محمود",
-    "عبدالرحمن جميل صادق جميل",
-    "عبدالرحمن نذير عبدالله احمد",
-    "عبدالله احمد خيرالله فرحان",
-    "عبدالله دحام ياسين مشعان",
-    "عبدالله عباس جلوب حسين",
-    "عبدالوهاب خالد اسماعيل محسن",
-    "عبير جاسم محمد حمود",
-    "عذراء خالد طالب كاظم",
-    "عذراء محمود حسين سلمان",
-    "عسل عدنان صاحب حمزة",
-    "علي احمد فيزي مهنا",
-    "علي اسعد لطيف شنات",
-    "علي جاسم محمد حمد",
-    "علي زكي حمود حسين",
-    "علي فاروق حمد سليمان",
-    "علي فاضل عبدالعباس تايه",
-    "علي محمد حسين علي",
-    "علي محمد سالم وناس",
-    "علي مؤيد شكر محمود",
-    "علياء كريم محسن هلال",
-    "عمار كمال حسين ناهي",
-    "عمر اسامة سليم عمير",
-    "غسق عباس مجيد حميد",
-    "غيث علي عباس لفتة",
-    "فاطمة اكرم محمد صالح",
-    "فاطمة حسن عليوي فلاح",
-    "فاطمة سيف عبدالزهرة مرزوك",
-    "فاطمة صلاح هادي داود",
-    "فاطمة طاهر حسين خضير",
-    "فاطمة علي شكر محمود",
-    "فاطمة عمر محمد علي حسين",
-    "فاطمة نصير عبدالرزاق حسين",
-    "فاطمة وليد توفيق مالك",
-    "فرح علي محمد جميل",
-    "فردوس مصطفى محمود صادق",
-    "قبس محمد هاني عباس",
-    "قوباد مولود جمعة علي",
-    "كرار يحيى محمد حنين",
-    "كميل حسين حمزة عبدالله",
-    "لقاء شهاب احمد سلمان",
-    "ليث حسن عبدالمحسن ربيع",
-    "ليلى فراس سمير هادي",
-    "لينا هيثم احمد حمادي",
-    "محمد ثامر عبيد دايح",
-    "محمد حامد صالح نصرالله",
-    "محمد حسن هادي حمادي",
-    "محمد حكيم حمد مطلك",
-    "محمد خالد حميد عبدالجليل",
-    "محمد رافع جمعة يوسف",
-    "محمد صلاح هادي عطية",
-    "محمد عبدالرحيم حسن احمد",
-    "محمد فلاح حسن وفيق",
-    "محمد مازن حسين محسن",
-    "محمد مثنى حسن علي",
-    "محمدالباقر بسام عبدالرحمن محمود",
-    "محمود علي رشيد فياض",
-    "مرتضى عدنان جواد كاظم",
-    "مريم احمد عذاب مطلك",
-    "مريم احمد مصحب فرهود",
-    "مريم انور صباح جبر",
-    "مريم حامد عبدالرحيم عبدالله",
-    "مريم عباس طوفان محمود",
-    "مريم عدنان كاظم حيدر",
-    "مريم عدي ابراهيم فياض",
-    "مريم علاء جليل حسون",
-    "مريم فواز محمد حطحوط",
-    "مريم ماهر فاضل عباس",
-    "مريم محمد نوري عباس",
-    "مريهان خالد احمد ندى",
-    "مسرة جعفر كامل حاتم",
-    "مصطفى حسين عبد مجبل",
-    "مصطفى صلاح عباس فرحان",
-    "ملاك مصطفى صلاح الدين رفيق",
-    "منار اثير عبدالحسين فاضل",
-    "منار احمد جبار عبدالله",
-    "منار محمد طه اثميل",
-    "منار يونس عجاج حميد",
-    "منتظر خالد عباس حبيب",
-    "منتظر عباس فاضل سعود",
-    "منى عامر شاكر محمود",
-    "مهيمن عبدالمحسن سعدون علوان",
-    "مينا علي نعمة سلمان",
-    "مينة زيد حسن حميد",
-    "مينة صلاح هادي جبر",
-    "نبأ احمد عبدالله شريف",
-    "نبأ حكيم عبد جاسم",
-    "نبأ رياض حميد شهاب",
-    "نبأ سعد روضان حسين",
-    "نبأ سمير عبد ناصر",
-    "نبأ علي عبدالعباس ظاهر",
-    "نبأ عماد صلاح حمزة",
-    "ندى محمد جاسم علوان",
-    "نرجس ضياء جميل جامل",
-    "نرجس قاسم احمد جاسم",
-    "نماء احمد خضير عباس",
-    "نور انمار جابر منسي",
-    "نور حسن شاكر محمود",
-    "نور زياد عبدالله محمود",
-    "نور سعد محمد رشيد",
-    "نور طالب خلف حمود",
-    "نور عماد احسان زكي",
-    "نور عماد احمد عباس",
-    "نور محمد صادق جعفر",
-    "نور محمد مطرود سلمان",
-    "نور ناطق عبدالجبار موسى",
-    "نورالهدى ستار عبدالكريم راضي",
-    "نورالهدى محمد حطاب عباس",
-    "نورالهدى هيثم كاظم مجيد",
-    "نورهان صباح صالح ساحل",
-    "نورهان ياسين احمد عبدالمطلب",
-    "نوري صباح نده حسين",
-    "نيفين اياد لطيف جاسم",
-    "هبة احمد تايه كاظم",
-    "هبة الله معد عبيد شراتي",
-    "هبة رافد شدهان رشيد",
-    "هبة عباس سالم راشد",
-    "هدى جمعة نايف صالح",
-    "هدى سعد محمد كاظم",
-    "هدى عبد حمادي شايع",
-    "هيا طلال عقاب طلب",
-    "هيلين عادل شكر محمد",
-    "وائل بهاء عبيد حماد",
-    "ود امير رزوقي عبدالوهاب",
-    "ود مهيمن محمد سادة",
-    "وديان وسام سالم ناصر",
-    "ولاء حمودي شناوة حسون",
-    "ياسر محمد مظلوم زكم",
-    "ياسين جاسم محمد عبدالله",
-    "ياسين عبدالرحيم حسن احمد",
-    "يسرى نوري خلف حمد",
-    "يقين احمد امين عبود",
-    "يقين علي عباس خلف",
-    "احمد حميد محي عبد",
-    "احمد صدام حسين علي",
-    "امنة عدي كريم علي",
-    "امنية عمر رشيد خلف",
-    "اية الرحمن اياد فاضل عباس",
-    "اية جاسم عطيوي منصور",
-    "اية عمار عبدالرزاق ملوح",
-    "بان وائل حسوبي عبدالوهاب",
-    "بتول صالح مهيدي حسن",
-    "براء كاظم حريجة شنان",
-    "بسمة احمد ابراهيم محمود",
-    "بنين حميد رشيد خلف",
-    "تبارك علي رضا خلف",
-    "تمارا اياد عبدالخالق غني",
-    "جمانة حيدر عبدالكاظم زغير",
-    "حسنين عبدالزهرة مربط محمود",
-    "حسنين فلاح عبدالزهرة حسين",
-    "حسين رائد مطشر محمد",
-    "حسين علي غانم مطير",
-    "حسين محمد كاظم عودة",
-    "حسين مظفر حسين علي",
-    "حنين عبدالهادي احمد بريسم",
-    "حوراء عزيز مجيد مشتت",
-    "حوراء مجيد زامل رسن",
-    "دانية ثائر عبدالوهاب شاكر",
-    "داود علي محمود جسام",
-    "رسل احمد محمد جاسم",
-    "رسل محمد نجم حمام",
-    "رسول محمد احمد حميد",
-    "رقية محمود شامل علك",
-    "رهف رائد كريم صالح",
-    "روان زياد صبحي احمد",
-    "زكريا محمود عبد حمادي",
-    "زمزم وليد خالد محمود",
-    "زهراء رعد سعيد حنوش",
-    "زهراء فتاح محمد عبود",
-    "زهراء قاسم حسن ضيدان",
-    "زينب صلاح صبحي محمد",
-    "زينب عبدالله موسى حمود",
-    "زينب علاء حمود كريم",
-    "سارة سهيل نجم الدين سليمان",
-    "سالم صلاح عباس فرحان",
-    "ستار جبير عباس علي",
-    "سجى ياسر زهير هادي",
-    "سرى ثامر كريم جابر",
-    "سما سيف عصام حسين مكي",
-    "سمية باسل كاظم مهدي",
-    "شمس حسن عليوي معروف",
-    "شمس سعد حسن حسون",
-    "شمس سعد صباح عزيز",
-    "شهد محمد حماد عبد",
-    "شيرين ماجد محمد علي",
-    "طيبة فراس مهدي محمد علي",
-    "طيبة وليد خالد مفتن",
-    "عبدالخالق وليد خضير خليل",
-    "عبدالكريم احمد محيميد غضبان",
-    "عبدالله ثائر حسين حريز",
-    "عبدالله زياد خلف جلعوط",
-    "عبدالله محمود نصار حمد",
-    "علي ابراهيم عبدالله حسين",
-    "علي خضر عبدالعباس جاسم",
-    "علي فراس بدري رستم",
-    "فاطمة الزهراء طارق جبار نجم",
-    "فاطمة محسن حميد وراث",
-    "فرح صلاح طه عبدالله",
-    "قتيبة سعود مزعل محمد",
-    "لمى مهند خضير مشوح",
-    "محمد امين حمادي جرو",
-    "محمد رعد رحيم دخيل",
-    "محمد سمير دايخ وسمي",
-    "محمد علي زيدان مهدي",
-    "مرتضى غسان عادل مجيد",
-    "مروة سليمان عبود فرحان",
-    "مريم علي عباس خلف",
-    "مريم علي مانع رحيمة",
-    "مصطفى قيس طارق شاكر",
-    "ملك منصور رؤف محمد",
-    "منى علي ناظم رزوقي",
-    "مها تمام جاسم محمد",
-    "مهدي علاء جودة لامي",
-    "مؤمل نصير عبيد عبد علي",
-    "نبأ طالب علي عبد",
-    "نمارق مثنى محمود عبد",
-    "نورالهدى علي سعدون هاشم",
-    "نورالهدى علي عبدالحسين عطية",
-    "نورالهدى مؤيد كريم خلف",
-    "هاجر احمد حمود كيطان",
-    "هاجر علي محمد عواد",
-    "وائل علي رويح عبيد",
-    "وسيم زكي جياد ايدام",
-    "ولاء عبدالكريم صبر دحام",
-    "يوسف طالب يوسف صالح",
-]
-
-db.import_students(STUDENTS)
-print(f"✅ تم إضافة {len(STUDENTS)} طالب")
-
-# ══════════════════════════════════════════════════════════════════
-#  الأسئلة
-# ══════════════════════════════════════════════════════════════════
 QUESTIONS = [
-
-    # ══════════════════════════════════════════════════════════════
-    # المجموعة 1 — أساسيات الفيروسات (من virology_100_mcq)
-    # ══════════════════════════════════════════════════════════════
     {
         "section": "الفيروسات",
         "section_emoji": "🦠",
-        "section_description": "جميع أسئلة الفيروسات — البنية، التصنيف، دورات الحياة، آلية العمل",
+        "section_description": "بنية الفيروسات، تصنيفها، دورات حياتها، آلية عملها",
         "question": "The term 'virus' means:",
         "a": "Cell", "b": "Poison", "c": "Protein", "d": "Parasite",
         "answer": "B",
-        "explanation": "The word 'virus' is derived from Latin meaning poison."
+        "explanation": "The word virus is derived from Latin meaning poison."
     },
     {
         "section": "الفيروسات",
@@ -441,21 +21,21 @@ QUESTIONS = [
         "a": "Cellular organisms", "b": "Acellular particles",
         "c": "Prokaryotic cells", "d": "Eukaryotic cells",
         "answer": "B",
-        "explanation": "Viruses are acellular — they have no cell structure, organelles, or cytoplasm."
+        "explanation": "Viruses are acellular — they have no cell structure."
     },
     {
         "section": "الفيروسات",
         "question": "Viruses contain:",
         "a": "DNA only", "b": "RNA only", "c": "DNA and RNA", "d": "DNA or RNA",
         "answer": "D",
-        "explanation": "A virus contains either DNA or RNA as its genome — never both at the same time."
+        "explanation": "A virus contains either DNA or RNA — never both."
     },
     {
         "section": "الفيروسات",
         "question": "Viruses reproduce:",
         "a": "Outside cells", "b": "Inside living cells", "c": "In soil", "d": "In water",
         "answer": "B",
-        "explanation": "Viruses can only replicate inside living host cells using the host's machinery."
+        "explanation": "Viruses can only replicate inside living host cells."
     },
     {
         "section": "الفيروسات",
@@ -463,14 +43,14 @@ QUESTIONS = [
         "a": "Replicate only inside host cells", "b": "Live in water",
         "c": "Produce toxins", "d": "Are large organisms",
         "answer": "A",
-        "explanation": "Viruses lack the machinery for independent replication and must use living host cells."
+        "explanation": "Viruses cannot replicate outside a living host cell."
     },
     {
         "section": "الفيروسات",
         "question": "The protein coat of a virus is called:",
         "a": "Capsule", "b": "Capsid", "c": "Membrane", "d": "Cytoplasm",
         "answer": "B",
-        "explanation": "The capsid is the protein shell that surrounds and protects the viral genome."
+        "explanation": "The capsid is the protein shell that surrounds the viral genome."
     },
     {
         "section": "الفيروسات",
@@ -484,21 +64,21 @@ QUESTIONS = [
         "question": "Capsid subunits are called:",
         "a": "Ribosomes", "b": "Capsomeres", "c": "Lysosomes", "d": "Chromosomes",
         "answer": "B",
-        "explanation": "Capsomeres are the individual protein subunits that assemble to form the capsid."
+        "explanation": "Capsomeres are the protein subunits that assemble to form the capsid."
     },
     {
         "section": "الفيروسات",
         "question": "Capsomeres combine to form:",
         "a": "Viral capsid", "b": "Cell membrane", "c": "Nucleus", "d": "Cytoplasm",
         "answer": "A",
-        "explanation": "Multiple capsomeres assemble together to form the complete viral capsid."
+        "explanation": "Multiple capsomeres assemble to form the complete viral capsid."
     },
     {
         "section": "الفيروسات",
         "question": "Capsid plus nucleic acid is called:",
         "a": "Envelope", "b": "Nucleocapsid", "c": "Ribosome", "d": "Cytoplasm",
         "answer": "B",
-        "explanation": "The nucleocapsid = capsid + the enclosed nucleic acid (genome)."
+        "explanation": "Nucleocapsid = capsid + enclosed nucleic acid."
     },
     {
         "section": "الفيروسات",
@@ -506,7 +86,7 @@ QUESTIONS = [
         "a": "Naked viruses", "b": "Enveloped viruses",
         "c": "Complex viruses", "d": "RNA viruses",
         "answer": "B",
-        "explanation": "Enveloped viruses have a lipid bilayer derived from the host cell membrane surrounding the nucleocapsid."
+        "explanation": "Enveloped viruses have a lipid bilayer from the host cell membrane."
     },
     {
         "section": "الفيروسات",
@@ -514,7 +94,7 @@ QUESTIONS = [
         "a": "Naked viruses", "b": "Enveloped viruses",
         "c": "Complex viruses", "d": "Helical viruses",
         "answer": "A",
-        "explanation": "Non-enveloped viruses are called naked viruses — they have only a capsid with no lipid membrane."
+        "explanation": "Non-enveloped viruses are called naked viruses."
     },
     {
         "section": "الفيروسات",
@@ -528,7 +108,7 @@ QUESTIONS = [
         "question": "Viruses lack:",
         "a": "Genetic material", "b": "Ribosomes", "c": "Capsid", "d": "Proteins",
         "answer": "B",
-        "explanation": "Viruses have no ribosomes — they depend entirely on the host cell's ribosomes for protein synthesis."
+        "explanation": "Viruses have no ribosomes — they depend on the host cell's ribosomes."
     },
     {
         "section": "الفيروسات",
@@ -542,21 +122,21 @@ QUESTIONS = [
         "question": "Typical virus size is:",
         "a": "1–5 nm", "b": "20–200 nm", "c": "1000 nm", "d": "5 µm",
         "answer": "B",
-        "explanation": "Most viruses range from 20 to 200 nm — much smaller than bacteria (~1000 nm)."
+        "explanation": "Most viruses range from 20 to 200 nm."
     },
     {
         "section": "الفيروسات",
         "question": "Viruses infect:",
         "a": "Animals", "b": "Plants", "c": "Bacteria", "d": "All of the above",
         "answer": "D",
-        "explanation": "Viruses can infect all types of living organisms: animals, plants, fungi, and bacteria."
+        "explanation": "Viruses can infect all types of living organisms."
     },
     {
         "section": "الفيروسات",
         "question": "Bacteriophages infect:",
         "a": "Animals", "b": "Plants", "c": "Bacteria", "d": "Fungi",
         "answer": "C",
-        "explanation": "Bacteriophages (phages) are viruses that specifically infect bacteria."
+        "explanation": "Bacteriophages are viruses that specifically infect bacteria."
     },
     {
         "section": "الفيروسات",
@@ -564,7 +144,7 @@ QUESTIONS = [
         "a": "Naked viruses", "b": "Complex viruses",
         "c": "RNA viruses", "d": "Icosahedral viruses",
         "answer": "B",
-        "explanation": "Poxviruses have a complex irregular structure — neither purely icosahedral nor helical."
+        "explanation": "Poxviruses have a complex irregular structure."
     },
     {
         "section": "الفيروسات",
@@ -572,37 +152,33 @@ QUESTIONS = [
         "a": "Energy production", "b": "Protect viral genome",
         "c": "DNA synthesis", "d": "Protein digestion",
         "answer": "B",
-        "explanation": "The capsid protects the viral nucleic acid from enzymes, UV radiation, and harsh environments."
+        "explanation": "The capsid protects the viral nucleic acid."
     },
-
-    # ══════════════════════════════════════════════════════════════
-    # المجموعة 2 — من أسئلة التراث (فيروسات فقط)
-    # ══════════════════════════════════════════════════════════════
     {
         "section": "الفيروسات",
         "question": "What is the origin of the word 'virus'?",
         "a": "Latin for germ", "b": "Greek for poison",
         "c": "Latin for infectious", "d": "Word for toxoplasma",
         "answer": "B",
-        "explanation": "The word 'virus' originates from Latin/Greek meaning poison or venom."
+        "explanation": "Virus comes from Latin/Greek meaning poison."
     },
     {
         "section": "الفيروسات",
         "question": "Viral classification is primarily based on:",
         "a": "Cell wall composition", "b": "Nucleic acid type and structure",
-        "c": "Method of binary fission", "d": "Color under an electron microscope",
+        "c": "Method of binary fission", "d": "Color under electron microscope",
         "answer": "B",
-        "explanation": "Viruses are primarily classified by their nucleic acid type (DNA/RNA), structure, and replication strategy."
+        "explanation": "Viruses are classified by nucleic acid type, structure, and replication strategy."
     },
     {
         "section": "الفيروسات",
-        "question": "What distinguishes enveloped viruses from non-enveloped viruses?",
+        "question": "What distinguishes enveloped from non-enveloped viruses?",
         "a": "Presence of a lipid membrane derived from the host cell",
         "b": "Having only DNA as genetic material",
-        "c": "Their ability to replicate outside living cells",
-        "d": "The absence of a protein capsid",
+        "c": "Ability to replicate outside living cells",
+        "d": "Absence of a protein capsid",
         "answer": "A",
-        "explanation": "Enveloped viruses have a host-derived lipid bilayer surrounding the nucleocapsid."
+        "explanation": "Enveloped viruses have a host-derived lipid bilayer."
     },
     {
         "section": "الفيروسات",
@@ -610,41 +186,39 @@ QUESTIONS = [
         "a": "Influenza virus", "b": "HIV",
         "c": "Bacteriophage", "d": "Poliovirus",
         "answer": "C",
-        "explanation": "Bacteriophages are viruses that specifically infect and replicate inside bacteria."
+        "explanation": "Bacteriophages infect and replicate inside bacteria."
     },
-
-    # ══════════════════════════════════════════════════════════════
-    # المجموعة 3 — من حل المرشحات (صور + اسئلة مكتوبة)
-    # ══════════════════════════════════════════════════════════════
     {
         "section": "الفيروسات",
         "question": "What is a virus composed of?",
         "a": "DNA only", "b": "RNA only",
         "c": "Genetic material and a protein shell", "d": "Lipids and carbohydrates",
         "answer": "C",
-        "explanation": "All viruses consist of nucleic acid (DNA or RNA) enclosed within a protein coat (capsid)."
+        "explanation": "All viruses consist of nucleic acid enclosed in a protein coat (capsid)."
     },
     {
         "section": "الفيروسات",
         "question": "Which of the following is NOT a basic viral form?",
         "a": "Complex", "b": "Naked", "c": "Filamentous", "d": "Enveloped",
         "answer": "C",
-        "explanation": "The three basic viral morphologies are icosahedral, helical, and complex. Filamentous is not a standard viral form category."
+        "explanation": "Basic viral forms are icosahedral, helical, and complex."
     },
     {
         "section": "الفيروسات",
         "question": "What is the function of the viral capsid?",
-        "a": "It contains ribosomes", "b": "It protects the viral genetic material",
-        "c": "It produces viral proteins", "d": "It helps in DNA replication",
+        "a": "It contains ribosomes",
+        "b": "It protects the viral genetic material",
+        "c": "It produces viral proteins",
+        "d": "It helps in DNA replication",
         "answer": "B",
-        "explanation": "The capsid's primary function is to protect the viral genome from degradation."
+        "explanation": "The capsid protects the viral genome from degradation."
     },
     {
         "section": "الفيروسات",
         "question": "Which classification system is used for viruses?",
         "a": "Bergey's Manual", "b": "Linnaean System",
         "c": "Hierarchical Classification (Order, Family, Genus, Species)",
-        "d": "Whittaker's Five Kingdom Classification",
+        "d": "Whittaker's Five Kingdom",
         "answer": "C",
         "explanation": "Viruses use hierarchical classification: Order → Family → Genus → Species."
     },
@@ -664,15 +238,7 @@ QUESTIONS = [
         "c": "Fungi are plants",
         "d": "Bacteria cannot move",
         "answer": "A",
-        "explanation": "Viruses are obligate intracellular parasites — they can only reproduce inside living host cells."
-    },
-    {
-        "section": "الفيروسات",
-        "question": "Which scientist is credited with the first description of viruses?",
-        "a": "Louis Pasteur", "b": "Edward Jenner",
-        "c": "Robert Koch", "d": "Alexander Fleming",
-        "answer": "A",
-        "explanation": "Louis Pasteur contributed foundational work to virology. Dmitri Ivanovsky also described tobacco mosaic virus."
+        "explanation": "Viruses are obligate intracellular parasites."
     },
     {
         "section": "الفيروسات",
@@ -682,15 +248,14 @@ QUESTIONS = [
         "c": "To replicate viral DNA",
         "d": "To produce viral proteins",
         "answer": "B",
-        "explanation": "Viral envelope glycoproteins bind to host cell receptors and facilitate membrane fusion for viral entry."
+        "explanation": "Viral envelope glycoproteins facilitate attachment and entry into host cells."
     },
     {
         "section": "الفيروسات",
         "question": "Which of the following is an RNA virus?",
-        "a": "Herpesvirus", "b": "Adenovirus",
-        "c": "Retrovirus", "d": "Poxvirus",
+        "a": "Herpesvirus", "b": "Adenovirus", "c": "Retrovirus", "d": "Poxvirus",
         "answer": "C",
-        "explanation": "Retroviruses (like HIV) have an RNA genome converted to DNA by reverse transcriptase."
+        "explanation": "Retroviruses (like HIV) have an RNA genome."
     },
     {
         "section": "الفيروسات",
@@ -700,7 +265,7 @@ QUESTIONS = [
         "c": "By endocytosis",
         "d": "By lysing the host cell first",
         "answer": "B",
-        "explanation": "Phages attach to the bacterial surface and inject their DNA into the host, leaving the empty capsid outside."
+        "explanation": "Phages inject their DNA into the host, leaving the capsid outside."
     },
     {
         "section": "الفيروسات",
@@ -708,25 +273,24 @@ QUESTIONS = [
         "a": "Agar plate culture", "b": "Nutrient broth culture",
         "c": "Cell culture", "d": "Streak plate method",
         "answer": "C",
-        "explanation": "Viruses require living cells for replication, so cell (tissue) culture is used in the laboratory."
+        "explanation": "Cell (tissue) culture is used since viruses require living cells."
     },
     {
         "section": "الفيروسات",
-        "question": "Which of the following viruses has a double-stranded RNA genome?",
-        "a": "Retrovirus", "b": "Reovirus",
-        "c": "Picornavirus", "d": "Herpesvirus",
+        "question": "Which virus has a double-stranded RNA genome?",
+        "a": "Retrovirus", "b": "Reovirus", "c": "Picornavirus", "d": "Herpesvirus",
         "answer": "B",
-        "explanation": "Reoviruses (including Rotaviruses) have a segmented double-stranded RNA (dsRNA) genome."
+        "explanation": "Reoviruses (including Rotaviruses) have segmented dsRNA genomes."
     },
     {
         "section": "الفيروسات",
-        "question": "What is the function of viral hemagglutinin in influenza viruses?",
+        "question": "What is the function of viral hemagglutinin in influenza?",
         "a": "Aids in viral entry into host cells",
         "b": "Assists in viral genome replication",
         "c": "Stimulates host immune response",
         "d": "Facilitates viral exit from host cells",
         "answer": "A",
-        "explanation": "Hemagglutinin (H) binds to sialic acid receptors on respiratory epithelial cells, mediating viral attachment and entry."
+        "explanation": "Hemagglutinin (H) binds to sialic acid receptors, mediating entry."
     },
     {
         "section": "الفيروسات",
@@ -734,15 +298,15 @@ QUESTIONS = [
         "a": "Lysogenic infection", "b": "Latent infection",
         "c": "Lytic infection", "d": "Chronic infection",
         "answer": "C",
-        "explanation": "In the lytic cycle, the virus replicates rapidly inside the host cell and lyses (destroys) it upon release of new virions."
+        "explanation": "In the lytic cycle, the host cell is destroyed upon virus release."
     },
     {
         "section": "الفيروسات",
-        "question": "Which enzyme allows retroviruses to integrate their genome into the host DNA?",
+        "question": "Which enzyme allows retroviruses to integrate their genome into host DNA?",
         "a": "DNA polymerase", "b": "RNA polymerase",
         "c": "Reverse transcriptase", "d": "Integrase",
         "answer": "C",
-        "explanation": "Reverse transcriptase converts the viral RNA genome into DNA which is then integrated into the host genome."
+        "explanation": "Reverse transcriptase converts viral RNA into DNA for integration."
     },
     {
         "section": "الفيروسات",
@@ -750,68 +314,30 @@ QUESTIONS = [
         "a": "Respiratory droplets", "b": "Contaminated food",
         "c": "Insect vectors", "d": "Direct human contact",
         "answer": "C",
-        "explanation": "Arboviruses (arthropod-borne viruses) like dengue and Zika are transmitted through insect bites (mosquitoes, ticks)."
+        "explanation": "Arboviruses are transmitted through insect bites (mosquitoes, ticks)."
     },
     {
         "section": "الفيروسات",
-        "question": "Which is NOT a method of viral classification?",
-        "a": "Shape", "b": "Mode of replication",
-        "c": "Size of the host cell", "d": "Type of nucleic acid",
-        "answer": "C",
-        "explanation": "Viral classification uses shape, replication mode, and nucleic acid type — NOT the size of the host cell."
-    },
-    {
-        "section": "الفيروسات",
-        "question": "What is a key characteristic of viruses?",
-        "a": "They have a nuclear membrane",
-        "b": "They possess metabolic enzymes",
-        "c": "They lack an external cell wall",
-        "d": "They can replicate independently",
-        "answer": "C",
-        "explanation": "Viruses have no cell wall, no nucleus, no cytoplasm, and no metabolic machinery — they are not cells."
-    },
-    {
-        "section": "الفيروسات",
-        "question": "During which stage of the viral life cycle does receptor-mediated endocytosis occur?",
-        "a": "Adsorption", "b": "Penetration",
-        "c": "Replication", "d": "Assembly",
-        "answer": "B",
-        "explanation": "Receptor-mediated endocytosis is a mechanism of viral penetration into the host cell."
-    },
-    {
-        "section": "الفيروسات",
-        "question": "In viral taxonomy, what suffix is commonly used for virus families?",
-        "a": "-virus", "b": "-pathogen", "c": "-viridae", "d": "-bacteria",
-        "answer": "C",
-        "explanation": "Virus family names end in -viridae (e.g., Herpesviridae, Retroviridae, Picornaviridae)."
-    },
-
-    # ══════════════════════════════════════════════════════════════
-    # المجموعة 4 — الأسئلة المتقدمة (من النص المرسل)
-    # ══════════════════════════════════════════════════════════════
-    {
-        "section": "الفيروسات",
-        "question": "Which viral structure is primarily responsible for attachment to host cell receptors?",
+        "question": "Which viral structure is responsible for attachment to host cell receptors?",
         "a": "Capsomere", "b": "Matrix protein",
         "c": "Viral spikes (glycoproteins)", "d": "Viral polymerase",
         "answer": "C",
-        "explanation": "Viral surface glycoproteins (spikes) bind to specific receptors on host cells — this determines host tropism."
+        "explanation": "Viral surface glycoproteins bind to specific receptors on host cells."
     },
     {
         "section": "الفيروسات",
-        "question": "Which of the following viruses replicates entirely in the cytoplasm?",
-        "a": "Herpesvirus", "b": "Adenovirus",
-        "c": "Poxvirus", "d": "Papillomavirus",
+        "question": "Which virus replicates entirely in the cytoplasm?",
+        "a": "Herpesvirus", "b": "Adenovirus", "c": "Poxvirus", "d": "Papillomavirus",
         "answer": "C",
-        "explanation": "Poxviruses are unique among DNA viruses — they encode their own RNA polymerase and replicate entirely in the cytoplasm."
+        "explanation": "Poxviruses encode their own RNA polymerase and replicate in the cytoplasm."
     },
     {
         "section": "الفيروسات",
-        "question": "Which viral genome type requires reverse transcriptase during replication?",
+        "question": "Which viral genome type requires reverse transcriptase?",
         "a": "dsDNA viruses", "b": "(+) ssRNA viruses",
         "c": "Retroviruses", "d": "dsRNA viruses",
         "answer": "C",
-        "explanation": "Retroviruses use reverse transcriptase to convert their RNA genome into DNA, which is then integrated into the host genome."
+        "explanation": "Retroviruses use reverse transcriptase to convert RNA to DNA."
     },
     {
         "section": "الفيروسات",
@@ -821,35 +347,33 @@ QUESTIONS = [
         "c": "Higher mutation rate",
         "d": "Ability to replicate outside cells",
         "answer": "A",
-        "explanation": "Icosahedral symmetry is energetically optimal — it encloses maximum volume with minimal protein subunits."
+        "explanation": "Icosahedral symmetry encloses maximum volume with minimal protein subunits."
     },
     {
         "section": "الفيروسات",
-        "question": "Which of the following viruses is most resistant to environmental conditions?",
+        "question": "Which viruses are most resistant to environmental conditions?",
         "a": "Enveloped viruses", "b": "Naked viruses",
         "c": "RNA viruses", "d": "Retroviruses",
         "answer": "B",
-        "explanation": "Naked (non-enveloped) viruses are more resistant to heat, desiccation, detergents, and chemical disinfectants than enveloped viruses."
+        "explanation": "Naked viruses are more resistant to heat, desiccation, and disinfectants."
     },
     {
         "section": "الفيروسات",
-        "question": "Which enzyme is commonly carried by negative-sense RNA viruses?",
-        "a": "DNA polymerase",
-        "b": "RNA-dependent RNA polymerase",
-        "c": "Reverse transcriptase",
-        "d": "Integrase",
+        "question": "Which enzyme is carried by negative-sense RNA viruses?",
+        "a": "DNA polymerase", "b": "RNA-dependent RNA polymerase",
+        "c": "Reverse transcriptase", "d": "Integrase",
         "answer": "B",
-        "explanation": "Negative-sense RNA cannot serve as mRNA directly — these viruses must carry RNA-dependent RNA polymerase (RdRp) to transcribe their genome."
+        "explanation": "Negative-sense RNA viruses carry RdRp to transcribe their genome into mRNA."
     },
     {
         "section": "الفيروسات",
-        "question": "During viral replication, the stage called 'uncoating' refers to:",
+        "question": "During viral replication, 'uncoating' refers to:",
         "a": "Release of virions from the host cell",
         "b": "Removal of viral envelope only",
         "c": "Release of viral genome into host cell",
         "d": "Assembly of capsid proteins",
         "answer": "C",
-        "explanation": "Uncoating is the process of removing the capsid (and envelope if present) to release the viral genome into the host cell cytoplasm."
+        "explanation": "Uncoating releases the viral genome into the host cell cytoplasm."
     },
     {
         "section": "الفيروسات",
@@ -857,14 +381,14 @@ QUESTIONS = [
         "a": "Picornaviridae", "b": "Orthomyxoviridae",
         "c": "Herpesviridae", "d": "Adenoviridae",
         "answer": "B",
-        "explanation": "Orthomyxoviridae (influenza viruses) have 8 segments of negative-sense RNA — this segmentation allows genetic reassortment."
+        "explanation": "Influenza viruses (Orthomyxoviridae) have 8 RNA segments."
     },
     {
         "section": "الفيروسات",
-        "question": "The process by which viruses obtain their envelope from host membranes is called:",
+        "question": "The process by which viruses obtain their envelope is called:",
         "a": "Lysis", "b": "Budding", "c": "Integration", "d": "Fusion",
         "answer": "B",
-        "explanation": "During budding, the nucleocapsid pushes through the host cell membrane, acquiring a lipid envelope as it exits."
+        "explanation": "During budding, the nucleocapsid acquires a lipid envelope from the host cell."
     },
     {
         "section": "الفيروسات",
@@ -872,31 +396,21 @@ QUESTIONS = [
         "a": "Capsid size", "b": "Viral receptor-binding proteins",
         "c": "Genome length", "d": "Viral polymerase",
         "answer": "B",
-        "explanation": "Viral tropism is determined by the specific interaction between viral surface proteins and receptors on host cells."
+        "explanation": "Viral tropism is determined by surface proteins and their host cell receptors."
     },
     {
         "section": "الفيروسات",
-        "question": "Which virus has a double-stranded RNA genome?",
-        "a": "Rotavirus", "b": "Poliovirus",
-        "c": "Influenza virus", "d": "HIV",
-        "answer": "A",
-        "explanation": "Rotavirus (family Reoviridae) has an 11-segment double-stranded RNA genome."
-    },
-    {
-        "section": "الفيروسات",
-        "question": "Which stage of viral replication involves synthesis of viral proteins and nucleic acids?",
-        "a": "Attachment", "b": "Penetration",
-        "c": "Biosynthesis", "d": "Release",
+        "question": "Which stage of viral replication involves synthesis of viral proteins?",
+        "a": "Attachment", "b": "Penetration", "c": "Biosynthesis", "d": "Release",
         "answer": "C",
-        "explanation": "The biosynthesis (eclipse) stage is when viral proteins and nucleic acids are produced using host cell machinery."
+        "explanation": "The biosynthesis stage is when viral proteins and nucleic acids are produced."
     },
     {
         "section": "الفيروسات",
         "question": "Which virus integrates its genome into the host DNA as a provirus?",
-        "a": "Influenza virus", "b": "HIV",
-        "c": "Rabies virus", "d": "Rotavirus",
+        "a": "Influenza virus", "b": "HIV", "c": "Rabies virus", "d": "Rotavirus",
         "answer": "B",
-        "explanation": "HIV integrates its DNA copy into the host genome as a provirus, which can remain latent for years before activation."
+        "explanation": "HIV integrates its DNA copy into the host genome as a provirus."
     },
     {
         "section": "الفيروسات",
@@ -904,7 +418,7 @@ QUESTIONS = [
         "a": "Lysogenic cycle", "b": "Latent cycle",
         "c": "Lytic cycle", "d": "Persistent cycle",
         "answer": "C",
-        "explanation": "In the lytic cycle, new virions accumulate until the host cell lyses, releasing hundreds of new virus particles."
+        "explanation": "In the lytic cycle, new virions accumulate until the host cell lyses."
     },
     {
         "section": "الفيروسات",
@@ -912,10 +426,42 @@ QUESTIONS = [
         "a": "Envelope", "b": "Capsid",
         "c": "Glycoprotein spikes", "d": "Matrix protein",
         "answer": "B",
-        "explanation": "The capsid both protects the viral genome and provides structural scaffolding for viral assembly."
+        "explanation": "The capsid protects the genome and provides scaffolding for assembly."
+    },
+    {
+        "section": "الفيروسات",
+        "question": "Which is NOT a method of viral classification?",
+        "a": "Shape", "b": "Mode of replication",
+        "c": "Size of the host cell", "d": "Type of nucleic acid",
+        "answer": "C",
+        "explanation": "Viral classification does not use the size of the host cell."
+    },
+    {
+        "section": "الفيروسات",
+        "question": "What is a key characteristic of viruses?",
+        "a": "They have a nuclear membrane",
+        "b": "They possess metabolic enzymes",
+        "c": "They lack an external cell wall",
+        "d": "They can replicate independently",
+        "answer": "C",
+        "explanation": "Viruses have no cell wall, no nucleus, and no metabolic machinery."
+    },
+    {
+        "section": "الفيروسات",
+        "question": "During which stage does receptor-mediated endocytosis occur?",
+        "a": "Adsorption", "b": "Penetration",
+        "c": "Replication", "d": "Assembly",
+        "answer": "B",
+        "explanation": "Receptor-mediated endocytosis is a mechanism of viral penetration."
+    },
+    {
+        "section": "الفيروسات",
+        "question": "In viral taxonomy, what suffix is used for virus families?",
+        "a": "-virus", "b": "-pathogen", "c": "-viridae", "d": "-bacteria",
+        "answer": "C",
+        "explanation": "Virus family names end in -viridae (e.g., Herpesviridae, Retroviridae)."
     },
 ]
-
 
 db.import_questions(QUESTIONS)
 
@@ -923,12 +469,11 @@ from collections import Counter
 counts = Counter(q["section"] for q in QUESTIONS)
 print(f"\n✅ تم إضافة {len(QUESTIONS)} سؤال في {len(counts)} سكشن:")
 for sec, cnt in counts.items():
-    emoji = next((q.get("section_emoji","📖") for q in QUESTIONS if q["section"]==sec), "📖")
+    emoji = next((q.get("section_emoji","📖") for q in QUESTIONS if q["section"]==sec),"📖")
     print(f"   {emoji} {sec}: {cnt} سؤال")
 
-stats = db.stats()
 print(f"\n📊 قاعدة البيانات:")
-print(f"   👥 طلاب: {stats['students']}")
-print(f"   ❓ أسئلة: {stats['questions']}")
-print(f"   📦 سكشنات: {stats['sections']}")
+st = db.stats()
+print(f"   ❓ أسئلة: {st['questions']}")
+print(f"   📦 سكشنات: {st['sections']}")
 print("\n🚀 شغّل البوت: python run.py")
