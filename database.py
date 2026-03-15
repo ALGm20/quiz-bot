@@ -1,11 +1,8 @@
 """
-database.py — مع جدول الجلسات لحل مشكلة ضياع user_data
+database.py — قاعدة بيانات النظام الكامل
 """
-import sqlite3
-import json
-import random
+import sqlite3, json, random
 from typing import Optional
-
 
 class Database:
     def __init__(self, path: str):
@@ -13,7 +10,7 @@ class Database:
         self._init()
 
     def _connect(self):
-        c = sqlite3.connect(self.path)
+        c = sqlite3.connect(self.path, check_same_thread=False)
         c.row_factory = sqlite3.Row
         c.execute("PRAGMA foreign_keys = ON")
         return c
@@ -38,20 +35,78 @@ class Database:
                     option_c       TEXT NOT NULL,
                     option_d       TEXT NOT NULL,
                     correct_answer TEXT NOT NULL CHECK(correct_answer IN ('A','B','C','D')),
-                    explanation    TEXT,
-                    difficulty     INTEGER DEFAULT 1
+                    explanation    TEXT
+                );
+
+                CREATE TABLE IF NOT EXISTS students (
+                    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+                    full_name     TEXT NOT NULL,
+                    telegram_id   INTEGER UNIQUE,
+                    registered_at TEXT,
+                    assessed      INTEGER DEFAULT 0,
+                    score         INTEGER DEFAULT 0,
+                    total_q       INTEGER DEFAULT 0,
+                    pct           INTEGER DEFAULT 0,
+                    assessed_at   TEXT
                 );
 
                 CREATE TABLE IF NOT EXISTS active_sessions (
                     user_id        INTEGER PRIMARY KEY,
+                    mode           TEXT DEFAULT 'training',
                     sec_id         INTEGER,
                     questions_json TEXT NOT NULL,
+                    answers_json   TEXT DEFAULT '[]',
                     current_idx    INTEGER DEFAULT 0,
                     score          INTEGER DEFAULT 0,
                     total          INTEGER NOT NULL,
                     updated_at     TEXT DEFAULT (datetime('now'))
                 );
             """)
+
+    # ── STUDENTS ──────────────────────────────────────────────────
+
+    def import_students(self, names: list):
+        with self._connect() as c:
+            c.executemany(
+                "INSERT OR IGNORE INTO students (full_name) VALUES (?)",
+                [(n.strip(),) for n in names if n.strip()]
+            )
+
+    def find_student_by_name(self, name: str):
+        with self._connect() as c:
+            return c.execute(
+                "SELECT * FROM students WHERE TRIM(full_name)=TRIM(?)", (name,)
+            ).fetchone()
+
+    def get_student_by_telegram(self, telegram_id: int):
+        with self._connect() as c:
+            return c.execute(
+                "SELECT * FROM students WHERE telegram_id=?", (telegram_id,)
+            ).fetchone()
+
+    def register_student_telegram(self, student_id: int, telegram_id: int):
+        from datetime import datetime
+        with self._connect() as c:
+            c.execute(
+                "UPDATE students SET telegram_id=?, registered_at=? WHERE id=?",
+                (telegram_id, datetime.now().isoformat(), student_id)
+            )
+
+    def save_assessment_result(self, student_id: int, score: int, total: int):
+        from datetime import datetime
+        pct = round((score / total) * 100) if total else 0
+        with self._connect() as c:
+            c.execute("""
+                UPDATE students
+                SET assessed=1, score=?, total_q=?, pct=?, assessed_at=?
+                WHERE id=?
+            """, (score, total, pct, datetime.now().isoformat(), student_id))
+
+    def get_all_students(self):
+        with self._connect() as c:
+            return c.execute(
+                "SELECT * FROM students ORDER BY pct DESC"
+            ).fetchall()
 
     # ── SECTIONS ──────────────────────────────────────────────────
 
@@ -65,9 +120,18 @@ class Database:
 
     def count_q(self, sec_id: int) -> int:
         with self._connect() as c:
-            return c.execute("SELECT COUNT(*) FROM questions WHERE section_id=?", (sec_id,)).fetchone()[0]
+            return c.execute(
+                "SELECT COUNT(*) FROM questions WHERE section_id=?", (sec_id,)
+            ).fetchone()[0]
 
     # ── QUESTIONS ─────────────────────────────────────────────────
+
+    def get_all_questions_shuffled(self):
+        """كل الأسئلة من كل السكشنات مخلوطة — للاختبار الكامل"""
+        with self._connect() as c:
+            return list(c.execute(
+                "SELECT * FROM questions ORDER BY RANDOM()"
+            ).fetchall())
 
     def get_questions(self, sec_id: int, limit: Optional[int] = None):
         with self._connect() as c:
@@ -82,7 +146,9 @@ class Database:
             for item in data:
                 sname = item["section"].strip()
                 if sname not in cache:
-                    row = c.execute("SELECT id FROM sections WHERE name=?", (sname,)).fetchone()
+                    row = c.execute(
+                        "SELECT id FROM sections WHERE name=?", (sname,)
+                    ).fetchone()
                     if row:
                         cache[sname] = row["id"]
                     else:
@@ -93,28 +159,28 @@ class Database:
                         cache[sname] = cur.lastrowid
                 c.execute(
                     """INSERT INTO questions
-                       (section_id,question_text,option_a,option_b,option_c,option_d,correct_answer,explanation)
+                       (section_id,question_text,option_a,option_b,option_c,option_d,
+                        correct_answer,explanation)
                        VALUES (?,?,?,?,?,?,?,?)""",
                     (cache[sname], item["question"],
                      item["a"], item["b"], item["c"], item["d"],
                      item["answer"].upper(), item.get("explanation",""))
                 )
 
-    # ── ACTIVE SESSION (حفظ الجلسة في DB) ─────────────────────────
+    # ── ACTIVE SESSION ─────────────────────────────────────────────
 
-    def save_session(self, user_id: int, sec_id, questions: list, idx: int, score: int, total: int):
-        """حفظ أو تحديث جلسة المستخدم"""
-        # حوّل الأسئلة إلى JSON (dict فقط)
-        qs_data = [dict(q) for q in questions]
+    def save_session(self, user_id: int, mode: str, sec_id,
+                     questions: list, idx: int, score: int, total: int):
+        qs = [dict(q) for q in questions]
         with self._connect() as c:
             c.execute("""
                 INSERT OR REPLACE INTO active_sessions
-                    (user_id, sec_id, questions_json, current_idx, score, total, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
-            """, (user_id, sec_id, json.dumps(qs_data, ensure_ascii=False), idx, score, total))
+                (user_id, mode, sec_id, questions_json, current_idx, score, total, updated_at)
+                VALUES (?,?,?,?,?,?,?,datetime('now'))
+            """, (user_id, mode, sec_id,
+                  json.dumps(qs, ensure_ascii=False), idx, score, total))
 
     def get_session(self, user_id: int):
-        """استرجاع جلسة المستخدم"""
         with self._connect() as c:
             row = c.execute(
                 "SELECT * FROM active_sessions WHERE user_id=?", (user_id,)
@@ -122,6 +188,7 @@ class Database:
         if not row:
             return None
         return {
+            "mode":   row["mode"],
             "sec_id": row["sec_id"],
             "qs":     json.loads(row["questions_json"]),
             "idx":    row["current_idx"],
@@ -130,7 +197,6 @@ class Database:
         }
 
     def update_session(self, user_id: int, idx: int, score: int):
-        """تحديث التقدم فقط"""
         with self._connect() as c:
             c.execute("""
                 UPDATE active_sessions
@@ -139,7 +205,6 @@ class Database:
             """, (idx, score, user_id))
 
     def delete_session(self, user_id: int):
-        """حذف الجلسة بعد الانتهاء"""
         with self._connect() as c:
             c.execute("DELETE FROM active_sessions WHERE user_id=?", (user_id,))
 
@@ -150,4 +215,6 @@ class Database:
             return {
                 "sections":  c.execute("SELECT COUNT(*) FROM sections").fetchone()[0],
                 "questions": c.execute("SELECT COUNT(*) FROM questions").fetchone()[0],
+                "students":  c.execute("SELECT COUNT(*) FROM students").fetchone()[0],
+                "assessed":  c.execute("SELECT COUNT(*) FROM students WHERE assessed=1").fetchone()[0],
             }
