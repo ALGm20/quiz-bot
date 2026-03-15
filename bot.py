@@ -472,6 +472,20 @@ async def _finish_training(update: Update, ctx: ContextTypes.DEFAULT_TYPE, sess:
 #  /stats
 # ══════════════════════════════════════════════════════════════════
 
+async def cmd_myid(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    uid      = update.effective_user.id
+    username = update.effective_user.username or "لا يوجد"
+    name     = update.effective_user.full_name or ""
+    await update.message.reply_text(
+        f"🆔 *معلوماتك:*\n\n"
+        f"الـ ID: `{uid}`\n"
+        f"الاسم: {name}\n"
+        f"اليوزرنيم: @{username}\n\n"
+        f"📋 انسخ الـ ID وضعه في Railway كـ:\n"
+        f"`TEACHER_CHAT_ID` = `{uid}`",
+        parse_mode="Markdown"
+    )
+
 async def cmd_stats(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     st  = db.stats()
     url = os.environ.get("RAILWAY_PUBLIC_DOMAIN","")
@@ -506,6 +520,7 @@ def main():
     )
     app.add_handler(conv)
     app.add_handler(CommandHandler("stats", cmd_stats))
+    app.add_handler(CommandHandler("myid",  cmd_myid))
 
     # السكشنات
     app.add_handler(CallbackQueryHandler(cb_section,        pattern=r"^sec_\d+$"))
