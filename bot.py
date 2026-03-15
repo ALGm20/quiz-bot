@@ -162,10 +162,55 @@ async def cb_section(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
             reply_markup=InlineKeyboardMarkup([
                 [InlineKeyboardButton("⚡️ 10 أسئلة عشوائية", callback_data=f"train_{sec_id}_10")],
                 [InlineKeyboardButton("📋 كل الأسئلة",        callback_data=f"train_{sec_id}_all")],
-                [InlineKeyboardButton("🔄 أعد التقييم",        callback_data=f"assess_{sec_id}")],
+                [InlineKeyboardButton("🔄 أعد التقييم (كل 4 أيام)", callback_data=f"reassess_{sec_id}")],
                 [InlineKeyboardButton("🔙 رجوع",               callback_data="back_sections")],
             ])
         )
+
+async def cb_reassess_section(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    """إعادة التقييم — مسموح فقط بعد 4 أيام"""
+    q       = update.callback_query
+    await q.answer()
+    uid     = update.effective_user.id
+    student = db.get_student_by_telegram(uid)
+    if not student:
+        await q.edit_message_text("يرجى التسجيل /start")
+        return
+
+    sec_id  = int(q.data.split("_")[1])
+    can, days_left = db.can_reassess(student["id"], sec_id, days=4)
+
+    if not can:
+        section = db.get_section(sec_id)
+        await q.answer(
+            f"⏳ يمكنك إعادة التقييم بعد {days_left} يوم/أيام",
+            show_alert=True
+        )
+        return
+
+    # مسموح — ابدأ التقييم مباشرة
+    section   = db.get_section(sec_id)
+    questions = db.get_questions(sec_id)
+    if not questions:
+        await q.edit_message_text("⚠️ لا توجد أسئلة.")
+        return
+
+    import random as _r
+    questions = list(questions)
+    _r.shuffle(questions)
+    db.save_session(uid, "assessment", sec_id, questions, 0, 0, len(questions))
+
+    emoji = section["emoji"] or "📖"
+    await q.edit_message_text(
+        f"{emoji} *إعادة تقييم: {section['name']}*\n\n"
+        f"📝 {len(questions)} سؤال\n\n"
+        f"أجب بصدق 💪",
+        parse_mode="Markdown"
+    )
+    import asyncio as _a
+    await _a.sleep(0.6)
+    await _send_question(update, ctx)
+
 
 async def cb_back_sections(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q       = update.callback_query
@@ -411,11 +456,16 @@ async def _finish_assessment(update: Update, ctx: ContextTypes.DEFAULT_TYPE, ses
     stars  = "⭐" * max(1, round(pct / 20))
 
     # إرسال للأستاذ
+    uname = update.effective_user.username
+    uname_txt = f"@{uname}" if uname else "لا يوجد يوزرنيم"
     await notify_teacher(ctx,
-        f"📋 *نتيجة تقييم*\n\n"
-        f"👤 *{student['full_name']}*\n"
+        f"📋 *نتيجة تقييم جديدة*\n\n"
+        f"👤 الاسم: *{student['full_name']}*\n"
+        f"🔗 الحساب: {uname_txt}\n"
+        f"🆔 ID: `{update.effective_user.id}`\n"
+        f"{'─'*20}\n"
         f"{emoji} السكشن: *{section['name']}*\n"
-        f"📊 *{score}/{total}* ({pct}%)\n"
+        f"📊 النتيجة: *{score}/{total}* ({pct}%)\n"
         f"التقدير: {grade}"
     )
 
@@ -528,7 +578,8 @@ def main():
     app.add_handler(CallbackQueryHandler(cb_back_sections,  pattern="^back_sections$"))
 
     # التقييم والتدريب
-    app.add_handler(CallbackQueryHandler(cb_assess_section, pattern=r"^assess_\d+$"))
+    app.add_handler(CallbackQueryHandler(cb_assess_section,   pattern=r"^assess_\d+$"))
+    app.add_handler(CallbackQueryHandler(cb_reassess_section, pattern=r"^reassess_\d+$"))
     app.add_handler(CallbackQueryHandler(cb_train_section,  pattern=r"^train_\d+_(all|\d+)$"))
 
     # الأسئلة

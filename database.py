@@ -102,6 +102,23 @@ class Database:
                     assessed=1, score=?, total_q=?, pct=?, assessed_at=datetime('now')
             """, (student_id, section_id, score, total, pct, score, total, pct))
 
+    def can_reassess(self, student_id: int, section_id: int, days: int = 4) -> tuple:
+        """هل يمكن إعادة التقييم؟ يعيد (True/False, أيام_متبقية)"""
+        with self._connect() as c:
+            row = c.execute(
+                """SELECT assessed_at,
+                          CAST(julianday('now') - julianday(assessed_at) AS INTEGER) as days_passed
+                   FROM section_progress
+                   WHERE student_id=? AND section_id=? AND assessed=1""",
+                (student_id, section_id)
+            ).fetchone()
+        if not row:
+            return True, 0
+        days_passed = row["days_passed"] or 0
+        if days_passed >= days:
+            return True, 0
+        return False, days - days_passed
+
     def get_all_progress(self, student_id: int):
         """كل تقدم الطالب عبر جميع السكشنات"""
         with self._connect() as c:
