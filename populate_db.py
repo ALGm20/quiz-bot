@@ -2,6 +2,7 @@
 populate_db.py — تعبئة الأسئلة (بدون قائمة طلاب مسبقة)
 شغّله مرة واحدة عند البداية
 """
+import os
 from database import Database
 os.makedirs("/data", exist_ok=True)
 db = Database("/data/quiz_bot.db")
