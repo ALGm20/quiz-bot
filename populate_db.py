@@ -7,6 +7,12 @@ from database import Database
 os.makedirs("/data", exist_ok=True)
 db = Database("/data/quiz_bot.db")
 
+# امسح الأسئلة القديمة لتجنب التكرار عند إعادة التشغيل
+with db._connect() as c:
+    c.execute("DELETE FROM questions")
+    c.execute("DELETE FROM sections")
+print("🗑️ تم مسح الأسئلة القديمة")
+
 QUESTIONS = [
 
     # ══════════════════════════════════════════════════════════════
