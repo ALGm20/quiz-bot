@@ -309,6 +309,37 @@ async def cb_train_section(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 #  إرسال السؤال
 # ══════════════════════════════════════════════════════════════════
 
+def shuffle_options(q_obj: dict, user_seed: int) -> dict:
+    """خلط ترتيب الخيارات بشكل مختلف لكل طالب — seed ثابت لنفس الطالب ونفس السؤال"""
+    import random as _r
+    options = [
+        ("A", q_obj["option_a"]),
+        ("B", q_obj["option_b"]),
+        ("C", q_obj["option_c"]),
+        ("D", q_obj["option_d"]),
+    ]
+    correct_text = q_obj[f"option_{q_obj['correct_answer'].lower()}"]
+
+    # seed = user_id + question_id → ثابت لنفس الشخص ونفس السؤال
+    rng = _r.Random(user_seed + q_obj["id"])
+    rng.shuffle(options)
+
+    letters = ["A", "B", "C", "D"]
+    new_q = dict(q_obj)
+    new_q["option_a"] = options[0][1]
+    new_q["option_b"] = options[1][1]
+    new_q["option_c"] = options[2][1]
+    new_q["option_d"] = options[3][1]
+
+    # حدّث الإجابة الصحيحة بعد الخلط
+    for i, (_, text) in enumerate(options):
+        if text == correct_text:
+            new_q["correct_answer"] = letters[i]
+            break
+
+    return new_q
+
+
 async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     uid  = update.effective_user.id
     sess = db.get_session(uid)
@@ -342,9 +373,19 @@ async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
         f"❓ *{q_obj['question_text']}*"
     )
 
+    # خلط ترتيب الخيارات لكل طالب بشكل مختلف
+    shuffled_q = shuffle_options(q_obj, uid)
+
+    # وقت الانتهاء (15 ثانية فقط في وضع التقييم)
+    time_limit = ""
+    if sess["mode"] == "assessment":
+        time_limit = "\n⏱️ _لديك 15 ثانية للإجابة_"
+
+    text = text + time_limit
+
     try:
         await update.callback_query.edit_message_text(
-            text, parse_mode="Markdown", reply_markup=question_keyboard(q_obj)
+            text, parse_mode="Markdown", reply_markup=question_keyboard(shuffled_q)
         )
     except Exception as e:
         logger.warning(f"edit failed: {e}")
@@ -361,10 +402,26 @@ async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q   = update.callback_query
-    await q.answer()
     uid = update.effective_user.id
-
     sess = db.get_session(uid)
+
+    # فحص الوقت في وضع التقييم (15 ثانية)
+    if sess and sess["mode"] == "assessment":
+        import time as _t
+        session_row = db.get_session_time(uid)
+        if session_row and (_t.time() - session_row) > 15:
+            await q.answer("⏰ انتهى الوقت! تم الانتقال للسؤال التالي", show_alert=True)
+            new_idx = sess["idx"] + 1
+            db.update_session(uid, new_idx, sess["score"])
+            sess["idx"] = new_idx
+            if sess["idx"] >= sess["total"]:
+                await _finish_assessment(update, ctx, sess)
+            else:
+                await _send_question(update, ctx)
+            return
+
+    await q.answer()
+
     if not sess:
         await q.edit_message_text(
             "⚠️ انتهت الجلسة. /start",
@@ -378,8 +435,12 @@ async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     user_ans = parts[1].upper()
     idx      = sess["idx"]
     q_obj    = sess["qs"][idx]
-    correct  = q_obj["correct_answer"].upper()
+    # استخدم نفس الخلط لمعرفة الإجابة الصحيحة الفعلية
+    shuffled = shuffle_options(q_obj, uid)
+    correct  = shuffled["correct_answer"].upper()
     is_right = (user_ans == correct)
+    # خيارات الرد بناءً على الترتيب المخلوط
+    q_obj    = shuffled
 
     new_score = sess["score"] + (1 if is_right else 0)
     new_idx   = idx + 1
