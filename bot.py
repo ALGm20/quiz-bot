@@ -376,13 +376,6 @@ async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     # خلط ترتيب الخيارات لكل طالب بشكل مختلف
     shuffled_q = shuffle_options(q_obj, uid)
 
-    # وقت الانتهاء (15 ثانية فقط في وضع التقييم)
-    time_limit = ""
-    if sess["mode"] == "assessment":
-        time_limit = "\n⏱️ _لديك 15 ثانية للإجابة_"
-
-    text = text + time_limit
-
     try:
         await update.callback_query.edit_message_text(
             text, parse_mode="Markdown", reply_markup=question_keyboard(shuffled_q)
@@ -402,25 +395,9 @@ async def _send_question(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
 
 async def cb_answer(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     q   = update.callback_query
+    await q.answer()
     uid = update.effective_user.id
     sess = db.get_session(uid)
-
-    # فحص الوقت في وضع التقييم (15 ثانية)
-    if sess and sess["mode"] == "assessment":
-        import time as _t
-        session_row = db.get_session_time(uid)
-        if session_row and (_t.time() - session_row) > 15:
-            await q.answer("⏰ انتهى الوقت! تم الانتقال للسؤال التالي", show_alert=True)
-            new_idx = sess["idx"] + 1
-            db.update_session(uid, new_idx, sess["score"])
-            sess["idx"] = new_idx
-            if sess["idx"] >= sess["total"]:
-                await _finish_assessment(update, ctx, sess)
-            else:
-                await _send_question(update, ctx)
-            return
-
-    await q.answer()
 
     if not sess:
         await q.edit_message_text(
