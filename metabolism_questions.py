@@ -501,5 +501,17 @@ if __name__ == "__main__":
     from database import Database
     os.makedirs("/data", exist_ok=True)
     db = Database("/data/quiz_bot.db")
+
+    # امسح أسئلة هذا السكشن فقط قبل الإضافة لتجنب التكرار
+    with db._connect() as c:
+        c.execute("PRAGMA foreign_keys = OFF")
+        # احذف أسئلة سكشن العمليات الأيضية فقط
+        c.execute("""DELETE FROM questions WHERE section_id IN (
+            SELECT id FROM sections WHERE name='العمليات الأيضية'
+        )""")
+        c.execute("DELETE FROM sections WHERE name='العمليات الأيضية'")
+        c.execute("PRAGMA foreign_keys = ON")
+    print("🗑️ تم مسح الأسئلة القديمة للعمليات الأيضية")
+
     db.import_questions(METABOLISM_QUESTIONS)
     print(f"✅ تم إضافة {len(METABOLISM_QUESTIONS)} سؤال في سكشن العمليات الأيضية")
