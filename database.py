@@ -1,5 +1,7 @@
-import sqlite3, json, random
+import json
+import sqlite3
 from typing import Optional
+
 
 class Database:
     def __init__(self, path: str):
@@ -7,25 +9,27 @@ class Database:
         self._init()
 
     def _connect(self):
-        c = sqlite3.connect(self.path, check_same_thread=False)
-        c.row_factory = sqlite3.Row
-        c.execute("PRAGMA foreign_keys = ON")
-        return c
+        conn = sqlite3.connect(self.path, check_same_thread=False)
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA foreign_keys = ON")
+        return conn
 
     def _init(self):
-        with self._connect() as c:
-            c.executescript("""
+        with self._connect() as conn:
+            conn.executescript(
+                """
                 CREATE TABLE IF NOT EXISTS sections (
                     id          INTEGER PRIMARY KEY AUTOINCREMENT,
                     name        TEXT NOT NULL UNIQUE,
                     description TEXT,
-                    emoji       TEXT DEFAULT '📖',
+                    emoji       TEXT DEFAULT '🌿',
                     sort_order  INTEGER DEFAULT 0
                 );
 
                 CREATE TABLE IF NOT EXISTS questions (
                     id             INTEGER PRIMARY KEY AUTOINCREMENT,
                     section_id     INTEGER NOT NULL REFERENCES sections(id) ON DELETE CASCADE,
+                    display_order  INTEGER NOT NULL DEFAULT 0,
                     question_text  TEXT NOT NULL,
                     option_a       TEXT NOT NULL,
                     option_b       TEXT NOT NULL,
@@ -64,199 +68,243 @@ class Database:
                     total          INTEGER NOT NULL,
                     updated_at     TEXT DEFAULT (datetime('now'))
                 );
-            """)
+                """
+            )
 
-    # ── STUDENTS ──────────────────────────────────────────────────
+            columns = {
+                row["name"]
+                for row in conn.execute("PRAGMA table_info(questions)").fetchall()
+            }
+            if "display_order" not in columns:
+                conn.execute(
+                    "ALTER TABLE questions ADD COLUMN display_order INTEGER NOT NULL DEFAULT 0"
+                )
+                conn.execute(
+                    """
+                    UPDATE questions
+                    SET display_order = id
+                    WHERE display_order = 0
+                    """
+                )
 
     def register_new_student(self, full_name: str, telegram_id: int):
-        with self._connect() as c:
-            c.execute(
-                "INSERT OR IGNORE INTO students (full_name, telegram_id) VALUES (?,?)",
-                (full_name.strip(), telegram_id)
+        with self._connect() as conn:
+            conn.execute(
+                "INSERT OR IGNORE INTO students (full_name, telegram_id) VALUES (?, ?)",
+                (full_name.strip(), telegram_id),
             )
 
     def get_student_by_telegram(self, telegram_id: int):
-        with self._connect() as c:
-            return c.execute(
-                "SELECT * FROM students WHERE telegram_id=?", (telegram_id,)
+        with self._connect() as conn:
+            return conn.execute(
+                "SELECT * FROM students WHERE telegram_id=?",
+                (telegram_id,),
             ).fetchone()
 
-    # ── SECTION PROGRESS ──────────────────────────────────────────
-
     def get_section_progress(self, student_id: int, section_id: int):
-        """جلب تقدم الطالب في سكشن معين"""
-        with self._connect() as c:
-            return c.execute(
-                "SELECT * FROM section_progress WHERE student_id=? AND section_id=?",
-                (student_id, section_id)
+        with self._connect() as conn:
+            return conn.execute(
+                """
+                SELECT * FROM section_progress
+                WHERE student_id=? AND section_id=?
+                """,
+                (student_id, section_id),
             ).fetchone()
 
     def save_section_assessment(self, student_id: int, section_id: int, score: int, total: int):
-        """حفظ نتيجة التقييم لسكشن معين — لا يؤثر على بقية السكشنات"""
         pct = round((score / total) * 100) if total else 0
-        with self._connect() as c:
-            c.execute("""
-                INSERT INTO section_progress (student_id, section_id, assessed, score, total_q, pct, assessed_at)
-                VALUES (?,?,1,?,?,?,datetime('now'))
+        with self._connect() as conn:
+            conn.execute(
+                """
+                INSERT INTO section_progress
+                    (student_id, section_id, assessed, score, total_q, pct, assessed_at)
+                VALUES (?, ?, 1, ?, ?, ?, datetime('now'))
                 ON CONFLICT(student_id, section_id) DO UPDATE SET
-                    assessed=1, score=?, total_q=?, pct=?, assessed_at=datetime('now')
-            """, (student_id, section_id, score, total, pct, score, total, pct))
+                    assessed=1,
+                    score=?,
+                    total_q=?,
+                    pct=?,
+                    assessed_at=datetime('now')
+                """,
+                (student_id, section_id, score, total, pct, score, total, pct),
+            )
 
-    def can_reassess(self, student_id: int, section_id: int, days: int = 4) -> tuple:
-        """هل يمكن إعادة التقييم؟ يعيد (True/False, أيام_متبقية)"""
-        with self._connect() as c:
-            row = c.execute(
-                """SELECT assessed_at,
-                          CAST(julianday('now') - julianday(assessed_at) AS INTEGER) as days_passed
-                   FROM section_progress
-                   WHERE student_id=? AND section_id=? AND assessed=1""",
-                (student_id, section_id)
+    def can_reassess(self, student_id: int, section_id: int, days: int = 4):
+        with self._connect() as conn:
+            row = conn.execute(
+                """
+                SELECT CAST(julianday('now') - julianday(assessed_at) AS INTEGER) AS dp
+                FROM section_progress
+                WHERE student_id=? AND section_id=? AND assessed=1
+                """,
+                (student_id, section_id),
             ).fetchone()
+
         if not row:
             return True, 0
-        days_passed = row["days_passed"] or 0
+
+        days_passed = row["dp"] or 0
         if days_passed >= days:
             return True, 0
         return False, days - days_passed
 
-    def get_all_progress(self, student_id: int):
-        """كل تقدم الطالب عبر جميع السكشنات"""
-        with self._connect() as c:
-            return c.execute("""
-                SELECT sp.*, s.name as section_name, s.emoji
-                FROM section_progress sp
-                JOIN sections s ON sp.section_id = s.id
-                WHERE sp.student_id=?
-                ORDER BY s.sort_order, s.id
-            """, (student_id,)).fetchall()
-
-    def get_all_students_results(self):
-        """للداشبورد — كل الطلاب مع نتائجهم"""
-        with self._connect() as c:
-            students = c.execute(
-                "SELECT * FROM students ORDER BY full_name"
-            ).fetchall()
-            results = []
-            for st in students:
-                progress = c.execute("""
-                    SELECT sp.*, s.name as section_name
-                    FROM section_progress sp
-                    JOIN sections s ON sp.section_id = s.id
-                    WHERE sp.student_id=? AND sp.assessed=1
-                    ORDER BY s.sort_order, s.id
-                """, (st["id"],)).fetchall()
-                total_c = sum(p["score"] for p in progress)
-                total_q = sum(p["total_q"] for p in progress)
-                overall = round((total_c/total_q)*100) if total_q else 0
-                results.append({
-                    "name":     st["full_name"],
-                    "overall":  overall,
-                    "sections": [dict(p) for p in progress],
-                    "assessed_count": len(progress),
-                })
-            return results
-
-    # ── SECTIONS ──────────────────────────────────────────────────
-
     def get_sections(self):
-        with self._connect() as c:
-            return c.execute(
-                "SELECT * FROM sections ORDER BY sort_order, id"
+        with self._connect() as conn:
+            return conn.execute(
+                "SELECT * FROM sections ORDER BY sort_order ASC, id ASC"
             ).fetchall()
 
     def get_section(self, sec_id: int):
-        with self._connect() as c:
-            return c.execute(
-                "SELECT * FROM sections WHERE id=?", (sec_id,)
+        with self._connect() as conn:
+            return conn.execute(
+                "SELECT * FROM sections WHERE id=?",
+                (sec_id,),
             ).fetchone()
 
     def count_q(self, sec_id: int) -> int:
-        with self._connect() as c:
-            return c.execute(
-                "SELECT COUNT(*) FROM questions WHERE section_id=?", (sec_id,)
+        with self._connect() as conn:
+            return conn.execute(
+                "SELECT COUNT(*) FROM questions WHERE section_id=?",
+                (sec_id,),
             ).fetchone()[0]
 
-    # ── QUESTIONS ─────────────────────────────────────────────────
-
     def get_questions(self, sec_id: int, limit: Optional[int] = None):
-        with self._connect() as c:
-            rows = list(c.execute(
-                "SELECT * FROM questions WHERE section_id=? ORDER BY RANDOM()", (sec_id,)
-            ).fetchall())
+        return self.get_questions_ordered(sec_id, limit)
+
+    def get_questions_ordered(self, sec_id: int, limit: Optional[int] = None):
+        with self._connect() as conn:
+            rows = list(
+                conn.execute(
+                    """
+                    SELECT * FROM questions
+                    WHERE section_id=?
+                    ORDER BY display_order ASC, id ASC
+                    """,
+                    (sec_id,),
+                ).fetchall()
+            )
         return rows[:limit] if limit else rows
 
     def import_questions(self, data: list):
-        with self._connect() as c:
-            cache = {}
+        with self._connect() as conn:
+            section_cache = {}
+            order_cache = {}
+
             for item in data:
-                sname = item["section"].strip()
-                if sname not in cache:
-                    row = c.execute("SELECT id FROM sections WHERE name=?", (sname,)).fetchone()
+                section_name = item["section"].strip()
+                if section_name not in section_cache:
+                    row = conn.execute(
+                        "SELECT id FROM sections WHERE name=?",
+                        (section_name,),
+                    ).fetchone()
                     if row:
-                        cache[sname] = row["id"]
+                        section_cache[section_name] = row["id"]
                     else:
-                        cur = c.execute(
-                            "INSERT INTO sections (name, description, emoji) VALUES (?,?,?)",
-                            (sname, item.get("section_description",""), item.get("section_emoji","📖"))
-                        )
-                        cache[sname] = cur.lastrowid
-                c.execute(
-                    """INSERT INTO questions
-                       (section_id,question_text,option_a,option_b,option_c,option_d,
-                        correct_answer,explanation)
-                       VALUES (?,?,?,?,?,?,?,?)""",
-                    (cache[sname], item["question"],
-                     item["a"], item["b"], item["c"], item["d"],
-                     item["answer"].upper(), item.get("explanation",""))
+                        section_cache[section_name] = conn.execute(
+                            """
+                            INSERT INTO sections (name, description, emoji, sort_order)
+                            VALUES (?, ?, ?, ?)
+                            """,
+                            (
+                                section_name,
+                                item.get("section_description", ""),
+                                item.get("section_emoji", "🌿"),
+                                item.get("section_order", 0),
+                            ),
+                        ).lastrowid
+
+                order_cache[section_name] = order_cache.get(section_name, 0) + 1
+                display_order = item.get("order", order_cache[section_name])
+
+                conn.execute(
+                    """
+                    INSERT INTO questions (
+                        section_id,
+                        display_order,
+                        question_text,
+                        option_a,
+                        option_b,
+                        option_c,
+                        option_d,
+                        correct_answer,
+                        explanation
+                    )
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        section_cache[section_name],
+                        display_order,
+                        item["question"],
+                        item["a"],
+                        item["b"],
+                        item["c"],
+                        item["d"],
+                        item["answer"].upper(),
+                        item.get("explanation", ""),
+                    ),
                 )
 
-    # ── ACTIVE SESSION ─────────────────────────────────────────────
-
-    def save_session(self, user_id: int, mode: str, sec_id,
-                     questions: list, idx: int, score: int, total: int):
-        qs = [dict(q) for q in questions]
-        with self._connect() as c:
-            c.execute("""
+    def save_session(self, user_id, mode, sec_id, questions, idx, score, total):
+        payload = [dict(question) for question in questions]
+        with self._connect() as conn:
+            conn.execute(
+                """
                 INSERT OR REPLACE INTO active_sessions
-                (user_id,mode,sec_id,questions_json,current_idx,score,total,updated_at)
-                VALUES (?,?,?,?,?,?,?,datetime('now'))
-            """, (user_id, mode, sec_id,
-                  json.dumps(qs, ensure_ascii=False), idx, score, total))
+                    (user_id, mode, sec_id, questions_json, current_idx, score, total, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+                """,
+                (
+                    user_id,
+                    mode,
+                    sec_id,
+                    json.dumps(payload, ensure_ascii=False),
+                    idx,
+                    score,
+                    total,
+                ),
+            )
 
-    def get_session(self, user_id: int):
-        with self._connect() as c:
-            row = c.execute(
-                "SELECT * FROM active_sessions WHERE user_id=?", (user_id,)
+    def get_session(self, user_id):
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM active_sessions WHERE user_id=?",
+                (user_id,),
             ).fetchone()
+
         if not row:
             return None
+
         return {
-            "mode":   row["mode"],
+            "mode": row["mode"],
             "sec_id": row["sec_id"],
-            "qs":     json.loads(row["questions_json"]),
-            "idx":    row["current_idx"],
-            "score":  row["score"],
-            "total":  row["total"],
+            "qs": json.loads(row["questions_json"]),
+            "idx": row["current_idx"],
+            "score": row["score"],
+            "total": row["total"],
         }
 
-    def update_session(self, user_id: int, idx: int, score: int):
-        with self._connect() as c:
-            c.execute("""
+    def update_session(self, user_id, idx, score):
+        with self._connect() as conn:
+            conn.execute(
+                """
                 UPDATE active_sessions
                 SET current_idx=?, score=?, updated_at=datetime('now')
                 WHERE user_id=?
-            """, (idx, score, user_id))
+                """,
+                (idx, score, user_id),
+            )
 
-    def delete_session(self, user_id: int):
-        with self._connect() as c:
-            c.execute("DELETE FROM active_sessions WHERE user_id=?", (user_id,))
-
-    # ── STATS ─────────────────────────────────────────────────────
+    def delete_session(self, user_id):
+        with self._connect() as conn:
+            conn.execute(
+                "DELETE FROM active_sessions WHERE user_id=?",
+                (user_id,),
+            )
 
     def stats(self):
-        with self._connect() as c:
+        with self._connect() as conn:
             return {
-                "sections":  c.execute("SELECT COUNT(*) FROM sections").fetchone()[0],
-                "questions": c.execute("SELECT COUNT(*) FROM questions").fetchone()[0],
-                "students":  c.execute("SELECT COUNT(*) FROM students").fetchone()[0],
+                "sections": conn.execute("SELECT COUNT(*) FROM sections").fetchone()[0],
+                "questions": conn.execute("SELECT COUNT(*) FROM questions").fetchone()[0],
+                "students": conn.execute("SELECT COUNT(*) FROM students").fetchone()[0],
             }
