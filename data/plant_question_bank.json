@@ -1,0 +1,4962 @@
+[
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Who introduced the term \"Biosystematics\"?",
+    "a": "Carl Linnaeus",
+    "b": "Charles Darwin",
+    "c": "Camp and Gilly",
+    "d": "George Bentham",
+    "answer": "C",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#1"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Which of the following is a key feature of \"Alpha taxonomy\"?",
+    "a": "Focus on DNA sequence data",
+    "b": "Based mainly on morphology and description",
+    "c": "Involves the use of cladograms",
+    "d": "Examines the evolutionary rates of species",
+    "answer": "B",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#2"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "What does \"Biosystematics\" primarily focus on?",
+    "a": "The study of animal genetics",
+    "b": "The genetic relationships of plants",
+    "c": "The study of human impact on plant life",
+    "d": "The history of plant domestication",
+    "answer": "B",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#3"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "What is the main purpose of \"Identification\" in taxonomy?",
+    "a": "To describe plant features",
+    "b": "To group plants into categories",
+    "c": "To determine the plant's relationship to known taxa",
+    "d": "To test a plant's resistance to diseases",
+    "answer": "C",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#4"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Which classification system is based on the theory of evolution and relationships by descent?",
+    "a": "Artificial classification",
+    "b": "Natural classification",
+    "c": "Phyletic classification",
+    "d": "Cladistic classification",
+    "answer": "C",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#5"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "What does \"Cladistic classification\" use to determine plant relationships?",
+    "a": "Geographical distribution",
+    "b": "Evolutionary character analysis",
+    "c": "Photosynthetic efficiency",
+    "d": "Flowering time",
+    "answer": "B",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#6"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Who introduced binomial nomenclature?",
+    "a": "Theophrastus",
+    "b": "Linnaeus",
+    "c": "Darwin",
+    "d": "Mendel",
+    "answer": "B",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#18"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Which classification system uses reproductive parts as the primary criterion?",
+    "a": "Natural",
+    "b": "Artificial",
+    "c": "Phyletic",
+    "d": "Cladistic",
+    "answer": "B",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#20"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The term \"taxon\" refers to:",
+    "a": "A taxonomic rank",
+    "b": "A group of organisms",
+    "c": "A type of character",
+    "d": "A classification system",
+    "answer": "B",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#21"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Alpha taxonomy focuses on:",
+    "a": "Evolutionary relationships",
+    "b": "Description and identification",
+    "c": "Molecular data",
+    "d": "Conservation",
+    "answer": "B",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#22"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Which system of classification is based on evolutionary relationships?",
+    "a": "Artificial",
+    "b": "Natural",
+    "c": "Phyletic",
+    "d": "Linnaean",
+    "answer": "C",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#23"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The APG classification is an example of:",
+    "a": "Artificial system",
+    "b": "Cladistic system",
+    "c": "Phyletic system",
+    "d": "Numerical system",
+    "answer": "B",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#24"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The correct order of taxonomic ranks is:",
+    "a": "Kingdom → Order → Class → Family",
+    "b": "Kingdom → Division → Class→ Order",
+    "c": "Kingdom → Family→ Order→ Class",
+    "d": "Kingdom→ Class → Division → Order",
+    "answer": "B",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#25"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Which of the following is NOT a component of taxonomy?",
+    "a": "Nomenclature",
+    "b": "Identification",
+    "c": "Photosynthesis",
+    "d": "Classification",
+    "answer": "C",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#26"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The term \"systematics\" includes:",
+    "a": "Only taxonomy",
+    "b": "Taxonomy and evolution",
+    "c": "Only phylogeny",
+    "d": "Only identification",
+    "answer": "B",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#27"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The term taxonomy was coined by:",
+    "a": "Carl Linnaeus",
+    "b": "Charles Darwin",
+    "c": "Augustin Pyramus de Candolle",
+    "d": "John Ray",
+    "answer": "C",
+    "order": 16,
+    "source_files": [
+      "MCQ TX 2.docx#1"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Taxonomy deals with:",
+    "a": "Study of plant physiology",
+    "b": "Identification, description, classification and naming of plants",
+    "c": "Study of plant diseases",
+    "d": "Study of plant ecology",
+    "answer": "B",
+    "order": 17,
+    "source_files": [
+      "MCQ TX 2.docx#2"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The term \"Taxonomy\" was coined by:",
+    "a": "Carolus Linnaeus",
+    "b": "Theophrastus",
+    "c": "De Candolle",
+    "d": "Bentham",
+    "answer": "C",
+    "order": 18,
+    "source_files": [
+      "MCQ TX-1 (2).docx#1",
+      "MCQ TX-1 HW (2).docx#1",
+      "MCQ TX-1 HW.docx#1"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The word taxonomy is derived from Greek words meaning:",
+    "a": "Plant classification",
+    "b": "Lawful arrangement",
+    "c": "Scientific naming",
+    "d": "Plant grouping",
+    "answer": "B",
+    "order": 19,
+    "source_files": [
+      "MCQ TX-1 (2).docx#2",
+      "MCQ TX-1 HW (2).docx#2",
+      "MCQ TX-1 HW.docx#2"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The fundamental aim of systematics is to:",
+    "a": "Name plants only",
+    "b": "Discover evolutionary relationships",
+    "c": "Study plant anatomy",
+    "d": "Collect herbarium specimens'",
+    "answer": "B",
+    "order": 20,
+    "source_files": [
+      "MCQ TX-1 (2).docx#6",
+      "MCQ TX-1 HW (2).docx#6",
+      "MCQ TX-1 HW.docx#6"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The term Biosystematics was introduced by:",
+    "a": "Linnaeus",
+    "b": "Turrill",
+    "c": "Camp and Gilly",
+    "d": "Mayr",
+    "answer": "C",
+    "order": 21,
+    "source_files": [
+      "MCQ TX-1 (2).docx#7",
+      "MCQ TX-1 HW (2).docx#7",
+      "MCQ TX-1 HW.docx#7"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Description in taxonomy refers to:",
+    "a": "Naming a plant",
+    "b": "Writing features of a taxon",
+    "c": "Arranging taxa",
+    "d": "Studying evolution",
+    "answer": "B",
+    "order": 22,
+    "source_files": [
+      "MCQ TX-1 (2).docx#9",
+      "MCQ TX-1 HW (2).docx#9",
+      "MCQ TX-1 HW.docx#9"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The rules of plant nomenclature are governed by the:",
+    "a": "ICBN",
+    "b": "ICNafp",
+    "c": "APG",
+    "d": "Both A and B",
+    "answer": "D",
+    "order": 23,
+    "source_files": [
+      "MCQ TX-1 (2).docx#13",
+      "MCQ TX-1 HW (2).docx#13",
+      "MCQ TX-1 HW.docx#13"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "In binomial nomenclature, the first word represents the:",
+    "a": "Species",
+    "b": "Family",
+    "c": "Genus",
+    "d": "Order",
+    "answer": "C",
+    "order": 24,
+    "source_files": [
+      "MCQ TX-1 (2).docx#15",
+      "MCQ TX-1 HW (2).docx#15",
+      "MCQ TX-1 HW.docx#15"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The correct taxonomic hierarchy from higher to lower is:",
+    "a": "Species → Genus → Family → Order",
+    "b": "Kingdom → Division → Class → Order → Family → Genus → Species",
+    "c": "Genus → Species → Family → Order",
+    "d": "Division → Kingdom → Class → Species",
+    "answer": "B",
+    "order": 25,
+    "source_files": [
+      "MCQ TX-1 (2).docx#20",
+      "MCQ TX-1 HW (2).docx#20",
+      "MCQ TX-1 HW.docx#20"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Artificial classification was first established by:",
+    "a": "Bentham and Hooker",
+    "b": "Linnaeus",
+    "c": "Engler",
+    "d": "Bessey",
+    "answer": "B",
+    "order": 26,
+    "source_files": [
+      "MCQ TX-1 (2).docx#21",
+      "MCQ TX-1 HW (2).docx#21",
+      "MCQ TX-1 HW.docx#21"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Natural classification was developed by:",
+    "a": "Linnaeus",
+    "b": "Eichler",
+    "c": "Bentham and Hooker",
+    "d": "Cronquist",
+    "answer": "C",
+    "order": 27,
+    "source_files": [
+      "MCQ TX-1 (2).docx#22",
+      "MCQ TX-1 HW (2).docx#22",
+      "MCQ TX-1 HW.docx#22"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The first clearly phyletic system of classification was produced by:",
+    "a": "Linnaeus",
+    "b": "Eichler",
+    "c": "Theophrastus",
+    "d": "Mayr",
+    "answer": "B",
+    "order": 28,
+    "source_files": [
+      "MCQ TX-1 (2).docx#23",
+      "MCQ TX-1 HW (2).docx#23",
+      "MCQ TX-1 HW.docx#23"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The APG system is based mainly on:",
+    "a": "Floral colour",
+    "b": "Leaf shape",
+    "c": "DNA sequence data",
+    "d": "Plant height",
+    "answer": "C",
+    "order": 29,
+    "source_files": [
+      "MCQ TX-1 (2).docx#24"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Beta taxonomy focuses on:",
+    "a": "Speciation",
+    "b": "Classification of taxa",
+    "c": "Molecular data",
+    "d": "Hybridization",
+    "answer": "B",
+    "order": 30,
+    "source_files": [
+      "MCQ TX-1 (2).docx#26",
+      "MCQ TX-1 HW (2).docx#26",
+      "MCQ TX-1 HW.docx#26"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Gamma taxonomy studies:",
+    "a": "Intraspecific variation and evolution",
+    "b": "Naming rules",
+    "c": "Herbarium techniques",
+    "d": "Only morphology",
+    "answer": "A",
+    "order": 31,
+    "source_files": [
+      "MCQ TX-1 (2).docx#27",
+      "MCQ TX-1 HW (2).docx#27",
+      "MCQ TX-1 HW.docx#27"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Omega taxonomy uses data from:",
+    "a": "Cytology and molecular biology",
+    "b": "Only morphology",
+    "c": "Only anatomy",
+    "d": "Only ecology",
+    "answer": "A",
+    "order": 32,
+    "source_files": [
+      "MCQ TX-1 (2).docx#28",
+      "MCQ TX-1 HW (2).docx#28",
+      "MCQ TX-1 HW.docx#28"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The book \"Species Plantarum\" (1753) was published by:",
+    "a": "De Candolle",
+    "b": "Bentham",
+    "c": "Linnaeus",
+    "d": "Eichler",
+    "answer": "C",
+    "order": 33,
+    "source_files": [
+      "MCQ TX-1 (2).docx#30",
+      "MCQ TX-1 HW (2).docx#30",
+      "MCQ TX-1 HW.docx#30"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The APG system is based mainly on:",
+    "a": "Floral color",
+    "b": "Leaf shape",
+    "c": "DNA sequence data",
+    "d": "Plant height",
+    "answer": "C",
+    "order": 34,
+    "source_files": [
+      "MCQ TX-1 HW (2).docx#24",
+      "MCQ TX-1 HW.docx#24"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The four main components of taxonomy (DINC) include:",
+    "a": "Description, Identification, Nomenclature, Classification",
+    "b": "Division, Identification, Naming, Categorization",
+    "c": "Description, Inheritance, Naming, Classification",
+    "d": "Documentation, Identification, Naming, Categorization",
+    "answer": "A",
+    "order": 35,
+    "source_files": [
+      "MCQ TX-1 (2).docx#3",
+      "MCQ TX-1 HW (2).docx#3",
+      "MCQ TX-1 HW.docx#3",
+      "Training 1          MCQ (2).docx#1"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Plant taxonomy is considered a major part of:",
+    "a": "Morphology",
+    "b": "Anatomy",
+    "c": "Systematics",
+    "d": "Ecology",
+    "answer": "C",
+    "order": 36,
+    "source_files": [
+      "MCQ TX-1 (2).docx#4",
+      "Training 1          MCQ (2).docx#2"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Systematics includes:",
+    "a": "Only classification",
+    "b": "Only nomenclature",
+    "c": "Taxonomy and phylogeny",
+    "d": "Only identification",
+    "answer": "C",
+    "order": 37,
+    "source_files": [
+      "MCQ TX-1 (2).docx#5",
+      "MCQ TX-1 HW (2).docx#5",
+      "MCQ TX-1 HW.docx#5",
+      "Training 1          MCQ (2).docx#3"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "The fundamental aim of to systematics is:",
+    "a": "Name plants only",
+    "b": "Discover evolutionary relationships",
+    "c": "Study plant anatomy",
+    "d": "Collect herbarium specimens'",
+    "answer": "B",
+    "order": 38,
+    "source_files": [
+      "Training 1          MCQ (2).docx#4"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Biosystematics mainly studies:",
+    "a": "Only morphology",
+    "b": "Chromosome number and hybridization",
+    "c": "Only anatomy",
+    "d": "Only ecology",
+    "answer": "B",
+    "order": 39,
+    "source_files": [
+      "MCQ TX-1 (2).docx#8",
+      "MCQ TX-1 HW (2).docx#8",
+      "MCQ TX-1 HW.docx#8",
+      "Training 1          MCQ (2).docx#5"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "A dichotomous key consists of:",
+    "a": "Multiple access points",
+    "b": "Two contrasting statements",
+    "c": "Images only",
+    "d": "DNA sequences",
+    "answer": "B",
+    "order": 40,
+    "source_files": [
+      "MCQ TX-1 (2).docx#10",
+      "MCQ TX-1 HW (2).docx#10",
+      "MCQ TX-1 HW.docx#10",
+      "Training 1          MCQ (2).docx#6"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "A polyclave key is also known as:",
+    "a": "Single-access key",
+    "b": "Dichotomous key",
+    "c": "Multi-access key",
+    "d": "Floral key",
+    "answer": "C",
+    "order": 41,
+    "source_files": [
+      "MCQ TX-1 (2).docx#11",
+      "MCQ TX-1 HW (2).docx#11",
+      "MCQ TX-1 HW.docx#11",
+      "Training 1          MCQ (2).docx#7"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Binomial nomenclature was introduced by:",
+    "a": "De Candolle",
+    "b": "Bentham",
+    "c": "Carolus Linnaeus",
+    "d": "Eichler",
+    "answer": "C",
+    "order": 42,
+    "source_files": [
+      "MCQ TX-1 (2).docx#14",
+      "MCQ TX-1 HW (2).docx#14",
+      "MCQ TX-1 HW.docx#14",
+      "Training 1          MCQ (2).docx#8"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Classification is a process of:",
+    "a": "Naming organisms",
+    "b": "Grouping and ranking organisms",
+    "c": "Describing organs",
+    "d": "Studying tissues",
+    "answer": "B",
+    "order": 43,
+    "source_files": [
+      "MCQ TX-1 (2).docx#18",
+      "MCQ TX-1 HW (2).docx#18",
+      "MCQ TX-1 HW.docx#18",
+      "Training 1          MCQ (2).docx#10"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "A taxon is:",
+    "a": "A plant organ",
+    "b": "A classification rank",
+    "c": "A group at a given rank",
+    "d": "A chromosome",
+    "answer": "C",
+    "order": 44,
+    "source_files": [
+      "MCQ TX-1 (2).docx#19",
+      "MCQ TX-1 HW (2).docx#19",
+      "MCQ TX-1 HW.docx#19",
+      "Training 1          MCQ (2).docx#11"
+    ]
+  },
+  {
+    "section": "التصنيف النباتي والنظاميات",
+    "section_order": 1,
+    "section_emoji": "🧭",
+    "question": "Alpha taxonomy mainly deals with:",
+    "a": "Evolution",
+    "b": "Cytology",
+    "c": "Morphological description",
+    "d": "DNA analysis",
+    "answer": "C",
+    "order": 45,
+    "source_files": [
+      "MCQ TX-1 (2).docx#25",
+      "MCQ TX-1 HW (2).docx#25",
+      "MCQ TX-1 HW.docx#25",
+      "Training 1          MCQ (2).docx#12"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The scientific name of mango is written as:",
+    "a": "Mangifera Indica",
+    "b": "Mangifera indica Linn.",
+    "c": "Mangifera indica",
+    "d": "Mangifera indica L.",
+    "answer": "D",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#19"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "Which plant is a total parasite?",
+    "a": "Viscum",
+    "b": "Cuscuta",
+    "c": "Orchid",
+    "d": "Ficus",
+    "answer": "B",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#34"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "A plant with a trunk and branches is called a:",
+    "a": "Shrub",
+    "b": "Tree",
+    "c": "Herb",
+    "d": "Vine",
+    "answer": "B",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#57"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "A- plant that lives for more than two years is called:",
+    "a": "Annual",
+    "b": "Biennial",
+    "c": "Perennial",
+    "d": "Ephemeral",
+    "answer": "C",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#61"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"canescent\" refers to a surface covered with:",
+    "a": "Glands",
+    "b": "Gray hairs",
+    "c": "Scales",
+    "d": "Waxy coating",
+    "answer": "B",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#141"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"hirsute\" describes a surface with:",
+    "a": "Long, stiff hairs",
+    "b": "Short, velvety hairs",
+    "c": "Star-shaped hairs",
+    "d": "Glandular hairs",
+    "answer": "A",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#147"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"lanate\" describes a surface with:",
+    "a": "Woolly hairs",
+    "b": "Glands",
+    "c": "Scales",
+    "d": "Waxy coating",
+    "answer": "A",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#152"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"glandular-punctate\" describes a surface with:",
+    "a": "Immersed glands",
+    "b": "Stiff hairs",
+    "c": "Scales",
+    "d": "Waxy coating",
+    "answer": "A",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#161"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"stellate\" describes hairs that are:",
+    "a": "Star-shaped",
+    "b": "Long and stiff",
+    "c": "Short and velvety",
+    "d": "Glandular",
+    "answer": "A",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#164"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"hispid\" describes a surface with:",
+    "a": "Short, stiff hairs",
+    "b": "Long, soft hairs",
+    "c": "Glands",
+    "d": "Scales",
+    "answer": "A",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#171"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"pilose\" describes a surface with:",
+    "a": "Long, scattered hairs",
+    "b": "Short, dense hairs",
+    "c": "Glands",
+    "d": "Scales",
+    "answer": "A",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#173"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"scabrous\" describes a surface that is:",
+    "a": "Rough",
+    "b": "Smooth",
+    "c": "Waxy",
+    "d": "Glandular",
+    "answer": "A",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#175"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"puberulent\" describes a surface with:",
+    "a": "Minute soft hairs",
+    "b": "Long stiff hairs",
+    "c": "Glands",
+    "d": "Scales",
+    "answer": "A",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#177"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"velutinous\" describes a surface with:",
+    "a": "Short velvety hairs",
+    "b": "Long stiff hairs",
+    "c": "Glands",
+    "d": "Scales",
+    "answer": "A",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#183"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The term \"lepidote\" describes a surface covered with:",
+    "a": "Scales",
+    "b": "Hairs",
+    "c": "Glands",
+    "d": "Waxy coating",
+    "answer": "A",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#186"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "In Bougainvillea, the showy structures are:",
+    "a": "Petals",
+    "b": "Sepals",
+    "c": "Bracts",
+    "d": "Stamens",
+    "answer": "C",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#212"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "Plant morphology is the study of:",
+    "a": "Internal structure of plants",
+    "b": "Chemical composition of plants",
+    "c": "External structure of plants",
+    "d": "Genetic structure of plants",
+    "answer": "C",
+    "order": 17,
+    "source_files": [
+      "MCQ TX 2.docx#3"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "Plant anatomy deals with the study of:",
+    "a": "External plant structure",
+    "b": "Internal plant structure",
+    "c": "Plant classification",
+    "d": "Plant ecology",
+    "answer": "B",
+    "order": 18,
+    "source_files": [
+      "MCQ TX 2.docx#4"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "Phoenix dactylifera is an example of:",
+    "a": "Herb",
+    "b": "Shrub",
+    "c": "Tree",
+    "d": "Subshrub",
+    "answer": "C",
+    "order": 19,
+    "source_files": [
+      "MCQ TX 2.docx#13"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The formal naming of taxa according to prescribed rules is called:",
+    "a": "Classification",
+    "b": "Identification",
+    "c": "Description",
+    "d": "Nomenclature",
+    "answer": "D",
+    "order": 20,
+    "source_files": [
+      "MCQ TX-1 (2).docx#12",
+      "MCQ TX-1 HW (2).docx#12",
+      "MCQ TX-1 HW.docx#12"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "In writing scientific names, the genus name is written:",
+    "a": "In lowercase",
+    "b": "In uppercase",
+    "c": "Capitalized",
+    "d": "Bold only",
+    "answer": "C",
+    "order": 21,
+    "source_files": [
+      "MCQ TX-1 (2).docx#16"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The father of modern Botany is:",
+    "a": "Linnaeus",
+    "b": "Theophrastus",
+    "c": "Caesalpino",
+    "d": "De Candolle",
+    "answer": "B",
+    "order": 22,
+    "source_files": [
+      "MCQ TX-1 (2).docx#29",
+      "MCQ TX-1 HW (2).docx#29",
+      "MCQ TX-1 HW.docx#29"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "In writing scientific names, the genus starts with:",
+    "a": "In lowercase",
+    "b": "In uppercase",
+    "c": "A capital letter",
+    "d": "Bold only",
+    "answer": "C",
+    "order": 23,
+    "source_files": [
+      "MCQ TX-1 HW (2).docx#16",
+      "MCQ TX-1 HW.docx#16"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "A weak plant that uses support to grow upward is called:",
+    "a": "Creeper",
+    "b": "Trailer",
+    "c": "Climber",
+    "d": "Runner",
+    "answer": "C",
+    "order": 24,
+    "source_files": [
+      "MCQ-3.docx#18"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "The structure that receives pollen grains is the:",
+    "a": "Ovary",
+    "b": "Filament",
+    "c": "Stigma",
+    "d": "Sepal",
+    "answer": "C",
+    "order": 25,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#9",
+      "MCQ Flower-5.docx#9",
+      "Training 1          MCQ (2).docx#5"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "Malva parviflora is an example of:",
+    "a": "Biennial",
+    "b": "Perennial",
+    "c": "Annual",
+    "d": "Shrub",
+    "answer": "C",
+    "order": 26,
+    "source_files": [
+      "MCQ TX 2.docx#15",
+      "Training 1          MCQ (2).docx#6"
+    ]
+  },
+  {
+    "section": "مورفولوجيا النبات العامة",
+    "section_order": 2,
+    "section_emoji": "🌱",
+    "question": "Phoenix dactylifera is the scientific name of:",
+    "a": "Mango",
+    "b": "Date palm",
+    "c": "Wheat",
+    "d": "Rice",
+    "answer": "B",
+    "order": 27,
+    "source_files": [
+      "MCQ TX-1 (2).docx#17",
+      "MCQ TX-1 HW (2).docx#17",
+      "MCQ TX-1 HW.docx#17",
+      "Training 1          MCQ (2).docx#9"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "The term \"suffrutescent\" refers to a plant that is:",
+    "a": "Herbaceous",
+    "b": "Woody only at the base",
+    "c": "Climbing",
+    "d": "Aquatic",
+    "answer": "B",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#16"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a dicot?",
+    "a": "Wheat",
+    "b": "Rice",
+    "c": "Pea",
+    "d": "Corn",
+    "answer": "C",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#38"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which is a monocotyledonous plant?",
+    "a": "Bean",
+    "b": "Sunflower",
+    "c": "Onion",
+    "d": "Rose",
+    "answer": "C",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#40"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which plant is an example of a biennial?",
+    "a": "Wheat",
+    "b": "Carrot",
+    "c": "Oak tree",
+    "d": "Bamboo",
+    "answer": "B",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#43"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Ephemerals complete their life cycle in:",
+    "a": "One growing season",
+    "b": "Two years",
+    "c": "Several years",
+    "d": "Decades",
+    "answer": "A",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#45"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is NOT a vegetative organ?",
+    "a": "Root",
+    "b": "Stem",
+    "c": "Leaf",
+    "d": "Flower",
+    "answer": "D",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#47"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which is a characteristic of monocots?",
+    "a": "Taproot system",
+    "b": "Net-like venation",
+    "c": "Flower parts in multiples of 4 or 5",
+    "d": "Parallel venation",
+    "answer": "D",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#50"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "The term \"herbaceous\" describes plants with:",
+    "a": "Woody stems",
+    "b": "Non-woody stems",
+    "c": "No leaves",
+    "d": "Underground stems",
+    "answer": "B",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#55"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which plant is a woody perennial?",
+    "a": "Tomato",
+    "b": "Oak tree",
+    "c": "Wheat",
+    "d": "Sunflower",
+    "answer": "B",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#56"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a subshrub?",
+    "a": "Rose",
+    "b": "Lavender",
+    "c": "Bamboo",
+    "d": "Pine",
+    "answer": "B",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#58"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "The term \"vine\" refers to a plant with:",
+    "a": "Weak, climbing stems",
+    "b": "Thick, woody trunks",
+    "c": "No leaves",
+    "d": "Only underground stems",
+    "answer": "A",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#59"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which plant is an example of an ephemeral?",
+    "a": "Oak",
+    "b": "Boerhavia repens",
+    "c": "Pine",
+    "d": "Bamboo",
+    "answer": "B",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#60"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a characteristic of vines?",
+    "a": "Weak stems",
+    "b": "Climbing habit",
+    "c": "Herbaceous or woody",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#95"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a characteristic of shrubs?",
+    "a": "Multiple stems",
+    "b": "Perennial growth",
+    "c": "Woody tissue",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#97"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "The term \"tree\" refers to a plant with:",
+    "a": "A single main stem",
+    "b": "Woody growth",
+    "c": "Height over 3 meters",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#98"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a characteristic of herbs?",
+    "a": "Non-woody stems",
+    "b": "Short lifespan",
+    "c": "Seasonal growth",
+    "d": "All of the above",
+    "answer": "A",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#99"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "The term \"annual\" refers to a plant that completes its life cycle in:",
+    "a": "One year",
+    "b": "Two years",
+    "c": "Several years",
+    "d": "Decades",
+    "answer": "A",
+    "order": 17,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#100"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a characteristic of biennials?",
+    "a": "Vegetative growth in the first year",
+    "b": "Flowering in the second year",
+    "c": "Death after seeding",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 18,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#101"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "The term \"perennial\" refers to a plant that lives for:",
+    "a": "One year",
+    "b": "Two years",
+    "c": "More than two years",
+    "d": "One growing season",
+    "answer": "C",
+    "order": 19,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#102"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a characteristic of monocarpic plants?",
+    "a": "Flower once and die",
+    "b": "Flower multiple times",
+    "c": "No flowers",
+    "d": "Asexual reproduction",
+    "answer": "A",
+    "order": 20,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#103"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Qualitative traits are usually controlled by:",
+    "a": "Many genes",
+    "b": "Environmental factors only",
+    "c": "One or few genes",
+    "d": "Climate",
+    "answer": "C",
+    "order": 21,
+    "source_files": [
+      "MCQ TX 2.docx#7"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Quantitative traits are generally:",
+    "a": "Controlled by a single gene",
+    "b": "Polygenic and measurable numerically",
+    "c": "Not inherited",
+    "d": "Unaffected by environment",
+    "answer": "B",
+    "order": 22,
+    "source_files": [
+      "MCQ TX 2.docx#8"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "A plant completing its life cycle in one year is called:",
+    "a": "Biennial",
+    "b": "Perennial",
+    "c": "Annual",
+    "d": "Shrub",
+    "answer": "C",
+    "order": 23,
+    "source_files": [
+      "MCQ TX 2.docx#14"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Monocot plants have:",
+    "a": "Two cotyledons",
+    "b": "Tap root system",
+    "c": "Parallel venation",
+    "d": "Reticulate venation",
+    "answer": "C",
+    "order": 24,
+    "source_files": [
+      "MCQ TX 2.docx#16"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a vegetative organ?",
+    "a": "Flower",
+    "b": "Fruit",
+    "c": "Leaf",
+    "d": "Seed",
+    "answer": "C",
+    "order": 25,
+    "source_files": [
+      "MCQ TX 2.docx#5",
+      "Training 1          MCQ (2).docx#1"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Which of the following is a reproductive organ?",
+    "a": "Root",
+    "b": "Stem",
+    "c": "Leaf",
+    "d": "Flower",
+    "answer": "D",
+    "order": 26,
+    "source_files": [
+      "MCQ TX 2.docx#6",
+      "Training 1          MCQ (2).docx#2"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Angiosperms are characterized by:",
+    "a": "Naked seeds",
+    "b": "Seeds enclosed within a fruit",
+    "c": "Absence of flowers",
+    "d": "Cone-bearing structures only",
+    "answer": "B",
+    "order": 27,
+    "source_files": [
+      "MCQ TX 2.docx#9",
+      "Training 1          MCQ (2).docx#3"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Gymnosperms are plants that:",
+    "a": "Have flowers and fruits",
+    "b": "Have seeds enclosed in ovary",
+    "c": "Have naked seeds",
+    "d": "Produce spores only",
+    "answer": "C",
+    "order": 28,
+    "source_files": [
+      "MCQ TX 2.docx#10",
+      "Training 1          MCQ (2).docx#4"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "A shrub is defined as:",
+    "a": "Tall plant with single trunk",
+    "b": "Short woody plant with several stems from ground level",
+    "c": "Non-woody seasonal plant",
+    "d": "Climbing plant",
+    "answer": "B",
+    "order": 29,
+    "source_files": [
+      "MCQ TX 2.docx#12",
+      "Training 1          MCQ (2).docx#5"
+    ]
+  },
+  {
+    "section": "العادات النباتية ودورة الحياة",
+    "section_order": 3,
+    "section_emoji": "🌿",
+    "question": "Dicot plants usually have:",
+    "a": "Fibrous root system",
+    "b": "Parallel venation",
+    "c": "Flower parts in multiples of three",
+    "d": "Tap root system",
+    "answer": "D",
+    "order": 30,
+    "source_files": [
+      "MCQ TX 2.docx#17",
+      "Training 1          MCQ (2).docx#7"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "What type of root system do monocots typically have?",
+    "a": "Taproot",
+    "b": "Fibrous",
+    "c": "Adventitious",
+    "d": "Buttress",
+    "answer": "B",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#8"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Which of the following is an example of a fusiform root?",
+    "a": "Carrot",
+    "b": "Radish",
+    "c": "Turnip",
+    "d": "Sweet potato",
+    "answer": "B",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#9"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Pneumatophores are specialized roots for:",
+    "a": "Storage",
+    "b": "Gaseous exchange",
+    "c": "Parasitism",
+    "d": "Climbing",
+    "answer": "B",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#10"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Haustoria roots are associated with:",
+    "a": "Epiphytes",
+    "b": "Parasites",
+    "c": "Mangroves",
+    "d": "Aquatic plants",
+    "answer": "B",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#11"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Epiphytic roots are found in:",
+    "a": "Cuscuta",
+    "b": "Orchids",
+    "c": "Mangroves",
+    "d": "Ficus",
+    "answer": "B",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#30"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "A plant with negatively geotropic roots is:",
+    "a": "Avicennia",
+    "b": "Radish",
+    "c": "Carrot",
+    "d": "Potato",
+    "answer": "A",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#35"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Buttress roots are common in:",
+    "a": "Grasses",
+    "b": "Mangroves",
+    "c": "Cacti",
+    "d": "Epiphytes",
+    "answer": "B",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#36"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "The term \"adventitious\" refers to roots arising from:",
+    "a": "Radicle",
+    "b": "Stem or leaves",
+    "c": "Only seeds",
+    "d": "Flowers",
+    "answer": "B",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#51"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Which root type is found in Ficus for additional support?",
+    "a": "Pneumatophores",
+    "b": "Prop roots",
+    "c": "Haustoria",
+    "d": "Buttress roots",
+    "answer": "B",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#52"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "A plant with a globular root modification is:",
+    "a": "Radish",
+    "b": "Turnip",
+    "c": "Carrot",
+    "d": "Sweet potato",
+    "answer": "B",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#53"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Which of the following is NOT a type of root modification?",
+    "a": "Storage",
+    "b": "Photosynthetic",
+    "c": "Respiratory",
+    "d": "Reproductive",
+    "answer": "D",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#62"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "The term \"haustoria\" is associated with:",
+    "a": "Epiphytes",
+    "b": "Parasites",
+    "c": "Mangroves",
+    "d": "Aquatic plants",
+    "answer": "B",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#63"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Which plant has a taproot system?",
+    "a": "Grass",
+    "b": "Wheat",
+    "c": "Carrot",
+    "d": "Corn",
+    "answer": "C",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#64"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "The term \"velamen\" is associated with:",
+    "a": "Orchids",
+    "b": "Cuscuta",
+    "c": "Mangroves",
+    "d": "Grasses",
+    "answer": "A",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#65"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "The term \"contractile roots\" refers to roots that:",
+    "a": "Store water",
+    "b": "Pull the plant deeper into the soil",
+    "c": "Climb trees",
+    "d": "Float on water",
+    "answer": "B",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#69"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "The term \"parasitic root\" is associated with:",
+    "a": "Orchids",
+    "b": "Cuscuta",
+    "c": "Mangroves",
+    "d": "Grasses",
+    "answer": "B",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#86"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Fusiform root modification is seen in:",
+    "a": "Daucus carota",
+    "b": "Raphanus sativus",
+    "c": "Brassica rapa",
+    "d": "Beta vulgaris",
+    "answer": "B",
+    "order": 17,
+    "source_files": [
+      "MCQ TX 2.docx#18"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Conical root is characteristic of:",
+    "a": "Raphanus sativus",
+    "b": "Daucus carota",
+    "c": "Beta vulgaris",
+    "d": "Ipomoea batatas",
+    "answer": "B",
+    "order": 18,
+    "source_files": [
+      "MCQ TX 2.docx#19"
+    ]
+  },
+  {
+    "section": "الجذور وتحوّراتها",
+    "section_order": 4,
+    "section_emoji": "🌰",
+    "question": "Haustorial roots are found in:",
+    "a": "Mangifera indica",
+    "b": "Cuscuta",
+    "c": "Triticum aestivum",
+    "d": "Zea mays",
+    "answer": "B",
+    "order": 19,
+    "source_files": [
+      "MCQ TX 2.docx#20",
+      "Training 1          MCQ (2).docx#8"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which modified stem is found in potatoes?",
+    "a": "Rhizome",
+    "b": "Tuber",
+    "c": "Corm",
+    "d": "Bulb",
+    "answer": "B",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#12"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A bulb is a modified stem observed in:",
+    "a": "Ginger",
+    "b": "Onion",
+    "c": "Potato",
+    "d": "Colocasia",
+    "answer": "B",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#13"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Suberial stems include:",
+    "a": "Runner",
+    "b": "Tuber",
+    "c": "Corm",
+    "d": "Rhizome",
+    "answer": "A",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#14"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which plant has a winged stem?",
+    "a": "Mentha",
+    "b": "Verbascum",
+    "c": "Bamboo",
+    "d": "Nerium",
+    "answer": "B",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#15"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "The primary function of a stem is:",
+    "a": "Photosynthesis",
+    "b": "Support and transport",
+    "c": "Water absorption",
+    "d": "Seed dispersal",
+    "answer": "B",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#46"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "The term \"node\" refers to:",
+    "a": "A root hair",
+    "b": "A leaf attachment point",
+    "c": "A flower petal",
+    "d": "A seed coat",
+    "answer": "B",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#48"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which plant has a rhizome?",
+    "a": "Potato",
+    "b": "Ginger",
+    "c": "Onion",
+    "d": "Carrot",
+    "answer": "B",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#133",
+      "Choose the correct -Diyala (2).docx#49"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which of the following is a climbing stem modification?",
+    "a": "Tuber",
+    "b": "Tendril",
+    "c": "Corm",
+    "d": "Bulb",
+    "answer": "B",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#54"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which of the following is a total stem parasite?",
+    "a": "Viscum",
+    "b": "Cuscuta",
+    "c": "Orchid",
+    "d": "Ficus",
+    "answer": "B",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#66"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A plant with a cylindrical stem is:",
+    "a": "Mentha",
+    "b": "Bamboo",
+    "c": "Verbascum",
+    "d": "Nerium",
+    "answer": "B",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#67"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which of the following is a stem thorn?",
+    "a": "Citrus",
+    "b": "Cactus",
+    "c": "Rose",
+    "d": "All of the above",
+    "answer": "A",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#68"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A stem modified into a flattened, photosynthetic structure is called:",
+    "a": "Phylloclade",
+    "b": "Tendril",
+    "c": "Thorn",
+    "d": "Bulbil",
+    "answer": "A",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#124"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which plant has a stolon?",
+    "a": "Oxalis",
+    "b": "Mentha",
+    "c": "Potato",
+    "d": "Onion",
+    "answer": "A",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#125"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Tendrils in Passiflora are modified of:",
+    "a": "Leaves",
+    "b": "Stems",
+    "c": "Roots",
+    "d": "Stipules",
+    "answer": "B",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#126"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A bulb is an underground stem found in:",
+    "a": "Ginger",
+    "b": "Potato",
+    "c": "Onion",
+    "d": "Colocasia",
+    "answer": "C",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#127"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which stem type is woody and sharp for protection?",
+    "a": "Tendril",
+    "b": "Thorn",
+    "c": "Phylloclade",
+    "d": "Bulbil",
+    "answer": "B",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#128"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A corm is observed in:",
+    "a": "Dahlia",
+    "b": "Colocasia",
+    "c": "Sweet potato",
+    "d": "Radish",
+    "answer": "B",
+    "order": 17,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#129"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which stem modification aids in vegetative propagation?",
+    "a": "Thorn",
+    "b": "Bulbil",
+    "c": "Phylloclade",
+    "d": "Tendril",
+    "answer": "B",
+    "order": 18,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#130"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A runner is a subaerial stem seen in:",
+    "a": "Strawberry",
+    "b": "Potato",
+    "c": "Onion",
+    "d": "Ginger",
+    "answer": "A",
+    "order": 19,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#131"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "The term \"decumbent\" describes stems that:",
+    "a": "Climb",
+    "b": "Trail along the ground",
+    "c": "Grow vertically",
+    "d": "Store water",
+    "answer": "B",
+    "order": 20,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#132"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "In botany, the stem is defined as:",
+    "a": "The underground root system of a plant",
+    "b": "The main axis of a plant composed of nodes and internodes",
+    "c": "The reproductive organ of a plant",
+    "d": "The photosynthetic part only",
+    "answer": "B",
+    "order": 21,
+    "source_files": [
+      "MCQ-3.docx#1"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A node is:",
+    "a": "The region between two leaves",
+    "b": "The growing tip of the root",
+    "c": "The point of attachment of a leaf or twig on the stem",
+    "d": "A modified root",
+    "answer": "C",
+    "order": 22,
+    "source_files": [
+      "MCQ-3.docx#2"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which of the following is NOT a main function of the stem?",
+    "a": "Support",
+    "b": "Photosynthesis in all plants",
+    "c": "Transport of water and nutrients",
+    "d": "Attachment of leaves and flowers",
+    "answer": "B",
+    "order": 23,
+    "source_files": [
+      "MCQ-3.docx#4"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "The three main functions of the stem include:",
+    "a": "Respiration, reproduction, digestion",
+    "b": "Support, attachment, transport",
+    "c": "Protection, pollination, fertilization",
+    "d": "Absorption, anchorage, fixation",
+    "answer": "B",
+    "order": 24,
+    "source_files": [
+      "MCQ-3.docx#5"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Stems are classified based on their position relative to the ground into:",
+    "a": "Two types",
+    "b": "Three types",
+    "c": "Four types",
+    "d": "Five types",
+    "answer": "B",
+    "order": 25,
+    "source_files": [
+      "MCQ-3.docx#6"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which of the following is an underground stem?",
+    "a": "Runner",
+    "b": "Rhizome",
+    "c": "Tendril",
+    "d": "Thorn",
+    "answer": "B",
+    "order": 26,
+    "source_files": [
+      "MCQ-3.docx#7"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A tuber stores food mainly in the form of:",
+    "a": "Protein",
+    "b": "Oil",
+    "c": "Starch",
+    "d": "Sugar",
+    "answer": "C",
+    "order": 27,
+    "source_files": [
+      "MCQ-3.docx#10"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A bulb is characterized by:",
+    "a": "A swollen root",
+    "b": "A short underground stem with fleshy scale leaves",
+    "c": "A creeping stem",
+    "d": "A hollow stem",
+    "answer": "B",
+    "order": 28,
+    "source_files": [
+      "MCQ-3.docx#12"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A corm is:",
+    "a": "A horizontal underground stem",
+    "b": "A short vertical swollen underground stem",
+    "c": "A modified leaf",
+    "d": "A climbing organ",
+    "answer": "B",
+    "order": 29,
+    "source_files": [
+      "MCQ-3.docx#14"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A runner develops from:",
+    "a": "Root tip",
+    "b": "Lower part of main axis",
+    "c": "Axils of lower leaves",
+    "d": "Terminal bud",
+    "answer": "C",
+    "order": 30,
+    "source_files": [
+      "MCQ-3.docx#17"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A quadrangular stem is found in:",
+    "a": "Mentha",
+    "b": "Triticum",
+    "c": "Bambusa",
+    "d": "Morus",
+    "answer": "A",
+    "order": 31,
+    "source_files": [
+      "MCQ-3.docx#20"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A hollow cylindrical stem is found in:",
+    "a": "Triticum",
+    "b": "Bambusa",
+    "c": "Mentha",
+    "d": "Nerium oleander",
+    "answer": "B",
+    "order": 32,
+    "source_files": [
+      "MCQ-3.docx#21"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Thorns are modified:",
+    "a": "Roots",
+    "b": "Leaves",
+    "c": "Stems",
+    "d": "Flowers",
+    "answer": "C",
+    "order": 33,
+    "source_files": [
+      "MCQ-3.docx#22"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "An example of a phylloclade is:",
+    "a": "Opuntia ficus-indica",
+    "b": "Allium cepa",
+    "c": "Solanum tuberosum",
+    "d": "Oxalis",
+    "answer": "A",
+    "order": 34,
+    "source_files": [
+      "MCQ-3.docx#24"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Bulbils help in:",
+    "a": "Sexual reproduction",
+    "b": "Photosynthesis",
+    "c": "Vegetative propagation",
+    "d": "Transpiration",
+    "answer": "C",
+    "order": 35,
+    "source_files": [
+      "MCQ-3.docx#25"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "The internode is:",
+    "a": "The region between two successive nodes",
+    "b": "The point of leaf attachment",
+    "c": "A storage organ",
+    "d": "A reproductive bud",
+    "answer": "A",
+    "order": 36,
+    "source_files": [
+      "MCQ-3.docx#3",
+      "Training 1          MCQ (2).docx#1"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A rhizome is:",
+    "a": "A vertical swollen stem",
+    "b": "A thickened underground stem with nodes and internodes",
+    "c": "A modified root",
+    "d": "A climbing organ",
+    "answer": "B",
+    "order": 37,
+    "source_files": [
+      "MCQ-3.docx#8",
+      "Training 1          MCQ (2).docx#2"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "An example of a rhizome is:",
+    "a": "Cynodon dactylon",
+    "b": "Solanum tuberosum",
+    "c": "Allium cepa",
+    "d": "Opuntia ficus-indica",
+    "answer": "A",
+    "order": 38,
+    "source_files": [
+      "MCQ-3.docx#9",
+      "Training 1          MCQ (2).docx#3"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "An example of a tuber is:",
+    "a": "Solanum tuberosum",
+    "b": "Allium cepa",
+    "c": "Cynodon dactylon",
+    "d": "Morus",
+    "answer": "A",
+    "order": 39,
+    "source_files": [
+      "MCQ-3.docx#11",
+      "Training 1          MCQ (2).docx#4"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "An example of a bulb is:",
+    "a": "Allium cepa",
+    "b": "Solanum tuberosum",
+    "c": "Mentha",
+    "d": "Morus",
+    "answer": "A",
+    "order": 40,
+    "source_files": [
+      "MCQ-3.docx#13",
+      "Training 1          MCQ (2).docx#5"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Which of the following is an example of a corm?",
+    "a": "Cyperus rotundus",
+    "b": "Solanum tuberosum",
+    "c": "Allium cepa",
+    "d": "Oxalis",
+    "answer": "A",
+    "order": 41,
+    "source_files": [
+      "MCQ-3.docx#15",
+      "Training 1          MCQ (2).docx#6"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "Subaerial stems include:",
+    "a": "Bulb and tuber",
+    "b": "Runner and stolon",
+    "c": "Thorn and tendril",
+    "d": "Rhizome and corm",
+    "answer": "B",
+    "order": 42,
+    "source_files": [
+      "MCQ-3.docx#16",
+      "Training 1          MCQ (2).docx#7"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A triangular stem is common in:",
+    "a": "Cyperaceae",
+    "b": "Poaceae",
+    "c": "Rosaceae",
+    "d": "Cactaceae",
+    "answer": "A",
+    "order": 43,
+    "source_files": [
+      "MCQ-3.docx#19",
+      "Training 1          MCQ (2).docx#8"
+    ]
+  },
+  {
+    "section": "الساق وتحوّراته",
+    "section_order": 5,
+    "section_emoji": "🌾",
+    "question": "A phylloclade is:",
+    "a": "A modified root",
+    "b": "A green flattened stem performing photosynthesis",
+    "c": "A climbing root",
+    "d": "A storage leaf",
+    "answer": "B",
+    "order": 44,
+    "source_files": [
+      "MCQ-3.docx#23",
+      "Training 1          MCQ (2).docx#10"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Parallel venation is typical of:",
+    "a": "Dicots",
+    "b": "Monocots",
+    "c": "Gymnosperms",
+    "d": "Ferns",
+    "answer": "B",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#106",
+      "Choose the correct -Diyala (2).docx#37"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A plant with net-like venation is likely a:",
+    "a": "Monocot",
+    "b": "Dicot",
+    "c": "Bryophyte",
+    "d": "Fern",
+    "answer": "B",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#39"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which term describes a leaf margin with sharp teeth pointing upward like a saw?",
+    "a": "Crenate",
+    "b": "Dentate",
+    "c": "Serrate",
+    "d": "Undulate",
+    "answer": "C",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#104"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a heart-shaped base is termed:",
+    "a": "Cordate",
+    "b": "Hastate",
+    "c": "Sagittate",
+    "d": "Cuneate",
+    "answer": "A",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#105"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf shape is needle-like?",
+    "a": "Lanceolate",
+    "b": "Acicular",
+    "c": "Oblong",
+    "d": "Orbicular",
+    "answer": "B",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#107"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a single blade (divided or not) is called:",
+    "a": "Compound",
+    "b": "Simple",
+    "c": "Pinnate",
+    "d": "Palmate",
+    "answer": "B",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#108"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which term describes leaves that wither but remain attached to the plant?",
+    "a": "Deciduous",
+    "b": "Marcescent",
+    "c": "Caducous",
+    "d": "Evergreen",
+    "answer": "B",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#109"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with ear-like appendages at the base is:",
+    "a": "Auriculate",
+    "b": "Amplexicaul",
+    "c": "Peltate",
+    "d": "Hastate",
+    "answer": "A",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#110"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf arrangement has three or more leaves per node?",
+    "a": "Alternate",
+    "b": "Opposite",
+    "c": "Whorled",
+    "d": "Radical",
+    "answer": "C",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#111"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a shield-shaped blade and petiole attached to the lower surface is:",
+    "a": "Peltate",
+    "b": "Reniform",
+    "c": "Hastate",
+    "d": "Sagittate",
+    "answer": "A",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#112"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which term describes a leaf apex with a long, tapering point?",
+    "a": "Acute",
+    "b": "Acuminate",
+    "c": "Mucronate",
+    "d": "Obtuse",
+    "answer": "B",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#113"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which stipule type forms a tubular structure?",
+    "a": "Ochreate",
+    "b": "Foliaceous",
+    "c": "Tendrillar",
+    "d": "Adnate",
+    "answer": "A",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#137"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with stipules modified into spines is found in:",
+    "a": "Smilax",
+    "b": "Acacia",
+    "c": "Lathyrus",
+    "d": "Ixora",
+    "answer": "B",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#138"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"glabrous\" describes a surface that is:",
+    "a": "Hairy",
+    "b": "Waxy",
+    "c": "Smooth",
+    "d": "Rough",
+    "answer": "C",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#139"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which venation type is found in Ginkgo biloba?",
+    "a": "Parallel",
+    "b": "Dichotomous",
+    "c": "Reticulate",
+    "d": "Uninervous",
+    "answer": "B",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#140"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf base completely clasps the stem?",
+    "a": "Amplexicaul",
+    "b": "Auriculate",
+    "c": "Peltate",
+    "d": "Sagittate",
+    "answer": "A",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#142"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a kidney-shaped outline is:",
+    "a": "Reniform",
+    "b": "Cordate",
+    "c": "Hastate",
+    "d": "Sagittate",
+    "answer": "A",
+    "order": 17,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#143"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a tail-like apex is termed:",
+    "a": "Caudate",
+    "b": "Aristate",
+    "c": "Mucronate",
+    "d": "Cirrhose",
+    "answer": "A",
+    "order": 18,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#144"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"tomentose\" describes a surface covered with:",
+    "a": "Stiff hairs",
+    "b": "Dense, matted hairs",
+    "c": "Glands",
+    "d": "Scales",
+    "answer": "B",
+    "order": 19,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#145"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a lyre-shaped outline is:",
+    "a": "Lyrate",
+    "b": "Pandurate",
+    "c": "Hastate",
+    "d": "Reniform",
+    "answer": "A",
+    "order": 20,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#146"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf margin is wavy?",
+    "a": "Undulate",
+    "b": "Serrate",
+    "c": "Crenate",
+    "d": "Dentate",
+    "answer": "A",
+    "order": 21,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#148"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a spiny tip is termed:",
+    "a": "Cuspidate",
+    "b": "Aristate",
+    "c": "Mucronate",
+    "d": "Cirrhose",
+    "answer": "B",
+    "order": 22,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#149"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which term describes a leaf with a notched apex?",
+    "a": "Emarginate",
+    "b": "Retuse",
+    "c": "Obtuse",
+    "d": "Truncate",
+    "answer": "A",
+    "order": 23,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#150"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a rough surface is:",
+    "a": "Scabrous",
+    "b": "Glabrous",
+    "c": "Sericeous",
+    "d": "Villous",
+    "answer": "A",
+    "order": 24,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#151"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type has a single terminal leaflet?",
+    "a": "Paripinnate",
+    "b": "Imparipinnate",
+    "c": "Bipinnate",
+    "d": "Tripinnate",
+    "answer": "B",
+    "order": 25,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#153"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a winged petiole is found in:",
+    "a": "Citrus",
+    "b": "Acacia",
+    "c": "Pine",
+    "d": "Grass",
+    "answer": "A",
+    "order": 26,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#154"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"stipulate\" refers to leaves with:",
+    "a": "Stipules",
+    "b": "Spines",
+    "c": "Tendrils",
+    "d": "Glands",
+    "answer": "A",
+    "order": 27,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#155"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf arrangement is seen in Calotropis?",
+    "a": "Alternate",
+    "b": "Opposite",
+    "c": "Whorled",
+    "d": "Radical",
+    "answer": "B",
+    "order": 28,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#156"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a swollen petiole is found in:",
+    "a": "Eichhornia",
+    "b": "Citrus",
+    "c": "Acacia",
+    "d": "Pine",
+    "answer": "A",
+    "order": 29,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#157"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"pinnatifid\" describes a leaf with incisions:",
+    "a": "Reaching the midrib",
+    "b": "Less than halfway to the midrib",
+    "c": "More than halfway to the midrib",
+    "d": "At the leaf base",
+    "answer": "B",
+    "order": 30,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#158"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"decurrent\" describes a leaf base that:",
+    "a": "Clasps the stem",
+    "b": "Extends down the stem",
+    "c": "Is asymmetrical",
+    "d": "Is swollen",
+    "answer": "B",
+    "order": 31,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#159"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type has leaflets arising from a single point?",
+    "a": "Pinnate",
+    "b": "Palmate",
+    "c": "Bipinnate",
+    "d": "Tripinnate",
+    "answer": "B",
+    "order": 32,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#160"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf shape is spatula-like?",
+    "a": "Spathulate",
+    "b": "Lanceolate",
+    "c": "Oblong",
+    "d": "Orbicular",
+    "answer": "A",
+    "order": 33,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#162"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type is twice pinnate?",
+    "a": "Unipinnate",
+    "b": "Bipinnate",
+    "c": "Tripinnate",
+    "d": "Decompound",
+    "answer": "B",
+    "order": 34,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#163"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a mucronate apex has a:",
+    "a": "Small abrupt point",
+    "b": "Long tapering point",
+    "c": "Notch",
+    "d": "Rounded tip",
+    "answer": "A",
+    "order": 35,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#165"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"sericeous\" describes a surface with:",
+    "a": "Silky hairs",
+    "b": "Rough texture",
+    "c": "Glands",
+    "d": "Scales",
+    "answer": "A",
+    "order": 36,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#166"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type is tripinnate?",
+    "a": "Unipinnate",
+    "b": "Bipinnate",
+    "c": "Tripinnate",
+    "d": "Palmate",
+    "answer": "C",
+    "order": 37,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#167"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with an oblique base is:",
+    "a": "Symmetrical",
+    "b": "Asymmetrical",
+    "c": "Heart-shaped",
+    "d": "Wedge-shaped",
+    "answer": "B",
+    "order": 38,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#168"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"villous\" describes a surface with:",
+    "a": "Long, soft hairs",
+    "b": "Short, stiff hairs",
+    "c": "Star-shaped hairs",
+    "d": "Glandular hairs",
+    "answer": "A",
+    "order": 39,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#169"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type has four leaflets?",
+    "a": "Trifoliate",
+    "b": "Quadrifoliate",
+    "c": "Multifoliate",
+    "d": "Bifoliate",
+    "answer": "B",
+    "order": 40,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#170"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf arrangement is seen in Galium?",
+    "a": "Alternate",
+    "b": "Opposite",
+    "c": "Whorled",
+    "d": "Radical",
+    "answer": "C",
+    "order": 41,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#172"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with an obtuse apex forms a:",
+    "a": "Sharp angle",
+    "b": "Blunt angle",
+    "c": "Notch",
+    "d": "Pointed tip",
+    "answer": "B",
+    "order": 42,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#174"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a ciliate margin has a:",
+    "a": "Fringe of hairs",
+    "b": "Wavy edge",
+    "c": "Toothed edge",
+    "d": "Smooth edge",
+    "answer": "A",
+    "order": 43,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#176"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type is found in Hardwickia?",
+    "a": "Unifoliate",
+    "b": "Bifoliate",
+    "c": "Trifoliate",
+    "d": "Multifoliate",
+    "answer": "B",
+    "order": 44,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#178"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a cirrhose apex is seen in:",
+    "a": "Banana",
+    "b": "Pineapple",
+    "c": "Mango",
+    "d": "Banyan",
+    "answer": "A",
+    "order": 45,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#179"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The term \"rugose\" describes a surface that is:",
+    "a": "Wrinkled",
+    "b": "Smooth",
+    "c": "Hairy",
+    "d": "Glandular",
+    "answer": "A",
+    "order": 46,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#180"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type is found in Trifolium?",
+    "a": "Unifoliate",
+    "b": "Bifoliate",
+    "c": "Trifoliate",
+    "d": "Multifoliate",
+    "answer": "C",
+    "order": 47,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#181"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a sagittate base is found in:",
+    "a": "Sagittaria",
+    "b": "Piper",
+    "c": "Mango",
+    "d": "Banyan",
+    "answer": "A",
+    "order": 48,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#182"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type is found in Citrus?",
+    "a": "Unifoliate",
+    "b": "Bifoliate",
+    "c": "Trifoliate",
+    "d": "Multifoliate",
+    "answer": "A",
+    "order": 49,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#184"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a lacerate margin is:",
+    "a": "Irregularly cut",
+    "b": "Wavy",
+    "c": "Toothed",
+    "d": "Smooth",
+    "answer": "A",
+    "order": 50,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#185"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Which leaf type is found in Moringa?",
+    "a": "Unipinnate",
+    "b": "Bipinnate",
+    "c": "Tripinnate",
+    "d": "Palmate",
+    "answer": "C",
+    "order": 51,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#187"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf with a doubly serrate margin has teeth that are:",
+    "a": "Rounded",
+    "b": "Sharp and again serrate",
+    "c": "Wavy",
+    "d": "Smooth",
+    "answer": "B",
+    "order": 52,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#188"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Leaves arise from:",
+    "a": "Internodes",
+    "b": "Root apex",
+    "c": "Nodes",
+    "d": "Cambium",
+    "answer": "C",
+    "order": 53,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#1"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A bifacial (dorsiventral) leaf has:",
+    "a": "Similar upper and lower surfaces",
+    "b": "Different adaxial and abaxial surfaces",
+    "c": "Only one surface",
+    "d": "No petiole",
+    "answer": "B",
+    "order": 54,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#2"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The upper surface of a leaf facing the stem axis is called:",
+    "a": "Abaxial",
+    "b": "Lateral",
+    "c": "Adaxial",
+    "d": "Ventral",
+    "answer": "C",
+    "order": 55,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#3"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "The 2/5 phyllotaxy is seen in:",
+    "a": "Carica papaya",
+    "b": "China rose",
+    "c": "Mimosa pudica",
+    "d": "Marsilea",
+    "answer": "B",
+    "order": 56,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#7"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Leaves arranged in right angles at successive nodes are called:",
+    "a": "Superposed",
+    "b": "Alternate",
+    "c": "Decussate",
+    "d": "Whorled",
+    "answer": "C",
+    "order": 57,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#8"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A simple leaf deeply incised almost to the midrib is:",
+    "a": "Pinnatifid",
+    "b": "Pinnatipartite",
+    "c": "Pinnatisect",
+    "d": "Palmatifid",
+    "answer": "C",
+    "order": 58,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#11"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A compound leaf with terminal leaflet present is:",
+    "a": "Paripinnate",
+    "b": "Imparipinnate",
+    "c": "Bipinnate",
+    "d": "Multifoliate",
+    "answer": "B",
+    "order": 59,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#12"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Bipinnate leaves are found in:",
+    "a": "Rosa",
+    "b": "Mimosa pudica",
+    "c": "Moringa",
+    "d": "Bombax",
+    "answer": "B",
+    "order": 60,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#13"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Stipules fused between two petioles are:",
+    "a": "Intrapetiolar",
+    "b": "Interpetiolar",
+    "c": "Free lateral",
+    "d": "Ochreate",
+    "answer": "B",
+    "order": 61,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#15"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Needle-shaped leaves are termed:",
+    "a": "Linear",
+    "b": "Subulate",
+    "c": "Acicular",
+    "d": "Lanceolate",
+    "answer": "C",
+    "order": 62,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#16"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf margin without indentation is:",
+    "a": "Serrate",
+    "b": "Dentate",
+    "c": "Entire",
+    "d": "Crenate",
+    "answer": "C",
+    "order": 63,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#18"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf apex tapering gradually into a long point is:",
+    "a": "Acute",
+    "b": "Acuminate",
+    "c": "Obtuse",
+    "d": "Retuse",
+    "answer": "B",
+    "order": 64,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#19"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A leaf without a petiole is termed:",
+    "a": "Petiolate",
+    "b": "Sessile",
+    "c": "Stipulate",
+    "d": "Imparipinnate",
+    "answer": "B",
+    "order": 65,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#4",
+      "Training 1          MCQ (2).docx#1"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A flattened petiole performing photosynthesis as in Australian Acacia is called:",
+    "a": "Tendril",
+    "b": "Spine",
+    "c": "Phyllode",
+    "d": "Pulvinus",
+    "answer": "C",
+    "order": 66,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#5",
+      "Training 1          MCQ (2).docx#2"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "In grasses, the phyllotaxy is:",
+    "a": "1/3",
+    "b": "2/5",
+    "c": "1/2",
+    "d": "3/8",
+    "answer": "C",
+    "order": 67,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#6",
+      "Training 1          MCQ (2).docx#3"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "More than three leaves arising from a node is:",
+    "a": "Opposite",
+    "b": "Radical",
+    "c": "Whorled",
+    "d": "Distichous",
+    "answer": "C",
+    "order": 68,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#9",
+      "Training 1          MCQ (2).docx#4"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "Leaves that fall at the end of the growing season are:",
+    "a": "Caducous",
+    "b": "Evergreen",
+    "c": "Deciduous",
+    "d": "Marcescent",
+    "answer": "C",
+    "order": 69,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#10",
+      "Training 1          MCQ (2).docx#5"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A trifoliate leaf is seen in:",
+    "a": "Trifolium",
+    "b": "Cassia",
+    "c": "Paris",
+    "d": "Fennel",
+    "answer": "A",
+    "order": 70,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#14",
+      "Training 1          MCQ (2).docx#6"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A heart-shaped leaf with deep notch at base is:",
+    "a": "Reniform",
+    "b": "Cordate",
+    "c": "Ovate",
+    "d": "Obcordate",
+    "answer": "B",
+    "order": 71,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#17",
+      "Training 1          MCQ (2).docx#7"
+    ]
+  },
+  {
+    "section": "الأوراق",
+    "section_order": 6,
+    "section_emoji": "🍃",
+    "question": "A glabrous leaf surface means:",
+    "a": "Covered with woolly hairs",
+    "b": "Covered with glands",
+    "c": "Smooth, without hairs",
+    "d": "Covered with silky hairs",
+    "answer": "C",
+    "order": 72,
+    "source_files": [
+      "Leaves MCQ TX-3.docx#20",
+      "Training 1          MCQ (2).docx#8"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A plant with a single main stem and branches in acropetal order is called:",
+    "a": "Deliquescent",
+    "b": "Excurrent",
+    "c": "Decumbent",
+    "d": "Procumbent",
+    "answer": "B",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#17"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The term \"monoecious\" refers to plants with:",
+    "a": "Separate male and female plants",
+    "b": "Both sexes on the same plant",
+    "c": "No flowers",
+    "d": "Asexual reproduction",
+    "answer": "B",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#41"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Dioecious plants have:",
+    "a": "Perfect flowers",
+    "b": "Male and female flowers on separate plants",
+    "c": "No seeds",
+    "d": "Only vegetative reproduction",
+    "answer": "B",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#42"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A plant that dies after flowering once is called:",
+    "a": "Annual",
+    "b": "Biennial",
+    "c": "Monocarpic",
+    "d": "Perennial",
+    "answer": "C",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#44"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The collective term for sepals is:",
+    "a": "Corolla",
+    "b": "Calyx",
+    "c": "Androecium",
+    "d": "Gynoecium",
+    "answer": "B",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#114"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower with both stamens and pistils is called:",
+    "a": "Unisexual",
+    "b": "Bisexual",
+    "c": "Sterile",
+    "d": "Incomplete",
+    "answer": "B",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#115",
+      "Choose the correct -Diyala (2).docx#189"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Zygomorphic flowers can be divided into equal halves by:",
+    "a": "One plane",
+    "b": "Multiple planes",
+    "c": "No plane",
+    "d": "Radial symmetry",
+    "answer": "A",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#116",
+      "Choose the correct -Diyala (2).docx#190"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Which flower part is pollen-bearing?",
+    "a": "Stigma",
+    "b": "Anther",
+    "c": "Style",
+    "d": "Ovary",
+    "answer": "B",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#117"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower lacking petals is termed:",
+    "a": "Asepalous",
+    "b": "Apetalous",
+    "c": "Naked",
+    "d": "Incomplete",
+    "answer": "B",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#118",
+      "Choose the correct -Diyala (2).docx#192"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The calyx of Brassica is termed:",
+    "a": "Spurred",
+    "b": "Pappus",
+    "c": "Caducous",
+    "d": "Cruciform",
+    "answer": "C",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#119",
+      "Choose the correct -Diyala (2).docx#193"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Which term describes petals fused together?",
+    "a": "Polypetalous",
+    "b": "Gamopetalous",
+    "c": "Cruciform",
+    "d": "Rosaceous",
+    "answer": "B",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#120",
+      "Choose the correct -Diyala (2).docx#194"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower with radial symmetry is:",
+    "a": "Zygomorphic",
+    "b": "Actinomorphic",
+    "c": "Asymmetrical",
+    "d": "Irregular",
+    "answer": "B",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#121",
+      "Choose the correct -Diyala (2).docx#195"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The pappus in Sonchus is a modification of:",
+    "a": "Sepals",
+    "b": "Petals",
+    "c": "Stamens",
+    "d": "Carpels",
+    "answer": "A",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#122",
+      "Choose the correct -Diyala (2).docx#196"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Which flower type lacks functional sex organs?",
+    "a": "Perfect",
+    "b": "Imperfect",
+    "c": "Sterile",
+    "d": "Complete",
+    "answer": "C",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#123",
+      "Choose the correct -Diyala (2).docx#197"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The calyx of Punica granatum is:",
+    "a": "Petaloid",
+    "b": "Spurred",
+    "c": "Persistent",
+    "d": "Caducous",
+    "answer": "C",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#136"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The term \"perianth\" refers to:",
+    "a": "Sepals only",
+    "b": "Petals only",
+    "c": "Both sepals and petals",
+    "d": "Stamens and carpels",
+    "answer": "C",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#191"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A bilabiate corolla is found in:",
+    "a": "Antirrhinum",
+    "b": "Brassica",
+    "c": "Datura",
+    "d": "Sunflower",
+    "answer": "A",
+    "order": 17,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#198"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The part of the stamen that produces pollen is the",
+    "a": "Filament",
+    "b": "Anther",
+    "c": "Connective",
+    "d": "Pollen tube",
+    "answer": "B",
+    "order": 18,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#199"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The spathe in Arum covers a:",
+    "a": "Spike",
+    "b": "Spadix",
+    "c": "Catkin",
+    "d": "Umbel",
+    "answer": "B",
+    "order": 19,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#200"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The term \"campanulate\" describes a corolla that is:",
+    "a": "Bell-shaped",
+    "b": "Funnel-shaped",
+    "c": "Tubular",
+    "d": "Wheel-shaped",
+    "answer": "A",
+    "order": 20,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#202"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower with a spurred corolla is:",
+    "a": "Linaria",
+    "b": "Brassica",
+    "c": "Datura",
+    "d": "Sunflower",
+    "answer": "A",
+    "order": 21,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#203"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The term \"papilionaceous\" refers to a corolla found in:",
+    "a": "Fabaceae",
+    "b": "Solanaceae",
+    "c": "Asteraceae",
+    "d": "Brassicaceae",
+    "answer": "A",
+    "order": 22,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#204"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower with a ligulate corolla is found in:",
+    "a": "Sunflower ray florets",
+    "b": "Brassica",
+    "c": "Datura",
+    "d": "Antirrhinum",
+    "answer": "A",
+    "order": 23,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#205"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The term \"rotate\" describes a corolla that is:",
+    "a": "Bell-shaped",
+    "b": "Wheel-shaped",
+    "c": "Tubular",
+    "d": "Funnel-shaped",
+    "answer": "B",
+    "order": 24,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#206"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower with a urceolate corolla is:",
+    "a": "Bryophyllum",
+    "b": "Brassica",
+    "c": "Datura",
+    "d": "Sunflower",
+    "answer": "A",
+    "order": 25,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#207"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The term \"spathe\" refers to a:",
+    "a": "Modified leaf enclosing a spadix",
+    "b": "Type of placentation",
+    "c": "Inflorescence axis",
+    "d": "Stamen bundle",
+    "answer": "A",
+    "order": 26,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#213"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The modified stem end that supports all floral structures is called:",
+    "a": "Pedicel",
+    "b": "Receptacle",
+    "c": "Ovary",
+    "d": "Style",
+    "answer": "B",
+    "order": 27,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#1",
+      "MCQ Flower-5.docx#1"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The colourful and attractive part of a flower is usually the:",
+    "a": "Sepals",
+    "b": "Petals",
+    "c": "Stamens",
+    "d": "Carpels",
+    "answer": "B",
+    "order": 28,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#3",
+      "MCQ Flower-5.docx#3"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The collective term for petals in a flower is:",
+    "a": "Calyx",
+    "b": "Androecium",
+    "c": "Corolla",
+    "d": "Gynoecium",
+    "answer": "C",
+    "order": 29,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#4",
+      "MCQ Flower-5.docx#4"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A pistil composed of several united carpels is called a:",
+    "a": "Simple pistil",
+    "b": "Compound pistil",
+    "c": "Imperfect pistil",
+    "d": "Naked pistil",
+    "answer": "B",
+    "order": 30,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#7",
+      "MCQ Flower-5.docx#7"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The male reproductive whorl of a flower is called:",
+    "a": "Gynoecium",
+    "b": "Androecium",
+    "c": "Corolla",
+    "d": "Calyx",
+    "answer": "B",
+    "order": 31,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#11",
+      "MCQ Flower-5.docx#11"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The female reproductive whorl of a flower is known as:",
+    "a": "Calyx",
+    "b": "Corolla",
+    "c": "Gynoecium",
+    "d": "Androecium",
+    "answer": "C",
+    "order": 32,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#12",
+      "MCQ Flower-5.docx#12"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower having reproductive organs of only one sex is called:",
+    "a": "Perfect flower",
+    "b": "Complete flower",
+    "c": "Imperfect flower",
+    "d": "Neutral flower",
+    "answer": "C",
+    "order": 33,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#14",
+      "MCQ Flower-5.docx#14"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A male flower that contains only stamens is called:",
+    "a": "Pistillate flower",
+    "b": "Neutral flower",
+    "c": "Staminate flower",
+    "d": "Bisexual flower",
+    "answer": "C",
+    "order": 34,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#15",
+      "MCQ Flower-5.docx#15"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower possessing calyx, corolla, stamens, and pistil is called a:",
+    "a": "Imperfect flower",
+    "b": "Complete flower",
+    "c": "Naked flower",
+    "d": "Unisexual flower",
+    "answer": "B",
+    "order": 35,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#17",
+      "MCQ Flower-5.docx#17"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower lacking one or more floral parts is called:",
+    "a": "Perfect flower",
+    "b": "Incomplete flower",
+    "c": "Hermaphrodite flower",
+    "d": "Neutral flower",
+    "answer": "B",
+    "order": 36,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#18",
+      "MCQ Flower-5.docx#18"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower without petals is called:",
+    "a": "Asepalous",
+    "b": "Apetalous",
+    "c": "Naked",
+    "d": "Monoecious",
+    "answer": "B",
+    "order": 37,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#19",
+      "MCQ Flower-5.docx#19"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower lacking both calyx and corolla is known as:",
+    "a": "Imperfect flower",
+    "b": "Complete flower",
+    "c": "Naked flower",
+    "d": "Neutral flower",
+    "answer": "C",
+    "order": 38,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#20",
+      "MCQ Flower-5.docx#20"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A plant bearing both male and female flowers on the same plant is called:",
+    "a": "Dioecious",
+    "b": "Monoecious",
+    "c": "Polygamous",
+    "d": "Hermaphrodite",
+    "answer": "B",
+    "order": 39,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#21",
+      "MCQ Flower-5.docx#21"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A plant bearing male and female flowers on different plants is called:",
+    "a": "Monoecious",
+    "b": "Dioecious",
+    "c": "Polygamous",
+    "d": "Bisexual",
+    "answer": "B",
+    "order": 40,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#22",
+      "MCQ Flower-5.docx#22"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Sepals united together are known as:",
+    "a": "Polysepalous",
+    "b": "Polypetalous",
+    "c": "Gamosepalous",
+    "d": "Apetalous",
+    "answer": "C",
+    "order": 41,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#24",
+      "MCQ Flower-5.docx#24"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A corolla with free petals is known as:",
+    "a": "Gamopetalous",
+    "b": "Polypetalous",
+    "c": "Gamosepalous",
+    "d": "Apetalous",
+    "answer": "B",
+    "order": 42,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#26",
+      "MCQ Flower-5.docx#26"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower that can be divided into equal halves by only one plane is called:",
+    "a": "Actinomorphic",
+    "b": "Zygomorphic",
+    "c": "Asymmetrical",
+    "d": "Regular",
+    "answer": "B",
+    "order": 43,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#28",
+      "MCQ Flower-5.docx#28"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "In dioecious plants:",
+    "a": "Male and female flowers occur on the same plant",
+    "b": "Male and female flowers occur on separate plants",
+    "c": "Only male flowers are present",
+    "d": "Only female flowers are present",
+    "answer": "B",
+    "order": 44,
+    "source_files": [
+      "MCQ TX 2.docx#11"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "All sepals of a flower collectively form the:",
+    "a": "Corolla",
+    "b": "Perianth",
+    "c": "Calyx",
+    "d": "Androecium",
+    "answer": "C",
+    "order": 45,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#2",
+      "MCQ Flower-5.docx#2",
+      "Training 1          MCQ (2).docx#1"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The pollen-bearing part of the stamen is the:",
+    "a": "Filament",
+    "b": "Ovule",
+    "c": "Anther",
+    "d": "Stigma",
+    "answer": "C",
+    "order": 46,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#5",
+      "MCQ Flower-5.docx#5",
+      "Training 1          MCQ (2).docx#2"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The female reproductive part of a flower is called the:",
+    "a": "Stamen",
+    "b": "Corolla",
+    "c": "Pistil",
+    "d": "Sepal",
+    "answer": "C",
+    "order": 47,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#6",
+      "MCQ Flower-5.docx#6",
+      "Training 1          MCQ (2).docx#3"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The swollen basal part of the pistil that later becomes the fruit is the:",
+    "a": "Style",
+    "b": "Stigma",
+    "c": "Ovary",
+    "d": "Filament",
+    "answer": "C",
+    "order": 48,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#8",
+      "MCQ Flower-5.docx#8",
+      "Training 1          MCQ (2).docx#4"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The collective term for calyx and corolla is:",
+    "a": "Corolla",
+    "b": "Androecium",
+    "c": "Perianth",
+    "d": "Gynoecium",
+    "answer": "C",
+    "order": 49,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#10",
+      "MCQ Flower-5.docx#10",
+      "Training 1          MCQ (2).docx#6"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower containing both stamens and pistil is called:",
+    "a": "Imperfect flower",
+    "b": "Perfect (bisexual) flower",
+    "c": "Sterile flower",
+    "d": "Incomplete flower",
+    "answer": "B",
+    "order": 50,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#13",
+      "MCQ Flower-5.docx#13",
+      "Training 1          MCQ (2).docx#7"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A flower that lacks functional reproductive organs is called:",
+    "a": "Imperfect flower",
+    "b": "Sterile flower",
+    "c": "Complete flower",
+    "d": "Bisexual flower",
+    "answer": "B",
+    "order": 51,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#16",
+      "MCQ Flower-5.docx#16",
+      "Training 1          MCQ (2).docx#8"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "Sepals that are free from each other are called:",
+    "a": "Gamosepalous",
+    "b": "Polysepalous",
+    "c": "Polypetalous",
+    "d": "Gamopetalous",
+    "answer": "B",
+    "order": 52,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#23",
+      "MCQ Flower-5.docx#23",
+      "Training 1          MCQ (2).docx#9"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A corolla with united petals is called:",
+    "a": "Polypetalous",
+    "b": "Gamopetalous",
+    "c": "Polysepalous",
+    "d": "Apetalous",
+    "answer": "B",
+    "order": 53,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#25",
+      "MCQ Flower-5.docx#25",
+      "Training 1          MCQ (2).docx#10"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "A radially symmetrical flower that can be divided into equal halves by many planes is called:",
+    "a": "Zygomorphic",
+    "b": "Asymmetrical",
+    "c": "Actinomorphic",
+    "d": "Irregular",
+    "answer": "C",
+    "order": 54,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#27",
+      "MCQ Flower-5.docx#27",
+      "Training 1          MCQ (2).docx#11"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The corolla type found in mustard plants is called:",
+    "a": "Papilionaceous",
+    "b": "Rosaceous",
+    "c": "Cruciform",
+    "d": "Campanulate",
+    "answer": "C",
+    "order": 55,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#29",
+      "MCQ Flower-5.docx#29",
+      "Training 1          MCQ (2).docx#12"
+    ]
+  },
+  {
+    "section": "الأزهار والتكاثر الزهري",
+    "section_order": 7,
+    "section_emoji": "🌸",
+    "question": "The papilionaceous corolla is characteristic of the family:",
+    "a": "Brassicaceae",
+    "b": "Papilionaceae (Fabaceae)",
+    "c": "Malvaceae",
+    "d": "Solanaceae",
+    "answer": "B",
+    "order": 56,
+    "source_files": [
+      "MCQ Flower-5 - C to student (1).docx#30",
+      "MCQ Flower-5.docx#30",
+      "Training 1          MCQ (2).docx#13"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "A plant growing in saline habitats is called:",
+    "a": "Xerophyte",
+    "b": "Halophyte",
+    "c": "Hydrophyte",
+    "d": "Psammophyte",
+    "answer": "B",
+    "order": 1,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#28"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which plant is a lithophyte?",
+    "a": "Cactus",
+    "b": "Orchid",
+    "c": "Mangrove",
+    "d": "Fern",
+    "answer": "D",
+    "order": 2,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#29"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "A plant that grows on decaying organic matter is called:",
+    "a": "Parasite",
+    "b": "Saprophyte",
+    "c": "Halophyte",
+    "d": "Xerophyte",
+    "answer": "B",
+    "order": 3,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#31"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "A helophyte grows in:",
+    "a": "Deserts",
+    "b": "Shallow marshes",
+    "c": "Rocky slopes",
+    "d": "Deep water",
+    "answer": "B",
+    "order": 4,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#32"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Psammophytes grow on:",
+    "a": "Rocks",
+    "b": "Sand",
+    "c": "Water",
+    "d": "Trees",
+    "answer": "B",
+    "order": 5,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#33"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a floating-leaved aquatic plant?",
+    "a": "Hydrilla",
+    "b": "Lotus",
+    "c": "Duckweed",
+    "d": "Pistia",
+    "answer": "B",
+    "order": 6,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#70"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"geophyte\" refers to a plant with:",
+    "a": "Underground storage organs",
+    "b": "Aerial roots",
+    "c": "No roots",
+    "d": "Floating leaves",
+    "answer": "A",
+    "order": 7,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#71"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a xerophyte?",
+    "a": "Cactus",
+    "b": "Rice",
+    "c": "Lotus",
+    "d": "Mangrove",
+    "answer": "A",
+    "order": 8,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#72"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"oxylophyte\" refers to a plant growing in:",
+    "a": "Saline soils",
+    "b": "Acidic soils",
+    "c": "Sandy soils",
+    "d": "Aquatic habitats",
+    "answer": "B",
+    "order": 9,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#73"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of halophytes?",
+    "a": "Succulent leaves",
+    "b": "Salt excretion",
+    "c": "Reduced stomata",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 10,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#74"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"mesophyte\" refers to a plant growing in:",
+    "a": "Deserts",
+    "b": "Normal soils",
+    "c": "Water",
+    "d": "Saline soils",
+    "answer": "B",
+    "order": 11,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#75"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is an example of a submerged aquatic plant?",
+    "a": "Lotus",
+    "b": "Hydrilla",
+    "c": "Duckweed",
+    "d": "Pistia",
+    "answer": "B",
+    "order": 12,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#76"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"epiphyte\" refers to a plant that grows:",
+    "a": "On other plants",
+    "b": "In water",
+    "c": "On rocks",
+    "d": "In deserts",
+    "answer": "A",
+    "order": 13,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#77"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a saprophyte?",
+    "a": "Cuscuta",
+    "b": "Orchid",
+    "c": "Mushroom",
+    "d": "Mistletoe",
+    "answer": "C",
+    "order": 14,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#78"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"lithophyte\" refers to a plant growing on:",
+    "a": "Sand",
+    "b": "Rocks",
+    "c": "Water",
+    "d": "Other plants",
+    "answer": "B",
+    "order": 15,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#79"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of psammophytes?",
+    "a": "Succulent stems",
+    "b": "Deep roots",
+    "c": "Adaptation to sandy soils",
+    "d": "Floating leaves",
+    "answer": "C",
+    "order": 16,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#80"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"hydrophyte\" refers to a plant growing in:",
+    "a": "Deserts",
+    "b": "Water",
+    "c": "Saline soils",
+    "d": "Acidic soils",
+    "answer": "B",
+    "order": 17,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#81"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is an emergent aquatic plant?",
+    "a": "Hydrilla",
+    "b": "Lotus",
+    "c": "Duckweed",
+    "d": "Pistia",
+    "answer": "B",
+    "order": 18,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#82"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of xerophytes?",
+    "a": "Reduced leaves",
+    "b": "Thick cuticle",
+    "c": "Succulent stems",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 19,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#83"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"helophyte\" refers to a plant growing in:",
+    "a": "Deep water",
+    "b": "Shallow marshes",
+    "c": "Deserts",
+    "d": "Saline soils",
+    "answer": "B",
+    "order": 20,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#84"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a free-floating aquatic plant?",
+    "a": "Lotus",
+    "b": "Water lily",
+    "c": "Duckweed",
+    "d": "Hydrilla",
+    "answer": "C",
+    "order": 21,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#85"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of halophytes?",
+    "a": "Salt glands",
+    "b": "Succulent leaves",
+    "c": "Reduced transpiration",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 22,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#87"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of mesophytes?",
+    "a": "Broad leaves",
+    "b": "Thin cuticle",
+    "c": "Moderate water requirements",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 23,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#89"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"saprophyte\" refers to a plant that grows on:",
+    "a": "Other plants",
+    "b": "Decaying organic matter",
+    "c": "Rocks",
+    "d": "Water",
+    "answer": "B",
+    "order": 24,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#90"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of epiphytes?",
+    "a": "No soil contact",
+    "b": "Aerial roots",
+    "c": "Hanging growth",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 25,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#91"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"psammophyte\" refers to a plant growing on:",
+    "a": "Rocks",
+    "b": "Sand",
+    "c": "Water",
+    "d": "Other plants",
+    "answer": "B",
+    "order": 26,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#92"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "Which of the following is a characteristic of hydrophytes?",
+    "a": "Reduced roots",
+    "b": "Air spaces in stems",
+    "c": "Floating leaves",
+    "d": "All of the above",
+    "answer": "D",
+    "order": 27,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#93"
+    ]
+  },
+  {
+    "section": "البيئات النباتية والتكيفات البيئية",
+    "section_order": 8,
+    "section_emoji": "🌍",
+    "question": "The term \"liana\" refers to a:",
+    "a": "Woody climber",
+    "b": "Herbaceous climber",
+    "c": "Aquatic plant",
+    "d": "Desert plant",
+    "answer": "A",
+    "order": 28,
+    "source_files": [
+      "Choose the correct -Diyala (2).docx#94"
+    ]
+  }
+]
